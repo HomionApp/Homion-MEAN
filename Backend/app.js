@@ -6,10 +6,12 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.use("/", (req, res) => {
+  res.send("Hello!!!");
+});
+
 mongoose
-  .connect(
-    "mongodb+srv://root:root@cluster0.av2a6.mongodb.net/homion"
-  )
+  .connect("mongodb+srv://root:root@cluster0.av2a6.mongodb.net/homion")
   .then((result) => {
     console.log("Connected!!!");
     app.listen(process.env.PORT || 9999);
