@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.homion {
+  color: #5e2572;
+}
+
+.bg-homion {
+  background-color: #5e2572 !important;
+}
