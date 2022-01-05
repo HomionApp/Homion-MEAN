@@ -1,0 +1,21 @@
+{
+  "files.exclude": {
+    "Frontend\\tsconfig.spec.json": true,
+    "Frontend\\tsconfig.json": true,
+    "Frontend\\tsconfig.app.json": true,
+    "Frontend\\package-lock.json": true,
+    "Frontend\\karma.conf.js": true,
+    "Frontend\\.editorconfig": true,
+    "Frontend\\.browserslistrc": true,
+    "Frontend\\src\\test.ts": true,
+    "Frontend\\src\\polyfills.ts": true,
+    "Frontend\\src\\main.ts": true,
+    "Frontend\\src\\favicon.ico": true,
+    "Frontend\\src\\environments": true,
+    "Frontend\\.angular\\cache": true,
+    "Frontend\\.angular": true,
+    "Frontend\\.vscode": true,
+    "Backend\\package-lock.json": true,
+    "README.md": true
+  }
+}
