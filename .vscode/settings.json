@@ -15,6 +15,8 @@
     "Frontend\\.angular\\cache": true,
     "Frontend\\.angular": true,
     "Frontend\\.vscode": true,
+    "Frontend\\node_modules": true,
+    "Backend\\node_modules": true,
     "Backend\\package-lock.json": true,
     "README.md": true
   }

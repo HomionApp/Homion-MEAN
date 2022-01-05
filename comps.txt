@@ -1,0 +1,58 @@
+components/modules
+
+    app
+        * Shared
+            -> auth
+                -> login
+                -> register
+            -> header
+            -> footer
+            -> message-modal
+            -> confirm-modal
+        * User
+            -> user-nav
+            -> home
+            -> profile
+          R -> search
+                -> filter
+          R -> address
+                -> edit-address
+          R -> favourites
+            -> my-orders
+                -> order-details
+                -> order-review
+            -> checkout
+                # address 
+                # cart
+          D  -> cart
+          D * ChefDetails
+                -> preview
+                -> chef-products
+                -> menu
+                -> rating
+                # cart
+
+        * Chef
+            -> chef-nav
+           H -> home
+           H -> order-details
+           H -> menu
+            -> products
+                -> edit-product
+           H -> business (include history #order-details, exclude chart)
+            -> past-orders
+                -> invoice
+                # order-details
+            -> address
+                -> edit-address
+            -> profile
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+auth-guard
+interceptor
+user-services
+chef-services
+models

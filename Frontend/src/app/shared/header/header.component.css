@@ -1,0 +1,8 @@
+.logo {
+  font-size: 32px;
+}
+
+.navbar {
+  z-index: 1;
+  background-color: #ffffff !important;
+}

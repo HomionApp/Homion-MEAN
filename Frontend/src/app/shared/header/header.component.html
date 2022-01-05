@@ -1,30 +1,12 @@
-<nav class="navbar navbar-expand-sm bg-homion">
-  <div class="container">
-    <a class="navbar-brand text-white">Homion</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#mynavbar"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mynavbar">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link text-white">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white">Link</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="text" placeholder="Search" />
-        <button class="btn btn-light" type="button">Search</button>
-      </form>
-    </div>
+<nav class="navbar navbar-expand-sm shadow">
+  <div class="ms-4 logo purple" role="button" (click)="isOpen = !isOpen">
+    <i class="fa fa-bars"></i>
+  </div>
+  <div class="container justify-content-center">
+    <strong>
+      <a class="navbar-brand font-weight-bold logo purple">Homion</a>
+    </strong>
   </div>
 </nav>
+
+<app-user-nav *ngIf="isOpen"></app-user-nav>

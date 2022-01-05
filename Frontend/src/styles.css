@@ -1,8 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-.homion {
-  color: #5e2572;
+:root {
+  --purple: #5e2572 !important;
 }
 
-.bg-homion {
-  background-color: #5e2572 !important;
+.purple {
+  color: var(--purple) !important;
+}
+
+.bg-purple {
+  background-color: var(--purple) !important;
+}
+
+body {
+  background-color: #f1f2f7 !important;
 }
