@@ -1,13 +1,24 @@
-<div
-  class="container mt-3 h-100 d-flex justify-content-center align-items-center"
->
+<div class="container mt-3 h-100 d-flex justify-content-center align-items-center">
   <div class="card w-50 mt-5">
     <div class="card-header d-flex">
-      <div class="col-6 mt-2 d-flex justify-content-center">Login</div>
-      <div class="col-6 mt-2 d-flex justify-content-center">Signup</div>
+      <div class="col-6 mt-2 d-flex justify-content-center" [ngClass]="isLogin ? 'purple h5': ''" role="button" (click)="isLogin = true">Login</div>
+      <div class="col-6 mt-2 d-flex justify-content-center" [ngClass]="!isLogin ? 'purple h5': ''" role="button" (click)="isLogin = false">Signup</div>
     </div>
     <div class="card-body px-5">
-      <app-login></app-login>
+      <app-login *ngIf="isLogin; else register"></app-login>
+      <ng-template #register>
+        <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group" id="type">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked
+            (change)="isUser = true" />
+          <label class="btn btn-outline-secondary" for="btnradio1">User</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
+            (change)="isUser = false" />
+          <label class="btn btn-outline-secondary" for="btnradio2">Chef</label>
+        </div>
+        <app-user-register *ngIf="isUser"></app-user-register>
+        <app-chef-register *ngIf="!isUser"></app-chef-register>
+      </ng-template>
     </div>
   </div>
 </div>

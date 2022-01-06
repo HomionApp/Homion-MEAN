@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isOpen = false;
+  isUser = false;
 
   constructor() {}
 
@@ -18,8 +19,6 @@ export class HeaderComponent implements OnInit {
   }
 
   closeNav() {
-    console.log("dsadsaklj");
-    
     document.getElementById('mySidenav')!.style.width = '0';
     document.getElementById('main')!.style.marginLeft = '0';
   }
