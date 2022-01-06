@@ -34,10 +34,10 @@ components/modules
 
         * Chef
             -> chef-nav
-           H -> home
-           H -> order-details
+           H -> home            ✔️  
+           H -> order-details   ✔️
            H -> menu
-            -> products
+             -> products
                 -> edit-product
            H -> business (include history #order-details, exclude chart)
             -> past-orders

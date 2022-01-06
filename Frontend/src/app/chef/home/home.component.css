@@ -1,0 +1,33 @@
+.nav-pills .nav-link {
+    border-radius: 0.25rem;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--purple);
+  }
+  
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: var(--purple);
+  }
+
+  .badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+  }
+  
+  .badge-primary {
+    color: #fff;
+    background-color: var(--purple);
+  }
+  
+  .btn-outline-primary{
+      border-color: var(--purple);
+  }
+
+  .btn:hover{
+      background-color: var(--purple);
+      color: white !important;
+  }

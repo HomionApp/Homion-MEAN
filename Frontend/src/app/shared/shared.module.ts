@@ -9,6 +9,7 @@ import { MessageModalComponent } from './message-modal/message-modal.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { UserModule } from '../user/user.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { BrowserModule } from '@angular/platform-browser';
     MessageModalComponent,
     ConfirmModalComponent,
   ],
-  imports: [BrowserModule, SharedRoutingModule, UserModule],
+  imports: [CommonModule, SharedRoutingModule, UserModule],
   providers: [],
   exports: [AuthComponent, LoginComponent, RegisterComponent, HeaderComponent],
 })
