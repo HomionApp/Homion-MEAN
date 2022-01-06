@@ -24,3 +24,10 @@ body {
   outline: 0;
   box-shadow: none;
 }
+.gradient {
+  color: #dc3545 !important;
+}
+
+.bg-gradient {
+  background-color: #dc3545 !important;
+}

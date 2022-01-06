@@ -6,7 +6,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./user-nav.component.css'],
 })
 export class UserNavComponent implements OnInit {
-  @Output() close = new EventEmitter<boolean>();
 
   constructor() {}
 
@@ -15,11 +14,7 @@ export class UserNavComponent implements OnInit {
   }
 
   openNav() {
-    document.getElementById('mySidenav')!.style.width = '250px';
-  }
-
-  closeNav() {
-    document.getElementById('mySidenav')!.style.width = '0';
-    this.close.emit(false);
+    document.getElementById('mySidenav')!.style.width = '200px';
+    document.getElementById("main")!.style.marginLeft = "200px";
   }
 }
