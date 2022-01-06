@@ -19,5 +19,9 @@
     "Backend\\node_modules": true,
     "Backend\\package-lock.json": true,
     "README.md": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
   }
 }
