@@ -11,4 +11,16 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  toggleNav() {
+    this.isOpen = !this.isOpen;
+    if (!this.isOpen) this.closeNav();
+  }
+
+  closeNav() {
+    console.log("dsadsaklj");
+    
+    document.getElementById('mySidenav')!.style.width = '0';
+    document.getElementById('main')!.style.marginLeft = '0';
+  }
 }

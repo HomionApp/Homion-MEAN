@@ -14,3 +14,11 @@
 body {
   background-color: #f1f2f7 !important;
 }
+
+.gradient {
+  color: #dc3545 !important;
+}
+
+.bg-gradient {
+  background-color: #dc3545 !important;
+}
