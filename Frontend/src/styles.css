@@ -14,3 +14,13 @@
 body {
   background-color: #f1f2f7 !important;
 }
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
