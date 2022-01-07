@@ -1,0 +1,24 @@
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-13 {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.fs-15 {
+  font-size: 15px;
+}
+
+.w-33 {
+  width: 31.5%;
+}
+
+.card {
+  transition: transform 0.50s;
+}
+
+.card:hover {
+  transform: scale(1.07);
+}

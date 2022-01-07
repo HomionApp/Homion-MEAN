@@ -31,6 +31,7 @@ import { ChefModule } from '../chef/chef.module';
     UserRegisterComponent,
     HeaderComponent,
     ChefRegisterComponent,
+    FooterComponent
   ],
 })
 export class SharedModule {}

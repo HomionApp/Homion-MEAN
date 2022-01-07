@@ -1,0 +1,12 @@
+.order-img {
+    height: 100px;
+}
+
+.btn-outline-primary{
+    border-color: var(--purple);
+}
+
+.btn:hover{
+    background-color: var(--purple);
+    color: white !important;
+}

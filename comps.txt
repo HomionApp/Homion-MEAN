@@ -3,9 +3,9 @@ components/modules
     app
         * Shared
             -> auth
-                -> login ✔️
-                -> register
-            -> header ✔️
+                -> login        ✔️
+                -> register     ✔️
+            -> header           ✔️
             -> footer
             -> message-modal
             -> confirm-modal
@@ -26,26 +26,26 @@ components/modules
                 # cart
           D  -> cart
           D * ChefDetails
-                -> preview ✔️
-                -> chef-products
-                -> menu
+                -> preview       ✔️
+                -> chef-products ✔️
+                -> menu          ✔️
                 -> rating
-                # cart
+                -> dynamic-cart  ✔️
 
         * Chef
-            -> chef-nav
-           H -> home            ✔️  
-           H -> order-details   ✔️
-           H -> menu
-             -> products
+            -> chef-nav                 ✔️
+           H -> home                    ✔️  
+           H -> order-details(modal)    ✔️
+           H -> menu                    ✔️
+           H -> products
                 -> edit-product
-           H -> business (include history #order-details, exclude chart)
-            -> past-orders
+             -> business (include history #order-details, exclude chart)
+             -> past-orders
                 -> invoice
                 # order-details
-            -> address
+             -> address
                 -> edit-address
-            -> profile
+             -> profile
 
 
 
