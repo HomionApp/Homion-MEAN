@@ -1,20 +1,3 @@
-/**
-  Default Markup
-**/
-
-body {
-  background: #f0e5e1;
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/**
-      Component
-    **/
-
 label {
   width: 100%;
 }

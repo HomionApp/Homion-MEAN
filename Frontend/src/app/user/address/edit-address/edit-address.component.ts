@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EditAddressComponent implements OnInit {
   @ViewChild('editaddress', { static: true }) modal!: ElementRef;
+  @Output() output = new EventEmitter<boolean>();
 
   constructor(private modalService: NgbModal) {}
 
@@ -18,7 +19,12 @@ export class EditAddressComponent implements OnInit {
         console.log(result);
       })
       .catch((err) => {
-        console.log(err);
+        this.closeModal();
       });
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
+    this.output.emit(false);
   }
 }

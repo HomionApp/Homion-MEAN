@@ -5,9 +5,10 @@ import { EditAddressComponent } from './address/edit-address/edit-address.compon
 import { ChefDetailsModule } from './chef-details/chef-details.module';
 import { UserNavComponent } from './user-nav/user-nav.component';
 import { UserRoutingModule } from './user-routing.module';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 @NgModule({
-  declarations: [UserNavComponent, AddressComponent, EditAddressComponent],
+  declarations: [UserNavComponent, AddressComponent, EditAddressComponent, FavouritesComponent],
   imports: [CommonModule, UserRoutingModule, ChefDetailsModule],
   exports: [UserNavComponent],
 })

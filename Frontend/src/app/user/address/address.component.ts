@@ -6,8 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./address.component.css'],
 })
 export class AddressComponent implements OnInit {
-  addNewAddress = true;
+  addNewAddress = false;
   constructor() {}
 
   ngOnInit(): void {}
+
+  editAddress() {
+    this.addNewAddress = true;
+  }
+
+  getChildData(isNewAdded: boolean) {
+    this.addNewAddress = false;
+  }
 }
