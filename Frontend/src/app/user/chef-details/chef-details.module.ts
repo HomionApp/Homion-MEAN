@@ -5,6 +5,7 @@ import { MenuComponent } from './menu/menu.component';
 import { PreviewComponent } from './preview/preview.component';
 import { ProductsComponent } from './products/products.component';
 import { RatingComponent } from './rating/rating.component';
+import { DynamicCartComponent } from './dynamic-cart/dynamic-cart.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { RatingComponent } from './rating/rating.component';
     PreviewComponent,
     ProductsComponent,
     MenuComponent,
-    RatingComponent
+    RatingComponent,
+    DynamicCartComponent
   ],
   imports: [
     CommonModule

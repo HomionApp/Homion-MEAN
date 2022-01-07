@@ -1,0 +1,20 @@
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.card {
+  position: sticky;
+  top: 15px;
+}
+
+.btn-lg {
+  transition: transform .2s;
+}
+
+.btn-lg:hover {
+  transform: scale(1.05);
+}
