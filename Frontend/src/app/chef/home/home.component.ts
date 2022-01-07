@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from '../service/modal-service.service';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +6,11 @@ import { ModalService } from '../service/modal-service.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private modalService : ModalService) { }
+  showDetails = false;
+  
+  constructor() { }
 
   ngOnInit(): void {
-  }
 
-  openModel(){
-    this.modalService.open();     //to open the modal
   }
 }

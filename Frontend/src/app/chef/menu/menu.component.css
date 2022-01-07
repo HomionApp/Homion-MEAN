@@ -1,0 +1,24 @@
+.badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+  }
+  
+  .badge-primary {
+    color: #fff;
+    background-color: var(--purple);
+  }
+  
+  .btn-outline-primary{
+      border-color: var(--purple);
+  }
+
+  .btn:hover{
+      background-color: var(--purple);
+      color: white !important;
+  }
+
+  .own-border-95 {
+    width: 95%;
+    height:  2px;
+  }

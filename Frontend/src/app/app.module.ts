@@ -5,11 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChefModule } from './chef/chef.module';
 import { SharedModule } from './shared/shared.module';
-import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, UserModule, ChefModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, NgbModule],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent],
 })

@@ -58,13 +58,10 @@
                                     <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">
                                         REJECT
                                     </button>
-                                    <button class="btn btn-outline-primary purple border-2 fw-bolder" (click)="openModel()">DETAILS</button>
+                                    <button class="btn btn-outline-primary purple border-2 fw-bolder" (click)="showDetails = !showDetails">DETAILS</button>
                                 </div>
                             </div>
                         </div>
-
-
-                        <!-- 78989777889987897 -->
 
                         <div class="m-2 card shadow rounded" style="flex: 1 1 500px">
                             <div class="card-body">
@@ -91,7 +88,7 @@
                                     <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">
                                         REJECT
                                     </button>
-                                    <button class="btn btn-outline-primary purple border-2 fw-bolder" (click)="openModel()">DETAILS</button>
+                                    <button class="btn btn-outline-primary purple border-2 fw-bolder" (click)="showDetails != showDetails">DETAILS</button>
                                 </div>
                             </div>
                         </div>
@@ -123,3 +120,5 @@
         </div>
     </div>
 </div>
+
+<app-order-details-modal *ngIf="showDetails" (closeModal)="showDetails = false"></app-order-details-modal>
