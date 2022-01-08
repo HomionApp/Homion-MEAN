@@ -13,11 +13,11 @@ components/modules
             -> user-nav
             -> home
             -> profile
-          R -> search
+          R -> search           
                 -> filter
-          R -> address
-                -> edit-address
-          R -> favourites
+          R -> address          ✔️
+                -> edit-address ✔️
+          R -> favourites       ✔️
             -> my-orders
                 -> order-details
                 -> order-review

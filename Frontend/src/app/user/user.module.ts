@@ -7,6 +7,7 @@ import { ChefDetailsModule } from './chef-details/chef-details.module';
 import { UserNavComponent } from './user-nav/user-nav.component';
 import { UserRoutingModule } from './user-routing.module';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
     FavouritesComponent,
     CartComponent,
   ],
-  imports: [CommonModule, UserRoutingModule, ChefDetailsModule],
+  imports: [CommonModule, UserRoutingModule, ChefDetailsModule, FormsModule],
   exports: [UserNavComponent],
 })
 export class UserModule {}
