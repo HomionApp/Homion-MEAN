@@ -1,121 +1,181 @@
 <div class="main-panel own-body">
-    <!------------------------------------ Options --------------------------------------------------------->
+
     <ul class="nav nav-pills nav-fill m-3" id="pills-tab-custom" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link rounded-pill active font-weight-bold font-20" id="new-tab" data-toggle="tab"
-                href="#new-orders" role="tab" aria-controls="new" aria-selected="true">
-                New orders (size)</a>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-pill active font-weight-bold font-20" id="new-tab" data-toggle="tab"
+                role="tab" aria-controls="new" aria-selected="true" type="button" data-bs-toggle="tab"
+                data-bs-target="#new-orders">
+                New orders (size)</button>
         </li>
         <li class="nav-item">
-            <a class="nav-link rounded-pill font-weight-bold font-20" id="ongoing-tab" data-toggle="tab" href=""
-                role="tab" aria-controls="ongoing" aria-selected="false">
-                Ongoing orders (size)</a>
+            <button class="nav-link rounded-pill font-weight-bold font-20" id="ongoing-tab" data-toggle="tab" role="tab"
+                aria-controls="ongoing" aria-selected="false" role="presentation" type="button" data-bs-toggle="tab"
+                data-bs-target="#ongoing-orders">
+                Ongoing orders (size)</button>
         </li>
         <li class="nav-item">
-            <a class="nav-link rounded-pill font-weight-bold font-20" id="prepared-tab" data-toggle="tab" href=""
-                role="tab" aria-controls="prepared" aria-selected="false">
-                Prepared orders (size)</a>
+            <button class="nav-link rounded-pill font-weight-bold font-20" id="prepared-tab" data-toggle="tab"
+                role="tab" aria-controls="prepared" aria-selected="false" role="presentation" type="button"
+                data-bs-toggle="tab" data-bs-target="#prepared-orders">
+                Prepared orders (size)</button>
         </li>
         <li class="nav-item">
-            <a class="nav-link rounded-pill font-weight-bold font-20" id="cancelled-tab" data-toggle="tab" href=""
-                role="tab" aria-controls="cancelled" aria-selected="false">
-                Cancelled orders (size)</a>
+            <button class="nav-link rounded-pill font-weight-bold font-20" id="cancelled-tab" data-toggle="tab"
+                role="tab" aria-controls="cancelled" aria-selected="false" role="presentation" type="button"
+                data-bs-toggle="tab" data-bs-target="#cancelled-orders">
+                Cancelled orders (size)</button>
         </li>
     </ul>
 
     <div class="container" id="allOrders">
-        <div class="row w-100">
-            <div class="tab-content w-75 mx-auto" id="myTabContent">
-                <!------------------------------------- New orders -------------------------->
+        <div class="row">
+            <div class="tab-content mx-auto" id="myTabContent">
 
                 <div class="tab-pane fade show active" id="new-orders" role="tabpanel" aria-labelledby="new-tab">
-                    <div class="w-100" style="display: flex; flex-wrap: wrap">
-                        <h4 class="mx-auto">
-                            No new orders. Please wait for an order to be placed!!
-                        </h4>
-                        <div class="m-2 card shadow rounded" style="flex: 1 1 500px">
-                            <div class="card-body">
-                                <h4>
-                                    <span class="fs-3 purple fw-bolder text-large">Harshil Dangi
-                                    </span>
-                                    &nbsp;&nbsp;
-                                    <small><span class="fw-bolder"></span>
-                                        <span class="badge badge-pill bg-purple badge-large float-end">
-                                            <i class="fa fa-inr menu-icon"></i>
-                                            234</span></small>
-                                </h4>
-                                <h6 class="text-muted">
-                                    109, Vibhusha Bungalows, Kabir Enclave,
-                                    Bopal - 380058
-                                </h6>
-                                <h6 class=" text-muted">
-                                    03/01/2022 05:21 PM
-                                </h6>
-                                <div class="mt-1 w-100 btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">
-                                        ACCEPT
-                                    </button>
-                                    <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">
-                                        REJECT
-                                    </button>
-                                    <button class="btn btn-outline-primary purple border-2 fw-bolder" (click)="showDetails = !showDetails">DETAILS</button>
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h4 class="mx-auto">No new orders. Please wait for an order to be placed!!</h4>
+                            <div class="m-2 card shadow rounded">
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-10 col-md-10 col-sm-10">
+                                            <span class="fs-3 purple fw-bolder text-large">Harshil
+                                                Dangi</span>&nbsp;&nbsp;
+                                            <h6 class="text-muted my-1">109, Vibhusha Bungalows, Kabir Enclave,Bopal -
+                                                380058
+                                            </h6>
+                                            <h6 class=" text-muted my-2">03/01/2022 05:21 PM</h6>
+                                        </div>
+                                        <div class="col-2 col-md-2 col-sm-2 mt-2 h4">
+                                            <span class="badge badge-pill bg-purple badge-large float-end"><i
+                                                    class="fa fa-inr menu-icon">&nbsp;</i>234</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-12 col-md-12">
+                                            <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
+                                                <button type="button"
+                                                    class="btn btn-outline-primary purple border-2 fw-bolder">ACCEPT</button>
+                                                <button type="button"
+                                                    class="btn btn-outline-primary purple border-2 fw-bolder">REJECT</button>
+                                                <button class="btn btn-outline-primary purple border-2 fw-bolder"
+                                                    (click)="showDetails = !showDetails">DETAILS</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="m-2 card shadow rounded" style="flex: 1 1 500px">
-                            <div class="card-body">
-                                <h4>
-                                    <span class="fs-3 purple fw-bolder text-large">Harshil Dangi
-                                    </span>
-                                    &nbsp;&nbsp;
-                                    <small><span class="fw-bolder"></span>
-                                        <span class="badge badge-pill bg-purple badge-large float-end">
-                                            <i class="fa fa-inr menu-icon"></i>
-                                            234</span></small>
-                                </h4>
-                                <h6 class="text-muted">
-                                    109, Vibhusha Bungalows, Kabir Enclave,
-                                    Bopal - 380058
-                                </h6>
-                                <h6 class=" text-muted">
-                                    03/01/2022 05:21 PM
-                                </h6>
-                                <div class="mt-1 w-100 btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">
-                                        ACCEPT
-                                    </button>
-                                    <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">
-                                        REJECT
-                                    </button>
-                                    <button class="btn btn-outline-primary purple border-2 fw-bolder" (click)="showDetails != showDetails">DETAILS</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        
-                        <!-- <script src="chefResources/js/chef.js"></script>
-                        <script>countItems(id})</script> -->
                     </div>
                 </div>
 
-                <!------------------------------------- Ongoing orders ------------------------->
-
                 <div class="tab-pane fade" id="ongoing-orders" role="tabpanel" aria-labelledby="ongoing-tab">
-                    Ongoing orders
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h4 class="mx-auto">No new ongoing orders. Please wait for an order to be placed!!</h4>
+                            <div class="m-2 card shadow rounded">
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-10 col-md-10 col-sm-10">
+                                            <span class="fs-3 purple fw-bolder text-large">Harshil
+                                                Dangi</span>&nbsp;&nbsp;
+                                            <h6 class="text-muted my-1">109, Vibhusha Bungalows, Kabir Enclave,Bopal -
+                                                380058
+                                            </h6>
+                                            <h6 class=" text-muted my-2">03/01/2022 05:21 PM</h6>
+                                        </div>
+                                        <div class="col-2 col-md-2 col-sm-2 mt-2 h4">
+                                            <span class="badge badge-pill bg-purple badge-large float-end"><i
+                                                    class="fa fa-inr menu-icon">&nbsp;</i>234</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-12 col-md-12">
+                                            <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
+                                                <button type="button"
+                                                    class="btn btn-outline-primary purple border-2 fw-bolder">MARK
+                                                    READY</button>
+                                                <button class="btn btn-outline-primary purple border-2 fw-bolder"
+                                                    (click)="showDetails = !showDetails">DETAILS</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!------------------------------------- Prepared orders ------------------------->
 
                 <div class="tab-pane fade" id="prepared-orders" role="tabpanel" aria-labelledby="prepared-tab">
-                    Prepared orders
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h4 class="mx-auto">No new prepared orders. Please wait for an order to be placed!!</h4>
+                            <div class="m-2 card shadow rounded">
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-10 col-md-10 col-sm-10">
+                                            <span class="fs-3 purple fw-bolder text-large">Harshil
+                                                Dangi</span>&nbsp;&nbsp;
+                                            <h6 class="text-muted my-1">109, Vibhusha Bungalows, Kabir Enclave,Bopal -
+                                                380058
+                                            </h6>
+                                            <h6 class=" text-muted my-2">03/01/2022 05:21 PM</h6>
+                                        </div>
+                                        <div class="col-2 col-md-2 col-sm-2 mt-2 h4">
+                                            <span class="badge badge-pill bg-purple badge-large float-end"><i
+                                                    class="fa fa-inr menu-icon">&nbsp;</i>234</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-12 col-md-12">
+                                            <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
+                                                <button type="button"
+                                                    class="btn btn-outline-primary purple border-2 fw-bolder">MARK
+                                                    READY</button>
+                                                <button class="btn btn-outline-primary purple border-2 fw-bolder"
+                                                    (click)="showDetails = !showDetails">DETAILS</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!------------------------------------- Cancelled orders ----------------------->
 
                 <div class="tab-pane fade" id="cancelled-orders" role="tabpanel" aria-labelledby="cancelled-tab">
-                    Cancelled Orders
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h4 class="mx-auto">No new cancelled orders. Please wait for an order to be placed!!</h4>
+                            <div class="m-2 card shadow rounded">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-10 col-md-10 col-sm-10">
+                                            <span class="fs-3 purple fw-bolder text-large">Harshil
+                                                Dangi</span>&nbsp;&nbsp;
+                                            <h6 class="text-muted">109, Vibhusha Bungalows, Kabir Enclave,Bopal - 380058
+                                            </h6>
+                                            <h6 class=" text-muted">03/01/2022 05:21 PM</h6>
+                                        </div>
+                                        <div class="col-2 col-md-2 col-sm-2 mt-2 h4">
+                                            <span
+                                                class="badge badge-pill bg-danger badge-large float-end">Rejected</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-12 col-md-12">
+                                            <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
+                                                <button class="btn btn-outline-primary purple border-2 fw-bolder"
+                                                    (click)="showDetails = !showDetails">DETAILS</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

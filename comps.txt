@@ -37,7 +37,7 @@ components/modules
            H -> home                    ✔️  
            H -> order-details(modal)    ✔️
            H -> menu                    ✔️
-           H -> products
+           H -> products                ✔️
                 -> edit-product
              -> business (include history #order-details, exclude chart)
              -> past-orders
