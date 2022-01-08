@@ -1,8 +1,11 @@
 .logo {
   font-size: 28px;
+  margin-left: -20px;
 }
 
 .navbar {
   z-index: 1;
   background-color: #ffffff !important;
+  position: sticky;
+  top: 0;
 }
