@@ -3,9 +3,9 @@ components/modules
     app
         * Shared
             -> auth
-                -> login        ✔️
-                -> register     ✔️
-            -> header           ✔️
+                -> login                ✔️
+                -> register             ✔️
+            -> header                   ✔️
             -> footer
             -> message-modal
             -> confirm-modal
@@ -13,24 +13,24 @@ components/modules
             -> user-nav
             -> home
             -> profile
-          R -> search           ✔️
-                -> filter       ✔️
-          R -> address          ✔️
-                -> edit-address ✔️
-          R -> favourites       ✔️
+          R -> search                   ✔️
+                -> filter               ✔️
+          R -> address                  ✔️
+                -> edit-address         ✔️
+          R -> favourites               ✔️
             -> my-orders
                 -> order-details
                 -> order-review
             -> checkout
-                # address 
-                # cart
-          D  -> cart
-          D * ChefDetails
-                -> preview       ✔️
-                -> chef-products ✔️
-                -> menu          ✔️
-                -> rating
-                -> dynamic-cart  ✔️
+                # address               ✔️
+                # cart                  ✔️
+          D  -> cart                    ✔️
+          D * ChefDetails               ✔️
+                -> preview              ✔️
+                -> chef-products        ✔️
+                -> menu                 ✔️
+                -> rating               ✔️
+                -> dynamic-cart         ✔️
 
         * Chef
             -> chef-nav                 ✔️

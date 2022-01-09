@@ -1,20 +1,12 @@
-.fs-12 {
-  font-size: 12px;
-}
-
-.fs-14 {
-  font-size: 14px;
-}
-
 .card {
   position: sticky;
   top: 75px;
 }
 
-.btn-lg {
-  transition: transform .2s;
+.bg-success {
+  background-color: #28a745 !important;
 }
 
 .btn-lg:hover {
-  transform: scale(1.05);
+  background-color: #258f3e !important;
 }
