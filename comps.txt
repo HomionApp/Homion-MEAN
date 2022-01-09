@@ -2,7 +2,7 @@ components/modules
 
     app
         * Shared
-            -> auth
+            -> auth                     ✔️
                 -> login                ✔️
                 -> register             ✔️
             -> header                   ✔️
@@ -10,7 +10,7 @@ components/modules
             -> message-modal
             -> confirm-modal
         * User
-            -> user-nav
+            -> user-nav                 ✔️
             -> home
             -> profile
           R -> search                   ✔️
