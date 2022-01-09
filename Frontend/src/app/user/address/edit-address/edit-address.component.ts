@@ -1,4 +1,11 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -14,7 +21,7 @@ export class EditAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.modalService
-      .open(this.modal)
+      .open(this.modal, { modalDialogClass: 'modal-dialog-centered' })
       .result.then((result) => {
         console.log(result);
       })

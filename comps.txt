@@ -13,8 +13,8 @@ components/modules
             -> user-nav
             -> home
             -> profile
-          R -> search           
-                -> filter
+          R -> search           ✔️
+                -> filter       ✔️
           R -> address          ✔️
                 -> edit-address ✔️
           R -> favourites       ✔️

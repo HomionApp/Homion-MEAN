@@ -8,6 +8,8 @@ import { UserNavComponent } from './user-nav/user-nav.component';
 import { UserRoutingModule } from './user-routing.module';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
+import { FilterComponent } from './search/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { FormsModule } from '@angular/forms';
     EditAddressComponent,
     FavouritesComponent,
     CartComponent,
+    SearchComponent,
+    FilterComponent,
   ],
   imports: [CommonModule, UserRoutingModule, ChefDetailsModule, FormsModule],
   exports: [UserNavComponent],

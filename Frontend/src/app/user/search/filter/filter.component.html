@@ -1,0 +1,51 @@
+<ng-template #filter>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Filters</h4>
+        <button type="button" class="btn" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true" class="h5"><i class="fa fa-times"></i></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <h6>SORT BY</h6>
+            <div class="form-check border-bottom pb-2">
+                <input class="form-check-input" type="radio" name="sortBy" id="topRated">
+                <label class="form-check-label" for="topRated">
+                    Top Rated
+                </label>
+            </div>
+            <div class="form-check border-bottom pb-2">
+                <input class="form-check-input" type="radio" name="sortBy" id="costHighToLow" checked>
+                <label class="form-check-label" for="costHighToLow">
+                    Cost High to Low
+                </label>
+            </div>
+            <div class="form-check border-bottom pb-2">
+                <input class="form-check-input" type="radio" name="sortBy" id="costLowToHigh" checked>
+                <label class="form-check-label" for="costLowToHigh">
+                    Cost Low to High
+                </label>
+            </div>
+            <br>
+            <h6>FILTER</h6>
+            <div class="form-check border-bottom pb-2">
+                <input class="form-check-input" type="checkbox" value="" id="homeAvaibalbility">
+                <label class="form-check-label" for="homeAvaibalbility">
+                    Available to prepare at home
+                </label>
+            </div>
+            <div class="form-check border-bottom pb-2">
+                <input class="form-check-input" type="checkbox" value="" id="jainAvailability" checked>
+                <label class="form-check-label" for="jainAvailability">
+                    Jain available
+                </label>
+            </div>
+        </form>
+    </div>
+    <div class="p-0 m-0 modal-footer">
+        <div class=" p-0 m-0 btn-group w-100" role="group" aria-label="Basic radio toggle button group" id="type">
+            <button type="button" class="btn btn-light w-50" (click)="closeModal()">Close</button>
+            <button type="button" class="btn btn-outline-dark bg-purple text-white w-50">Apply</button>
+        </div>
+    </div>
+</ng-template>

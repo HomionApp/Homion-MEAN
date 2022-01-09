@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isOpen = false;
-  isUser = false;
+  isUser = true;
 
   constructor() {}
 
