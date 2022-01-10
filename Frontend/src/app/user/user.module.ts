@@ -10,6 +10,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './search/filter/filter.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FilterComponent } from './search/filter/filter.component';
     CartComponent,
     SearchComponent,
     FilterComponent,
+    HomeComponent,
   ],
   imports: [CommonModule, UserRoutingModule, ChefDetailsModule, FormsModule],
   exports: [UserNavComponent],

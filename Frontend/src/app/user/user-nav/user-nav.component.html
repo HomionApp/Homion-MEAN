@@ -1,8 +1,20 @@
 <div id="mySidenav" class="sidenav shadow mt-2">
-  <a href="#"><i class="fa fa-home"></i> &nbsp; Home</a>
-  <a href="#"><i class="fa fa-list-ul"></i> &nbsp; My Orders</a>
-  <a routerLink="/user/favourites"><i class="fa fa-heart"></i> &nbsp; Favourites</a>
-  <a routerLink=""><i class="fa fa-shopping-cart"></i> &nbsp; Cart</a>
-  <a routerLink=""><i class="fa fa-user">&nbsp;</i> &nbsp; Profile</a>
-  <a routerLink=""><i class="fa fa-sign-out"></i> &nbsp; Logout</a>
+  <a routerLink="/user/home" routerLinkActive="active">
+    <i class="fa fa-home"></i> &nbsp; Home
+  </a>
+  <a routerLink="/user/my-orders" routerLinkActive="active">
+    <i class="fa fa-list-ul"></i> &nbsp; My Orders
+  </a>
+  <a routerLink="/user/favourites" routerLinkActive="active">
+    <i class="fa fa-heart"></i> &nbsp; Favourites
+  </a>
+  <a routerLink="/user/cart" routerLinkActive="active">
+    <i class="fa fa-shopping-cart"></i> &nbsp; Cart
+  </a>
+  <a routerLink="/user/profile" routerLinkActive="active">
+    <i class="fa fa-user">&nbsp;</i> &nbsp; Profile
+  </a>
+  <a routerLink="/user/logout" routerLinkActive="active">
+    <i class="fa fa-sign-out"></i> &nbsp; Logout
+  </a>
 </div>

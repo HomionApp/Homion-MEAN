@@ -29,8 +29,8 @@
 
         <div class="mt-4 mb-3">
           <button class="btn bg-light purple fs-14 ps-4 pe-4" (click)="isFavourite = !isFavourite">
-            <span *ngIf="!isFavourite"><i class="fa fa-heart-o me-2"></i>Add to Favourite</span>
-            <span *ngIf="isFavourite"><i class="fa fa-heart me-2"></i>Remove from Favourite</span>
+            <span *ngIf="!isFavourite" class="text-nowrap"><i class="fa fa-heart-o me-2"></i>Add to Favourite</span>
+            <span *ngIf="isFavourite" class="text-nowrap"><i class="fa fa-heart me-2"></i>Remove from Favourite</span>
           </button>
         </div>
       </div>
