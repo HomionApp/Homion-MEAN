@@ -18,9 +18,9 @@ components/modules
           R -> address                  ✔️
                 -> edit-address         ✔️
           R -> favourites               ✔️
-            -> my-orders
-                -> order-details
-                -> order-review
+          R -> my-orders                ✔️
+                -> order-details        ✔️
+                -> order-review         ✔️
             -> checkout
                 # address               ✔️
                 # cart                  ✔️

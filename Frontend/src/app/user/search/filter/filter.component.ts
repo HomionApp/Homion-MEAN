@@ -13,13 +13,13 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./filter.component.css'],
 })
 export class FilterComponent implements OnInit {
-  @ViewChild('filter', { static: true }) filterModal!: ElementRef;
+  @ViewChild('filter', { static: true }) modal!: ElementRef;
   @Output() output = new EventEmitter<boolean>();
 
   constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    this.modalService.open(this.filterModal, {
+    this.modalService.open(this.modal, {
       modalDialogClass: 'modal-dialog-centered',
     });
   }

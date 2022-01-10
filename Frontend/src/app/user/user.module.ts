@@ -10,6 +10,8 @@ import { FavouritesComponent } from './favourites/favourites.component';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './search/filter/filter.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { ViewOrderDetailsComponent } from './my-orders/view-order-details/view-order-details.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { FilterComponent } from './search/filter/filter.component';
     CartComponent,
     SearchComponent,
     FilterComponent,
+    MyOrdersComponent,
+    ViewOrderDetailsComponent,
   ],
   imports: [CommonModule, UserRoutingModule, ChefDetailsModule, FormsModule],
   exports: [UserNavComponent],
