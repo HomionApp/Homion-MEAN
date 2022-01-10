@@ -1,11 +1,33 @@
 <div class="container mt-4">
 
-  <span class="fs-15 fw-bold purple">FEATURED ITEMS</span>
-  <div class="row px-0 mt-2">
-
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
-      <div class="card float-start">
+  <span class="fs-15 fw-bold purple">TOP CHEFS</span>
+  <div class="row mt-3">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let chef of [1, 2, 3, 4, 5, 6, 7, 8]">
+      <div class="card">
         <div>
+          <img class="rounded-3 img-fluid chef-img"
+            src="https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg" width="90%" alt="chefImage" />
+          <button class="btn bg-light purple px-1 p-0 m-2 fs-12 position-absolute top-0 start-0">Available for
+            Home</button>
+          <button class="btn bg-light purple px-1 p-0 m-2 fs-6 position-absolute top-0 end-0 rounded-circle"><i
+              class="fa fa-heart-o"></i></button>
+          <button class="btn bg-success text-white px-1 p-0 m-2 mt-5 fs-12 fw-bold position-absolute top-50 end-0"><i
+              class="fa fa-star-o"></i> 3.7 (100)</button>
+        </div>
+        <div class="row">
+          <div class="col-12 p-2">
+            <span class="mt-2 ms-3">Harduk Amareliya</span><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="fs-15 fw-bold purple">TRENDING THIS WEEK</span>
+  <div class="row px-0 mt-3">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-4" *ngFor="let chef of [1, 2, 3, 4, 5, 6]">
+      <div class=" card float-start">
+        <div class="">
           <img src="https://res.cloudinary.com/homioncloud/image/upload/v1641230930/product/400007.png" width="100%"
             height="98%" alt="productImage">
           <button class="btn bg-light purple px-1 p-0 m-2 fs-12 position-absolute top-0 start-0">Available for
@@ -16,48 +38,25 @@
               class="fa fa-star-o"></i> 3.7 (100)</button>
         </div>
         <div class="row">
-          <div class="col-6 p-2">
+          <div class="col-7 p-2">
             <span class="mt-2 ms-3">Pav Bhaji</span><br>
             <span class="mt-2 ms-3 mt-n5 fs-12 text-secondary">Desert, Gujarati</span><br>
             <span class="mt-2 ms-3 fs-13 fw-bold purple"><i class="fa fa-inr"></i>300 For 500gm</span>
           </div>
-          <div class="col-6">
+          <div class="col-5">
             <button class="btn btn-light float-end fs-13 p-1 me-4 mt-1"><i class="fa fa-clock-o"></i> 20
               min</button><br><br>
-            <button class="btn bg-purple text-white px-2 float-end fs-13 fw-bold p-1 me-4">ADD</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
-      <div class="card float-start">
-        <div>
-          <img src="https://res.cloudinary.com/homioncloud/image/upload/v1641230930/product/400007.png" width="100%"
-            height="98%" alt="productImage">
-          <button class="btn bg-light purple px-1 p-0 m-2 fs-12 position-absolute top-0 start-0">Available for
-            Home</button>
-          <button class="btn bg-light purple px-1 p-0 m-2 fs-6 position-absolute top-0 end-0 rounded-circle"><i
-              class="fa fa-heart purple"></i></button>
-          <button class="btn bg-success text-white px-1 p-0 m-2 mt-4 fs-12 fw-bold position-absolute top-50 end-0"><i
-              class="fa fa-star-o"></i> 3.7 (100)</button>
-        </div>
-        <div class="row">
-          <div class="col-6 p-2">
-            <span class="mt-2 ms-3">Pav Bhaji</span><br>
-            <span class="mt-2 ms-3 mt-n5 fs-12 text-secondary">Desert, Gujarati</span><br>
-            <span class="mt-2 ms-3 fs-13 fw-bold purple"><i class="fa fa-inr"></i>300 For 500gm</span>
-          </div>
-          <div class="col-6">
-            <button class="btn btn-light float-end fs-13 p-1 me-4 mt-1"><i class="fa fa-clock-o"></i> 20
-              min</button><br><br>
-            <button class="btn bg-purple text-white px-2 float-end fs-13 fw-bold p-1 me-4">ADD</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-2">
-      <div class="card float-start">
-        <div>
+  </div>
+
+  <span class="fs-15 fw-bold purple">MOST POPULATION</span>
+  <div class="row px-0 mt-3">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-4" *ngFor="let chef of [1, 2, 3, 4, 5, 6]">
+      <div class=" card float-start">
+        <div class="">
           <img src="https://res.cloudinary.com/homioncloud/image/upload/v1641230930/product/400007.png" width="100%"
             height="98%" alt="productImage">
           <button class="btn bg-light purple px-1 p-0 m-2 fs-12 position-absolute top-0 start-0">Available for
@@ -68,20 +67,20 @@
               class="fa fa-star-o"></i> 3.7 (100)</button>
         </div>
         <div class="row">
-          <div class="col-6 col-lg-5 p-2">
+          <div class="col-7 p-2">
             <span class="mt-2 ms-3">Pav Bhaji</span><br>
-            <span class="mt-2 ms-3 mt-n5 fs-12 text-secondary">Desert, Gujarati </span><br>
+            <span class="mt-2 ms-3 mt-n5 fs-12 text-secondary">Desert, Gujarati</span><br>
             <span class="mt-2 ms-3 fs-13 fw-bold purple"><i class="fa fa-inr"></i>300 For 500gm</span>
           </div>
-          <div class="col-6 col-lg-7">
+          <div class="col-5">
             <button class="btn btn-light float-end fs-13 p-1 me-4 mt-1"><i class="fa fa-clock-o"></i> 20
               min</button><br><br>
-            <button class="btn bg-dark text-white px-2 float-end fs-13 fw-bold p-1 me-4">OUT OF STOCK</button>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
 </div>
+
+<div class="py-5 my-5">.</div>

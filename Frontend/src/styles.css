@@ -3,6 +3,26 @@
   --purple: #5e2572 !important;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e7e4e4; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #aaa4a4; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(114, 111, 111); 
+}
+
 .purple {
   color: var(--purple) !important;
 }
