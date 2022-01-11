@@ -3,9 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddressComponent } from './address/address.component';
 import { ChefDeatilsComponenet } from './chef-details/chef-details.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { HomeComponent } from './home/home.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
   {
     path: 'address',
     component: AddressComponent,
@@ -19,9 +25,13 @@ const routes: Routes = [
     component: FavouritesComponent,
   },
   {
-    path: 'chef/:id',
+    path: 'my-orders',
+    component: MyOrdersComponent,
+  },
+  {
+    path: 'chef-details/:id',
     component: ChefDeatilsComponenet,
-  }
+  },
 ];
 
 @NgModule({

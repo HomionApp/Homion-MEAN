@@ -1,0 +1,151 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-3 offset-lg-1 px-2 mb-3">
+            <div class="row bg-grey order-status">
+                <div class="col-12">
+                    <div class="list-group border-white shadow bg-white p-2">
+                        <button type="button" class="rounded border-0 list-group-item list-group-item-action py-3"
+                            [ngClass]="orderStatus === 'COMPLETED' ? 'bg-purple text-white' : ''"
+                            (click)="orderStatus = 'COMPLETED'">
+                            <span class="float-start ms-1 mt-1"><i class="fa fa-check-circle-o"
+                                    [ngClass]="orderStatus === 'COMPLETED' ? '' : 'text-success'"></i>
+                                &nbsp;Completed</span>
+                        </button>
+                        <button type="button" class="rounded border-0 list-group-item list-group-item-action py-3"
+                            [ngClass]="orderStatus === 'INPROGRESS' ? 'bg-purple text-white' : ''"
+                            (click)="orderStatus = 'INPROGRESS'">
+                            <span class="float-start ms-1 mt-1"><i class="fa fa-clock-o"
+                                    [ngClass]="orderStatus === 'INPROGRESS' ? '' : 'text-warning'">&nbsp;</i> &nbsp;In
+                                Progress</span>
+                        </button>
+                        <button type="button" class="rounded border-0  list-group-item list-group-item-action py-3"
+                            [ngClass]="orderStatus === 'CANCELLED' ? 'bg-purple text-white' : ''"
+                            (click)="orderStatus = 'CANCELLED'">
+                            <span class="float-start ms-1 mt-1"><i class="fa fa-times-circle"
+                                    [ngClass]="orderStatus === 'CANCELLED' ? '' : 'text-danger'">&nbsp;</i>
+                                &nbsp;Cancelled</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-7 px-2">
+            <div class="row px-0" *ngIf="orderStatus === 'COMPLETED'">
+                <div class="col-12 col-sm-12 col-md-12 mb-3" *ngFor="let order of [1, 2, 3, 4, 5, 6, 7, 8]">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4 col-sm-3 col-md-3 col-lg-2 pe-0">
+                                    <img class="rounded-circle img-fluid chef-img"
+                                        src="https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg"
+                                        alt="chefImage" />
+                                </div>
+                                <div class="col-8 col-sm-9 col-md-9 col-lg-10 ps-0">
+                                    <h4 class="mb-2">Harshil Dangi</h4>
+                                    <span
+                                        class="badge bg-success mt-3 me-3 position-absolute top-0 end-0 float-end fs-14">Delivered</span>
+                                    <p>12, Madhav City, Vav Road, Bhabhar - 385320</p>
+                                    <span class="float-end top-50 end-0 fs-14"><i class="fa fa-clock-o"></i> 10/01/2022
+                                        9:22 PM</span>
+                                    <a class="purple text-decoration-none" role="button"
+                                        (click)="showOrderDetails = true">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="fs-13 mb-0">Total payment</span> <br>
+                                    <span class="fs-14 ms-1"><i class="fa fa-inr fs-12">&nbsp;</i> 1230</span>
+                                </div>
+                                <div class="col-6 d-flex justify-content-end">
+                                    <button type="button" class="btn bg-purple text-white my-1 me-2">Reorder</button>
+                                    <button type="button" class="btn border-purple bg-light purple my-1" (click)="showOrderReview = true">Review</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row px-0" *ngIf="orderStatus === 'INPROGRESS'">
+                <div class="col-12 col-sm-12 col-md-12 mb-3" *ngFor="let order of [1, 2, 3, 4, 5, 6, 7, 8]">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4 col-sm-3 col-md-3 col-lg-2 pe-0">
+                                    <img class="rounded-circle img-fluid chef-img"
+                                        src="https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg"
+                                        alt="chefImage" />
+                                </div>
+                                <div class="col-8 col-sm-9 col-md-9 col-lg-10 ps-0">
+                                    <h4 class="mb-2">Harshil Dangi</h4>
+                                    <span
+                                        class="badge bg-warning mt-3 me-3 position-absolute top-0 end-0 float-end fs-14">In
+                                        Progress</span>
+                                    <p>12, Madhav City, Vav Road, Bhabhar - 385320</p>
+                                    <span class="float-end top-50 end-0 fs-14"><i class="fa fa-clock-o"></i> 10/01/2022
+                                        9:22 PM</span>
+                                    <a class="purple text-decoration-none" role="button"
+                                        (click)="showOrderDetails = true">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="fs-13 mb-0">Total payment</span> <br>
+                                    <span class="fs-14 ms-1"><i class="fa fa-inr fs-12">&nbsp;</i> 1230</span>
+                                </div>
+                                <div class="col-6 d-flex justify-content-end">
+                                    <button type="button" class="btn bg-purple text-white my-1 me-2">Track</button>
+                                    <button type="button" class="btn border-purple bg-light purple my-1">Help</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row px-0" *ngIf="orderStatus === 'CANCELLED'">
+                <div class="col-12 col-sm-12 col-md-12 mb-3" *ngFor="let order of [1, 2, 3, 4, 5, 6, 7, 8]">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4 col-sm-3 col-md-3 col-lg-2 pe-0">
+                                    <img class="rounded-circle img-fluid chef-img"
+                                        src="https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg"
+                                        alt="chefImage" />
+                                </div>
+                                <div class="col-8 col-sm-9 col-md-9 col-lg-10 ps-0">
+                                    <h4 class="mb-2">Harshil Dangi</h4>
+                                    <span
+                                        class="badge bg-danger mt-3 me-3 position-absolute top-0 end-0 float-end fs-14">Cancelled</span>
+                                    <p>12, Madhav City, Vav Road, Bhabhar - 385320</p>
+                                    <span class="float-end top-50 end-0 fs-14"><i class="fa fa-clock-o"></i> 10/01/2022
+                                        9:22 PM</span>
+                                    <a class="purple text-decoration-none" role="button"
+                                        (click)="showOrderDetails = true">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="fs-13 mb-0">Total payment</span> <br>
+                                    <span class="fs-14 ms-1"><i class="fa fa-inr fs-12">&nbsp;</i> 1230</span>
+                                </div>
+                                <div class="col-6 d-flex justify-content-end">
+                                    <button type="button" class="btn border-purple bg-light purple my-1">Help</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-view-order-details *ngIf="showOrderDetails" (output)="showOrderDetails = false"></app-view-order-details>
+<app-order-review *ngIf="showOrderReview" (output)="showOrderReview = false"></app-order-review>

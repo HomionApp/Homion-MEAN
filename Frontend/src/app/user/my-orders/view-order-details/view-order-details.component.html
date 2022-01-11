@@ -1,0 +1,40 @@
+<ng-template #orderdetails>
+    <div class="modal-header">
+        <h5 class="modal-title">Order Id : #1641439040550</h5>
+        <button type="button" class="btn" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true" class="h5"><i class="fa fa-times"></i></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <table class="mt-1 table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Sub-Total</th>
+                </tr>
+            </thead>
+            <tbody id="modalItems">
+                <tr>
+                    <td>Product Name</td>
+                    <td>3</td>
+                    <td><i class="fa fa-inr menu-icon">&nbsp;</i>10</td>
+                    <td><i class="fa fa-inr menu-icon">&nbsp;</i>30</td>
+                </tr>
+                <tr>
+                    <td>Product Name</td>
+                    <td>3</td>
+                    <td><i class="fa fa-inr menu-icon">&nbsp;</i>10</td>
+                    <td><i class="fa fa-inr menu-icon">&nbsp;</i>30</td>
+                </tr>
+            </tbody>
+            <tr class="font-weight-bold">
+                <td>&nbsp;Total</td>
+                <td></td>
+                <td></td>
+                <td><i class="fa fa-inr menu-icon"></i>60</td>
+            </tr>
+        </table>
+    </div>
+</ng-template>

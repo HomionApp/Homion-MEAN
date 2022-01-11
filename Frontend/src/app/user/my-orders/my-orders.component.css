@@ -1,0 +1,10 @@
+.chef-img {
+  max-height: 100px;
+  vertical-align: middle;
+  border-style: none;
+}
+
+.order-status {
+  position: sticky;
+  top: 105px;
+}

@@ -3,24 +3,29 @@ import {
   ElementRef,
   EventEmitter,
   OnInit,
-  Output, ViewChild
+  Output,
+  ViewChild,
 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css'],
+  selector: 'app-order-review',
+  templateUrl: './order-review.component.html',
+  styleUrls: ['./order-review.component.css'],
 })
-export class FilterComponent implements OnInit {
-  @ViewChild('filter', { static: true }) modal!: ElementRef;
+export class OrderReviewComponent implements OnInit {
+  @ViewChild('orderreview', { static: true }) modal!: ElementRef;
   @Output() output = new EventEmitter<boolean>();
+  currentChefRate = 0;
+  currentFoodRate = 0;
 
   constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.modalService.open(this.modal, {
-      modalDialogClass: 'modal-dialog-centered',
+      modalDialogClass: 'modal-dialog-centered'
+    }).result.catch(() => {
+      this.closeModal();
     });
   }
 

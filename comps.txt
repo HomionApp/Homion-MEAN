@@ -11,16 +11,16 @@ components/modules
             -> confirm-modal
         * User
             -> user-nav                 ✔️
-            -> home
+            -> home                     ✔️
             -> profile
           R -> search                   ✔️
                 -> filter               ✔️
           R -> address                  ✔️
                 -> edit-address         ✔️
           R -> favourites               ✔️
-            -> my-orders
-                -> order-details
-                -> order-review
+          R -> my-orders                ✔️
+                -> order-details        ✔️
+                -> order-review         ✔️
             -> checkout
                 # address               ✔️
                 # cart                  ✔️
