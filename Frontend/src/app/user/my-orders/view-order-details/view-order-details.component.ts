@@ -14,16 +14,19 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./view-order-details.component.css'],
 })
 export class ViewOrderDetailsComponent implements OnInit {
-  @ViewChild('orderDetailsModal', { static: true }) modal!: ElementRef;
+  @ViewChild('orderdetails', { static: true }) modal!: ElementRef;
   @Output() output = new EventEmitter<void>();
   constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    this.modalService.open(this.modal, {
-      modalDialogClass: 'modal-dialog-centered',
-    }).result.then().catch(err => {
-      this.closeModal();
-    });
+    this.modalService
+      .open(this.modal, {
+        modalDialogClass: 'modal-dialog-centered',
+      })
+      .result.then()
+      .catch((err) => {
+        this.closeModal();
+      });
   }
 
   closeModal() {

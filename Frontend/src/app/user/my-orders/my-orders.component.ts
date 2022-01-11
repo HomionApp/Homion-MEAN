@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class MyOrdersComponent implements OnInit {
   orderStatus = 'COMPLETED';
   showOrderDetails = false;
+  showOrderReview = false;
 
   constructor() {}
 

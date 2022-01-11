@@ -1,0 +1,10 @@
+.star {
+  font-size: 50px;
+  color: #b0c4de;
+  margin-right: 5px;
+  margin-top: -5px;
+}
+
+.filled {
+  color: var(--purple);
+}

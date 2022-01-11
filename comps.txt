@@ -20,7 +20,7 @@ components/modules
           R -> favourites               ✔️
           R -> my-orders                ✔️
                 -> order-details        ✔️
-                -> order-review
+                -> order-review         ✔️
             -> checkout
                 # address               ✔️
                 # cart                  ✔️

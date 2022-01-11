@@ -13,6 +13,8 @@ import { FilterComponent } from './search/filter/filter.component';
 import { SearchComponent } from './search/search.component';
 import { UserNavComponent } from './user-nav/user-nav.component';
 import { UserRoutingModule } from './user-routing.module';
+import { OrderReviewComponent } from './my-orders/order-review/order-review.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,9 @@ import { UserRoutingModule } from './user-routing.module';
     MyOrdersComponent,
     ViewOrderDetailsComponent,
     HomeComponent,
+    OrderReviewComponent,
   ],
-  imports: [CommonModule, UserRoutingModule, ChefDetailsModule, FormsModule],
+  imports: [CommonModule, UserRoutingModule, ChefDetailsModule, FormsModule, NgbModule],
   exports: [UserNavComponent],
 })
 export class UserModule {}
