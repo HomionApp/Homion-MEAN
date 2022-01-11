@@ -17,11 +17,14 @@ export class OrderDetailsModalComponent implements OnInit {
   @ViewChild('orderDetailsModal', { static: true }) modalRef!: ElementRef;
   @Output() closeModal = new EventEmitter<void>();
 
-  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) {}
+  constructor(
+    private modalService: NgbModal,
+    public activeModal: NgbActiveModal
+  ) {}
 
   ngOnInit(): void {
     this.modalService
-      .open(this.modalRef)
+      .open(this.modalRef, { modalDialogClass: 'modal-dialog-centered' })
       .result.then((result) => {
         // console.log(result);
       })
@@ -29,7 +32,7 @@ export class OrderDetailsModalComponent implements OnInit {
         // console.log(err);
       });
   }
-  onClose(){
+  onClose() {
     this.modalService.dismissAll();
     this.closeModal.emit();
   }

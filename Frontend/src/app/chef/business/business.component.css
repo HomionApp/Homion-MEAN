@@ -1,0 +1,63 @@
+.own-border-40 {
+  height: 3px;
+}
+
+.btn-outline-primary {
+  border-color: var(--purple);
+}
+
+.btn:hover {
+  background-color: var(--purple);
+  color: white !important;
+}
+
+.revenue-center {
+  border-left: 3px dashed var(--purple);
+  border-right: 3px dashed var(--purple);
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+  .revenue-center {
+    border-right: 0px;
+    border-bottom: 3px dashed var(--purple);
+    border-top: 3px dashed var(--purple);
+    border-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  .revenue-center {
+    border-left: 0px;
+    border-bottom: 3px dashed var(--purple);
+    border-top: 3px dashed var(--purple);
+    border-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .revenue-center {
+    border-bottom: 0px;
+    border-left: 3px dashed var(--purple);
+    border-right: 3px dashed var(--purple);
+    border-top: 0px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .revenue-center {
+    border-bottom: 0px;
+    border-left: 3px dashed var(--purple);
+    border-right: 3px dashed var(--purple);
+    border-top: 0px;
+  }
+}

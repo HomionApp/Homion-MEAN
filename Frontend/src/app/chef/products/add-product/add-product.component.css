@@ -1,0 +1,26 @@
+.form-input-color {
+  color: #495057;
+}
+
+.own-border-95 {
+  width: 99%;
+  height: 3px;
+}
+
+.btn-outline-primary {
+  border-color: var(--purple);
+}
+
+.btn:hover {
+  background-color: var(--purple);
+  color: white !important;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-check-input:checked {
+  background-color: var(--purple);
+  border-color: var(--purple);
+}
