@@ -6,26 +6,26 @@ components/modules
                 -> login                ✔️
                 -> register             ✔️
             -> header                   ✔️
-            -> footer
-            -> message-modal
-            -> confirm-modal
+            -> footer                   ✔️
+            -> message-modal            ✔️
+            -> confirm-modal            ✔️
         * User
             -> user-nav                 ✔️
             -> home                     ✔️
             -> profile
-          R -> search                   ✔️
+            -> search                   ✔️
                 -> filter               ✔️
-          R -> address                  ✔️
+            -> address                  ✔️
                 -> edit-address         ✔️
-          R -> favourites               ✔️
-          R -> my-orders                ✔️
+            -> favourites               ✔️
+            -> my-orders                ✔️
                 -> order-details        ✔️
                 -> order-review         ✔️
-            -> checkout
+            -> checkout                 ✔️
                 # address               ✔️
                 # cart                  ✔️
-          D  -> cart                    ✔️
-          D * ChefDetails               ✔️
+            -> cart                     ✔️
+            * ChefDetails               ✔️
                 -> preview              ✔️
                 -> chef-products        ✔️
                 -> menu                 ✔️
@@ -56,3 +56,14 @@ interceptor
 user-services
 chef-services
 models
+
+-----------------------------------------------------------------------------------------------------------------------
+
+<ngb-toast *ngIf="true" [class]="'bg-danger text-light position-fixed top-0 end-0 mt-10 me-2 w-auto'" [autohide]="true"
+  [delay]="4000" (hidden)="false">
+  I am toast. Have me with tea.
+</ngb-toast>
+
+<app-confirm-modal [message]="'Are you sure???'" (cancelled)="false" (confirmed)="true"></app-confirm-modal>
+
+-----------------------------------------------------------------------------------------------------------------------

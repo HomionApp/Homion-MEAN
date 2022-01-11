@@ -1,3 +1,4 @@
 #main {
   transition: margin-left .3s;
+  min-height: 73vh;
 }

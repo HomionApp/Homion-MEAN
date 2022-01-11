@@ -1,1 +1,9 @@
-<p>confirm-modal works!</p>
+<ng-template #confirmModal>
+  <div class="modal-body pb-0" ngbAutofocus>
+    <p><strong>{{message}}</strong></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="confirm()">Ok</button>
+  </div>
+</ng-template>

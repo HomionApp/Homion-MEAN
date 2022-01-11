@@ -7,6 +7,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class UserNavComponent implements OnInit {
 
+  @Output() onCloseNav = new EventEmitter<false>();
+
   constructor() {}
 
   ngOnInit(): void {
@@ -16,5 +18,9 @@ export class UserNavComponent implements OnInit {
   openNav() {
     document.getElementById('mySidenav')!.style.width = '200px';
     document.getElementById("main")!.style.marginLeft = "200px";
+  }
+
+  closeNav() {
+    this.onCloseNav.emit(false);
   }
 }

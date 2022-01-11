@@ -19,6 +19,6 @@ import { DynamicCartComponent } from './dynamic-cart/dynamic-cart.component';
   imports: [
     CommonModule
   ],
-  exports: []
+  exports: [DynamicCartComponent]
 })
 export class ChefDetailsModule { }
