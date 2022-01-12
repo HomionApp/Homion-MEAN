@@ -1,6 +1,4 @@
 .footer {
-    background-color: white !important;
-    position: absolute !important;
-    bottom: 0 !important;
+    background-color: var(--purple) !important;
     width: 100%;
 }

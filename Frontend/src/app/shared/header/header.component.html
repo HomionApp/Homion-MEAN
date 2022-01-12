@@ -9,5 +9,5 @@
   </div>
 </nav>
 
-<app-user-nav *ngIf="isOpen && isUser"></app-user-nav>
+<app-user-nav *ngIf="isOpen && isUser" (onCloseNav)="toggleNav()"></app-user-nav>
 <app-chef-nav *ngIf="isOpen && !isUser"></app-chef-nav>

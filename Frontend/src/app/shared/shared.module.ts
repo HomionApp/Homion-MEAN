@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ChefModule } from '../chef/chef.module';
 import { UserModule } from '../user/user.module';
 import { AuthComponent } from './auth/auth.component';
 import { ChefRegisterComponent } from './auth/chef-register/chef-register.component';
@@ -9,8 +10,9 @@ import { ChefNavComponent } from './chef-nav/chef-nav.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { MessageModalComponent } from './message-modal/message-modal.component';
 import { SharedRoutingModule } from './shared-routing.module';
+import { UserNavComponent } from './user-nav/user-nav.component';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +22,11 @@ import { SharedRoutingModule } from './shared-routing.module';
     UserRegisterComponent,
     HeaderComponent,
     FooterComponent,
-    MessageModalComponent,
     ConfirmModalComponent,
     ChefRegisterComponent,
+    UserNavComponent
   ],
-  imports: [CommonModule, SharedRoutingModule, UserModule],
+  imports: [CommonModule, SharedRoutingModule, ChefModule, UserModule],
   providers: [],
   exports: [
     AuthComponent,
@@ -33,7 +35,8 @@ import { SharedRoutingModule } from './shared-routing.module';
     HeaderComponent,
     ChefRegisterComponent,
     FooterComponent,
-    ChefNavComponent
+    ChefNavComponent,
+    ConfirmModalComponent
   ],
 })
 export class SharedModule {}
