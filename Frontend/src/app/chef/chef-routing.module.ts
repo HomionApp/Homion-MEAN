@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { BusinessComponent } from './business/business.component';
 import { HistoryComponent } from './business/history/history.component';
 import { HomeComponent } from './home/home.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 import { MenuComponent } from './menu/menu.component';
+import { PastOrdersComponent } from './past-orders/past-orders.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { ProductsComponent } from './products/products.component';
 
@@ -28,6 +30,14 @@ const routes: Routes = [
   {
     path: 'history',
     component: HistoryComponent,
+  },
+  {
+    path: 'past-orders',
+    component: PastOrdersComponent,
+  },
+  {
+    path: 'invoice',
+    component: InvoiceComponent,
   },
 ];
 

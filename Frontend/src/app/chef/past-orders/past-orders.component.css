@@ -20,12 +20,12 @@ img {
   color: white !important;
 }
 
-.end-8{
-    right: 8%;
+.end-8 {
+  right: 8%;
 }
 
-.end-14{
-    right: 14%;
+.end-14 {
+  right: 14%;
 }
 
 .nav-link{
@@ -33,6 +33,6 @@ img {
 }
 
 .nav-link.active{
-  background-color: var(--purple);
+  background-color:var(--purple);
   color: white;
 }

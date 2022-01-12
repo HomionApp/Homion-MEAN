@@ -1,4 +1,3 @@
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   Component,
   ElementRef,
@@ -7,6 +6,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-order-details-modal',
@@ -17,20 +17,13 @@ export class OrderDetailsModalComponent implements OnInit {
   @ViewChild('orderDetailsModal', { static: true }) modalRef!: ElementRef;
   @Output() closeModal = new EventEmitter<void>();
 
-  constructor(
-    private modalService: NgbModal,
-    public activeModal: NgbActiveModal
-  ) {}
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.modalService
       .open(this.modalRef, { modalDialogClass: 'modal-dialog-centered' })
-      .result.then((result) => {
-        // console.log(result);
-      })
-      .catch((err) => {
-        // console.log(err);
-      });
+      .result.then((result) => {})
+      .catch((err) => {});
   }
   onClose() {
     this.modalService.dismissAll();

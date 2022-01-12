@@ -1,0 +1,70 @@
+<div class="container mx-auto my-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card px-2 shadow">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <h3 class="text-end my-5" id="invoiceId">Invoice #INV-1641439040550</h3>
+                        <div class="own-border-40 bg-purple w-100"></div>
+                    </div>
+
+                    <div class="container-fluid d-flex justify-content-between">
+                        <div class="col-lg-3 pl-0">
+                            <p class="mt-5 mb-2"><b>Chef - Harshil Dangi </b></p>
+                            <p> 10,
+                                <br>Vibhusha Bunglows,
+                                <br>Kabir Enclave, Bopal - 380058,
+                            </p>
+                        </div>
+                        <div class="col-lg-3 pr-0">
+                            <p class="mt-5 mb-2 text-end"><b>Invoice to</b></p>
+                            <p class="text-end">Dixit Dodiya<br> 12, Madhav city,<br>Landmark, Bopal -
+                                380058</p>
+                        </div>
+                    </div>
+                    <div class="container-fluid d-flex justify-content-between">
+                        <div class="col-lg-3 pl-0">
+                            <p class="mb-0 mt-5">Invoice Date : 6-01-2022 </p>
+                            <p>Due Date : 6-01-2022</p>
+                        </div>
+                    </div>
+                    <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+                        <div class="table-responsive w-100">
+                            <table class="table">
+                                <thead>
+                                    <tr class="text-dark">
+                                        <th>#</th>
+                                        <th>Description</th>
+                                        <th class="text-end">Quantity</th>
+                                        <th class="text-end">Unit cost</th>
+                                        <th class="text-end">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="text-end" *ngFor="let item of [1,2,3]">
+                                        <td class="text-start">1</td>
+                                        <td class="text-start">ABC</td>
+                                        <td>3</td>
+                                        <td><i class="fa fa-inr"></i>100</td>
+                                        <td><i class="fa fa-inr"></i>300</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="own-border-40 bg-purple w-100"></div>
+                    <div class="container-fluid mt-4 w-100">
+                        <p class="text-end mb-2">Sub - Total amount: <i class="fa fa-inr"></i>300</p>
+                        <p class="text-end">GST (12%) : <i class="fa fa-inr"></i>42</p>
+                        <h4 class="text-end mb-5">Total : <i class="fa fa-inr"></i>342</h4>
+                        <!-- <div class="own-border bg-primary w-100"></div> -->
+                    </div>
+                    <!-- <div class="container-fluid w-100">
+                            <a href="#" class="btn btn-primary float-right mt-4 ml-2"><i class="mdi mdi-printer mr-1"></i>Print</a>
+                            <a href="#" class="btn btn-info float-right mt-4"><i class="mdi mdi-telegram mr-1"></i>Send Invoice</a>
+                          </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
