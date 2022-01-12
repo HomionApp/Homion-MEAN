@@ -1,0 +1,58 @@
+<ng-template #editaddress let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Delivery Address</h4>
+      <button type="button" class="btn" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true" class="h5"><i class="fa fa-times"></i></span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-2">
+          <label for="homeNo" class="form-label">Home No/Flat No</label>
+          <input type="number" class="form-control" id="homeNo" aria-describedby="emailHelp"
+            placeholder="Home No/Flat No" />
+        </div>
+        <div class="mb-2">
+          <label for="society" class="form-label">Society Name</label>
+          <input type="text" class="form-control" id="society" placeholder="Society Name" />
+        </div>
+        <div class="mb-2">
+          <label for="landmark" class="form-label">Landmark</label>
+          <input type="text" class="form-control" id="landmark" placeholder="Landmark" />
+        </div>
+        <div class="mb-2">
+          <label for="area" class="form-label">Area</label>
+          <select class="form-select" id="area">
+            <option value="1">Bhabhar</option>
+            <option value="2">Bopal</option>
+            <option value="3">Sanand</option>
+            <option value="4">Surat</option>
+          </select>
+        </div>
+        <div class="my-2">
+          <label for="pincode" class="form-label">PIN code</label>
+          <input type="number" class="form-control" id="pincode" placeholder="PIN code" disabled />
+        </div>
+  
+        <div class="my-2">
+          <label for="type" class="form-label">Type</label>
+          <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group" id="type">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked />
+            <label class="btn btn-outline-secondary" for="btnradio1">Home</label>
+  
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
+            <label class="btn btn-outline-secondary" for="btnradio2">Work</label>
+  
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
+            <label class="btn btn-outline-secondary" for="btnradio3">Other</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="p-0 m-0 modal-footer">
+      <div class=" p-0 m-0 btn-group w-100" role="group" aria-label="Basic radio toggle button group" id="type">
+        <button type="button" class="btn btn-light w-50" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-outline-dark bg-purple text-white w-50">Save changes</button>
+      </div>
+    </div>
+  </ng-template>

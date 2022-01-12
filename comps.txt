@@ -38,14 +38,14 @@ components/modules
            H -> order-details(modal)    ✔️
            H -> menu                    ✔️
            H -> products                ✔️
-                -> edit-product         
+                -> edit-product         ✔️
              -> business (include history #order-details, exclude chart) ✔️
              -> past-orders             ✔️
-                -> invoice  
-                # order-details
-             -> address
-                -> edit-address
-             -> profile
+                -> invoice              ✔️
+                # order-details         ✔️
+             -> address                 ✔️
+                -> edit-address         ✔️
+             -> profile                 ✔️
 
 
 

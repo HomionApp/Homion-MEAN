@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddressComponent } from './address/address.component';
 import { BusinessComponent } from './business/business.component';
 import { HistoryComponent } from './business/history/history.component';
 import { HomeComponent } from './home/home.component';
@@ -8,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { PastOrdersComponent } from './past-orders/past-orders.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { ProductsComponent } from './products/products.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,6 +40,14 @@ const routes: Routes = [
   {
     path: 'invoice',
     component: InvoiceComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  {
+    path: 'address',
+    component: AddressComponent,
   },
 ];
 

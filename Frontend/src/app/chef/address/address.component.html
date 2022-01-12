@@ -1,0 +1,40 @@
+<div class="container mt-1">
+    <div class="row">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 m-3 mt-5">
+            <h4>Address</h4>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <label class="w-100">
+              <input class="card-input-element" type="radio" name="product" value="a1" checked />
+              <div class="card card-input pb-0 mx-0 h-100">
+                <div class="card-body">
+                  <h5>Home</h5>
+                  <p class="text-truncate">
+                    13/Society Name,
+                    <br />
+                    Landmark, City - 385320
+                    Landmark, City - 385320
+                    Landmark, City - 385320
+                  </p>
+                </div>
+                <div class="bg-grey d-grid py-0">
+                  <button class="btn m-0 purple bg-light" (click)="editAddress()">Edit</button>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+  
+        <!-- <div class="row mt-2 px-0">
+          <div class="col-12 col-md-12 col-xl-12 d-grid">
+            <button class="btn bg-purple m-0 text-white py-1" (click)="addNewAddress = !addNewAddress">ADD NEW
+              ADDRESS</button>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  <app-edit-address *ngIf="addNewAddress" (output)="getChildData($event)"></app-edit-address>

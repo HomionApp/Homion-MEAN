@@ -12,6 +12,9 @@ import { PastOrdersComponent } from './past-orders/past-orders.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { ProductsComponent } from './products/products.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddressComponent } from './address/address.component';
+import { EditAddressComponent } from './address/edit-address/edit-address.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { InvoiceComponent } from './invoice/invoice.component';
     OrderDetailsModalComponent,
     PastOrdersComponent,
     InvoiceComponent,
+    ProfileComponent,
+    AddressComponent,
+    EditAddressComponent,
   ],
   imports: [
     CommonModule,
