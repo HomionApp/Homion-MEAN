@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddressComponent } from './address/address.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ChefDeatilsComponenet } from './chef-details/chef-details.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { HomeComponent } from './home/home.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
@@ -32,6 +32,10 @@ const routes: Routes = [
   {
     path: 'chef-details/:id',
     component: ChefDeatilsComponenet,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
 ];
 

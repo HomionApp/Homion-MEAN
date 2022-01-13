@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { UserNavComponent } from './user-nav/user-nav.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,18 +22,14 @@ import { UserNavComponent } from './user-nav/user-nav.component';
     FooterComponent,
     ConfirmModalComponent,
     ChefRegisterComponent,
-    UserNavComponent
+    UserNavComponent,
+    NotFoundComponent
   ],
   imports: [CommonModule, SharedRoutingModule],
   providers: [],
   exports: [
-    AuthComponent,
-    LoginComponent,
-    UserRegisterComponent,
     HeaderComponent,
-    ChefRegisterComponent,
     FooterComponent,
-    ChefNavComponent,
     ConfirmModalComponent
   ],
 })

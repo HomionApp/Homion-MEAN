@@ -16,6 +16,7 @@ import { ViewOrderDetailsComponent } from './my-orders/view-order-details/view-o
 import { FilterComponent } from './search/filter/filter.component';
 import { SearchComponent } from './search/search.component';
 import { UserRoutingModule } from './user-routing.module';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UserRoutingModule } from './user-routing.module';
     HomeComponent,
     OrderReviewComponent,
     CheckoutComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

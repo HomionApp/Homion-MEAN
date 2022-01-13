@@ -1,0 +1,13 @@
+.own-border-95 {
+  width: 99%;
+  height: 3px;
+}
+
+.btn-outline-primary {
+  border-color: var(--purple);
+}
+
+.btn:hover {
+  background-color: var(--purple);
+  color: white !important;
+}
