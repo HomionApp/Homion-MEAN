@@ -1,10 +1,26 @@
 <div id="mySidenav" class="sidenav shadow mt-2">
-    <a routerLink="/chef"><i class="fa fa-home w-15"></i> &nbsp; Home</a>
-    <a routerLink="/chef/menu"><i class="fa fa-list-ul w-15"></i> &nbsp; Menu</a>
-    <a routerLink="/chef/products"><i class="fa fa-cutlery w-15"></i> &nbsp; Products</a>
-    <a routerLink="/chef/business"><i class="fa fa-inr w-15"></i> &nbsp; Business</a>
-    <a routerLink="/chef/past-orders"><i class="fa fa-history w-15"></i> &nbsp; Past-Orders</a>
-    <a href="#"><i class="fa fa-map-marker w-15"></i> &nbsp; Address</a>
-    <a href="#"><i class="fa fa-user w-15">&nbsp;</i> &nbsp; Profile</a>
-    <a href="#"><i class="fa fa-sign-out w-15"></i> &nbsp; Logout</a>
+    <a routerLink="/chef" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <i class="fa fa-home w-15"></i> &nbsp; Home
+    </a>
+    <a routerLink="/chef/menu" routerLinkActive="active">
+        <i class="fa fa-list-ul w-15"></i> &nbsp; Menu
+    </a>
+    <a routerLink="/chef/products" routerLinkActive="active">
+        <i class="fa fa-cutlery w-15"></i> &nbsp; Products
+    </a>
+    <a routerLink="/chef/business" routerLinkActive="active">
+        <i class="fa fa-inr w-15"></i> &nbsp; Business
+    </a>
+    <a routerLink="/chef/past-orders" routerLinkActive="active">
+        <i class="fa fa-history w-15"></i> &nbsp; Past-Orders
+    </a>
+    <a href="#">
+        <i class="fa fa-map-marker w-15"></i> &nbsp; Address
+    </a>
+    <a routerLink="/chef/profile" routerLinkActive="active">
+        <i class="fa fa-user w-15">&nbsp;</i> &nbsp; Profile
+    </a>
+    <a href="#">
+        <i class="fa fa-sign-out w-15"></i> &nbsp; Logout
+    </a>
 </div>

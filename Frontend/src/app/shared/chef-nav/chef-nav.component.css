@@ -6,6 +6,11 @@ body {
   width: 15px;
 }
 
+.active {
+  color: #ffffff !important;
+  background-color: var(--purple);
+}
+
 .sidenav {
   height: 100%;
   width: 30px;
