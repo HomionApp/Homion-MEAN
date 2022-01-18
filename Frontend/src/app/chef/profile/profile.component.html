@@ -1,15 +1,13 @@
 <div class="container">
     <div class="row align-items-center">
         <div class="col-11 col-sm-11 col-md-10 col-lg-10 col-xl-10 mx-auto">
-            <form class="row g-3"  enctype="multipart/form-data">
+            <form class="row g-3" enctype="multipart/form-data">
 
                 <div class="mt-4 row text-center">
                     <div class="col-md-12">
                         <div class="cotainer">
                             <img id="image" src="https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg"
                                 alt="profile Image" class="rounded-circle" style="height: 250px;">
-                            <!-- <img id="image" src="chefResources/image/defaultChef.jpg" alt="profile Image"
-                            class="rounded-circle" style="height: 250px;"> -->
                             <div><i class="fa fa-camera menu-icon purple h4 mt-2" type="button"
                                     (click)="chefImage.click()"></i></div>
                             <input type="file" id="file" name="file" hidden="true" accept="image/*" #chefImage>
@@ -30,22 +28,22 @@
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold" for="firstName">First Name</label>
-                    <input type="text" class= "form-control" id="firstName" name="firstName" />
+                    <input type="text" class="form-control" id="firstName" name="firstName" />
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold" for="lastName">Last Name</label>
-                    <input type="text" class= "form-control" id="lastName" name="lastName" />
+                    <input type="text" class="form-control" id="lastName" name="lastName" />
                 </div>
 
                 <div class="col-md-12">
                     <label class="form-label fw-bold" for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" readonly="true" />
+                    <input type="text" class="form-control" id="email" name="email" disabled />
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold" for="mobileno">Mobile No</label>
-                    <input type="text" class="form-control" id="mobileno" name="mobileno" readonly="true" />
+                    <input type="text" class="form-control" id="mobileno" name="mobileno" disabled />
                 </div>
 
                 <div class="col-md-6">
@@ -60,30 +58,24 @@
                         </div>
                         <div class="col-md-5">
                             <label for="start-time" class="ml-3 mb-2 mr-sm-2 form-label fw-bold">Start : </label>
-                            <input type="time" class="form-control mb-2 mr-sm-2" id="start-time" name="startTime" value="1">
+                            <input type="time" class="form-control mb-2 mr-sm-2" id="start-time" name="startTime" />
                         </div>
                         <div class="col-md-5">
                             <label for="end-time" class="mb-2 mr-sm-2 form-label fw-bold">End : </label>
-                            <input type="time" class="form-control mb-2 mr-sm-2" id="end-time" name="endTime" value="">
+                            <input type="time" class="form-control mb-2 mr-sm-2" id="end-time" name="endTime" />
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <label class="form-label fw-bold" for="about">About</label>
-                    <textarea id="comment" class="form-control shadow" name="comment" rows="3"></textarea>
+                    <textarea id="comment" class="form-control" name="comment" rows="3"></textarea>
                 </div>
 
                 <div class="col-12 mb-5 mt-5">
                     <button type="submit" class="btn btn-outline-primary fw-bolder purple w-100">Add</button>
                 </div>
 
-
-                <!-- <hidden path="id" />
-            <hidden path="image" />
-            <hidden path="login.id" />
-            <hidden path="login.password" />
-            <hidden path="login.type" /> -->
             </form>
         </div>
     </div>
