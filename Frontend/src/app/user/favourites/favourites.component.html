@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-12">
       <div class="d-flex" role="group" aria-label="Basic radio toggle button group" id="type">
-        <button type="button" class="btn me-2" [ngClass]="isFavouriteChef ? 'bg-purple text-white' : 'bg-light purple'"
-          (click)="isFavouriteChef = !isFavouriteChef">
+        <button type="button" class="btn me-2" [ngClass]="!isFavouriteChef ? 'bg-purple text-white' : 'bg-light purple'"
+          (click)="isFavouriteChef = false">
           <i class="fa fa-birthday-cake">&nbsp;</i> Dishes</button>
-        <button type="button" class="btn" [ngClass]="!isFavouriteChef ? 'bg-purple text-white' : 'bg-light purple'"
-          (click)="isFavouriteChef = !isFavouriteChef">
+        <button type="button" class="btn" [ngClass]="isFavouriteChef ? 'bg-purple text-white' : 'bg-light purple'"
+          (click)="isFavouriteChef = true">
           <i class="fa fa-user">&nbsp;</i>
           Chefs</button>
       </div>
@@ -15,7 +15,7 @@
   <hr class="my-3">
 
   <div class="row px-0 mt-2" *ngIf="!isFavouriteChef">
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-2" *ngFor="let dish of [1, 2, 3, 4, 5, 6]">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-4" *ngFor="let dish of [1, 2, 3, 4, 5, 6]">
       <div class="card float-start">
         <div>
           <img src="https://res.cloudinary.com/homioncloud/image/upload/v1641230930/product/400007.png" width="100%"
@@ -44,7 +44,7 @@
   </div>
 
   <div class="row mt-2" *ngIf="isFavouriteChef">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2" *ngFor="let chef of [1, 2, 3, 4, 5, 6]">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let chef of [1, 2, 3, 4, 5, 6]">
       <div class="card">
         <div>
           <img class="rounded-3 img-fluid chef-img"
