@@ -15,19 +15,19 @@ const userSchema = new Schema({
     required: true,
   },
   mobile: {
-    type: Number,
+    type: String,
     required: true,
   },
   imageURL: {
     type: String,
-    required: true,
+    default: "https://www.iconspng.com/images/young-user-icon.jpg"
   },
   status: {
-    type: String, //ACTIVE-BLOCK-DELETED
-    required: true,
+    type: String, //PENDING-ACTIVE-BLOCK-DELETED
+    default: "PENDING",
   },
   email: {
-    type: String, //ACTIVE-BLOCK-DELETED
+    type: String,
     required: true,
   },
   password: {
@@ -38,27 +38,24 @@ const userSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Address",
-      required: true,
     },
   ],
   favouriteProduct: [
     {
       type: Schema.Types.ObjectId,
       ref: "Product",
-      required: true,
     },
   ],
   favouriteChef: [
     {
       type: Schema.Types.ObjectId,
       ref: "Chef",
-      required: true,
     },
   ],
   items: [
     {
-      product: { type: Schema.Types.ObjectId, ref: "Product", required: true },
-      qauntity: { type: Number, required: true },
+      product: { type: Schema.Types.ObjectId, ref: "Product" },
+      qauntity: { type: Number },
     },
   ],
 });

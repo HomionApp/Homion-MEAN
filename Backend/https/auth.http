@@ -1,0 +1,20 @@
+@hostname = http://localhost:9999/auth
+@id = "61f028f9f2120edbc5fa8a21"
+
+post {{hostname}}/registerUser
+Content-Type: application/json
+
+{
+    "user" : {
+        "userName": "harshil123",
+        "firstName": "Dicit",
+        "lastName": "Dangi",
+        "mobile": "9723445038",
+        "email": "homionapp@gmail.com",
+        "password": "Homion@123"
+    }
+}
+###
+
+GET {{hostname}}/getUsers
+###
