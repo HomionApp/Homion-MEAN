@@ -11,4 +11,6 @@ router.get("/resend/:email", authController.resend);
 
 router.get("/getUsers", authController.getUsers);
 
+router.delete("/dltUsers", authController.dltUsers);
+
 module.exports = router;

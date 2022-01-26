@@ -68,3 +68,12 @@ exports.getUsers = async (req, res) => {
     console.log(err);
   }
 };
+
+exports.dltUsers = async (req, res) => {
+  try {
+    await User.deleteMany({});
+    res.json("Deleted!!!");
+  } catch (err) {
+    console.log(err);
+  }
+};
