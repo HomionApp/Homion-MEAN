@@ -20,7 +20,7 @@ const userSchema = new Schema({
   },
   imageURL: {
     type: String,
-    default: "https://www.iconspng.com/images/young-user-icon.jpg"
+    default: "https://www.iconspng.com/images/young-user-icon.jpg",
   },
   status: {
     type: String, //PENDING-ACTIVE-BLOCK-DELETED
@@ -29,6 +29,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
+    // unique: true
   },
   password: {
     type: String,

@@ -1,16 +1,15 @@
 const jwt = require("jsonwebtoken");
 
-exports.generate = (email, expiresIn) => {
-  const jwtToken = jwt.sign({ email: email }, "homionapp2", {
+exports.generate = (fields, expiresIn) => {
+  const jwtToken = jwt.sign(fields, "homionapp2", {
     expiresIn: expiresIn,
   });
   return jwtToken;
 };
 
 exports.verify = (jwtToken, ignoreExpiration) => {
-  let decodedToken = jwt.verify(jwtToken, "homionapp2", {ignoreExpiration: ignoreExpiration} );
-  if (decodedToken) {
-    return decodedToken.email;
-  }
-  return undefined;
+  let decodedToken = jwt.verify(jwtToken, "homionapp2", {
+    ignoreExpiration: ignoreExpiration,
+  });
+  return decodedToken;
 };

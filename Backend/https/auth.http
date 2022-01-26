@@ -15,6 +15,35 @@ Content-Type: application/json
     }
 }
 ###
+post {{hostname}}/login
+Content-Type: application/json
+
+{
+    "email": "homionapp@gmail.com",
+    "password": "Homion@123",
+    "type": "USER"
+}
+###
+
+###
+post {{hostname}}/forgotPassword
+Content-Type: application/json
+
+{
+    "email": "homionapp@gmail.com",
+    "type": "USER"
+}
+###
+
+###
+post {{hostname}}/resetPassword
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhvbWlvbmFwcEBnbWFpbC5jb20iLCJ0eXBlIjoiVVNFUiIsImlhdCI6MTY0MzIyMDI3MiwiZXhwIjoxNjQzMjIwMjczfQ.GhxnvcJtlnqV63Nnt7aiQ3IfhfqYVO6f00j7KoOdAOk
+Content-Type: application/json
+
+{
+    "password": "Homion@1234"
+}
+###
 
 GET {{hostname}}/getUsers
 ###
