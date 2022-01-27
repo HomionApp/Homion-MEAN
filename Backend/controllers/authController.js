@@ -4,14 +4,18 @@ const Response = require("../models/Response");
 const bcrypt = require("bcryptjs");
 const mail = require("../utils/mail");
 const jwt = require("../utils/jwt");
+const { validationResult } = require("express-validator");
 
 exports.registerUser = async (req, res) => {
   try {
+    const validationErr = validationResult(req);
+    if (!validationErr.isEmpty())
+      return res.json(new Response(401, validationErr.array()));
+
     let user = req.body.user;
     user.password = await bcrypt.hash(user.password, 12);
     user = await new User(user).save();
-    console.log(user);
-    const jwtToken = jwt.generate({ id: user._id, email: user.email }, "1d");
+    const jwtToken = jwt.generate({ id: user._id, email: user.email }, "1s");
     mail.setMailOptions(
       user.email,
       "Verification mail",
@@ -54,6 +58,10 @@ exports.verify = async (req, res) => {
 };
 
 exports.resend = async (req, res) => {
+  const validationErr = validationResult(req);
+  if (!validationErr.isEmpty())
+    return res.send(new Response(401, validationErr.array()));
+
   const email = req.params.email;
   const jwtToken = jwt.generate({ email: email }, "2h");
   mail.setMailOptions(
@@ -67,6 +75,10 @@ exports.resend = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
+    const validationErr = validationResult(req);
+    if (!validationErr.isEmpty())
+      return res.send(new Response(401, validationErr.array()));
+
     const email = req.body.email;
     const password = req.body.password;
     const type = req.body.type;
@@ -117,6 +129,10 @@ exports.login = async (req, res) => {
 
 exports.forgotPassword = async (req, res) => {
   try {
+    const validationErr = validationResult(req);
+    if (!validationErr.isEmpty())
+      return res.send(new Response(401, validationErr.array()));
+
     const email = req.body.email;
     const type = req.body.type;
     let obj;
@@ -127,7 +143,7 @@ exports.forgotPassword = async (req, res) => {
       obj = await Chef.findOne({ email: email });
     }
     if (obj) {
-      const jwtToken = jwt.generate({ email: email, type: type }, "1s");
+      const jwtToken = jwt.generate({ email: email, type: type }, "2h");
       mail.setMailOptions(
         email,
         "Reset password",
@@ -145,6 +161,10 @@ exports.forgotPassword = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
   try {
+    const validationErr = validationResult(req);
+    if (!validationErr.isEmpty())
+      return res.send(new Response(401, validationErr.array()));
+      
     let password = req.body.password;
     const authHeaders = req.get("Authorization").split(" ");
     if (authHeaders[1]) {
@@ -170,14 +190,14 @@ exports.resetPassword = async (req, res) => {
 };
 
 exports.registerChef = async (req, res) => {
-  try{
+  try {
     let chef = req.body.chef;
     chef.startTime = new Date();
     chef.endTime = new Date();
     console.log(chef.endTime);
     chef.password = await bcrypt.hash(chef.password, 12);
     chef = await new Chef(chef).save();
-    const jwtToken = jwt.generate({id: chef._id, email: chef.email}, "1d");
+    const jwtToken = jwt.generate({ id: chef._id, email: chef.email }, "1d");
     mail.setMailOptions(
       chef.email,
       "Verification mail",
@@ -185,11 +205,10 @@ exports.registerChef = async (req, res) => {
     );
     mail.sendMail();
     res.json(new Response(200, "Chef Created"));
-
-  } catch(err){
+  } catch (err) {
     console.log(err);
   }
-}
+};
 
 exports.getUsers = async (req, res) => {
   try {

@@ -6,12 +6,12 @@ Content-Type: application/json
 
 {
     "user" : {
-        "userName": "hardik123",
+        "userName": "dsad",
         "firstName": "Dizkut",
         "lastName": "Dodiya",
         "mobile": "9723445038",
         "email": "homionapp@gmail.com",
-        "password": "Homion@123"
+        "password": "Homion123"
         
     }
 }
@@ -38,11 +38,11 @@ Content-Type: application/json
 
 ###
 post {{hostname}}/resetPassword
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhvbWlvbmFwcEBnbWFpbC5jb20iLCJ0eXBlIjoiVVNFUiIsImlhdCI6MTY0MzIyMDI3MiwiZXhwIjoxNjQzMjIwMjczfQ.GhxnvcJtlnqV63Nnt7aiQ3IfhfqYVO6f00j7KoOdAOk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhvbWlvbmFwcEBnbWFpbC5jb20iLCJ0eXBlIjoiVVNFUiIsImlhdCI6MTY0MzMwODkyMSwiZXhwIjoxNjQzMzE2MTIxfQ.Qq-eUjOfJjPSE8yO36KPkkycy5ZVLIYSbot8B3CrVME
 Content-Type: application/json
 
 {
-    "password": "Homion@1234"
+    "password": "omion@1234"
 }
 ###
 
