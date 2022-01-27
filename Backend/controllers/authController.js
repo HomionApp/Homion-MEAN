@@ -169,6 +169,28 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
+exports.registerChef = async (req, res) => {
+  try{
+    let chef = req.body.chef;
+    chef.startTime = new Date();
+    chef.endTime = new Date();
+    console.log(chef.endTime);
+    chef.password = await bcrypt.hash(chef.password, 12);
+    chef = await new Chef(chef).save();
+    const jwtToken = jwt.generate({id: chef._id, email: chef.email}, "1d");
+    mail.setMailOptions(
+      chef.email,
+      "Verification mail",
+      `<a href="https://localhost:9999/auth/verify/${jwtToken}">Verify</a>`
+    );
+    mail.sendMail();
+    res.json(new Response(200, "Chef Created"));
+
+  } catch(err){
+    console.log(err);
+  }
+}
+
 exports.getUsers = async (req, res) => {
   try {
     const users = await User.find({});

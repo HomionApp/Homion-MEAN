@@ -15,6 +15,10 @@ router.post("/forgotPassword", authController.forgotPassword);
 
 router.post("/resetPassword", authController.resetPassword);
 
+router.post("/registerChef", authController.registerChef);
+
+
+
 router.get("/getUsers", authController.getUsers);
 
 router.delete("/dltUsers", authController.dltUsers);

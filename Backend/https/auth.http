@@ -6,12 +6,13 @@ Content-Type: application/json
 
 {
     "user" : {
-        "userName": "harshil123",
-        "firstName": "Dicit",
-        "lastName": "Dangi",
+        "userName": "hardik123",
+        "firstName": "Dizkut",
+        "lastName": "Dodiya",
         "mobile": "9723445038",
         "email": "homionapp@gmail.com",
         "password": "Homion@123"
+        
     }
 }
 ###
@@ -21,7 +22,7 @@ Content-Type: application/json
 {
     "email": "homionapp@gmail.com",
     "password": "Homion@123",
-    "type": "USER"
+    "type": "CHEF"
 }
 ###
 
@@ -45,6 +46,30 @@ Content-Type: application/json
 }
 ###
 
+###
+post {{hostname}}/registerChef
+Content-Type: application/json
+
+{
+    "chef" : {
+        "userName": "hardik123",
+        "firstName": "Dizkut",
+        "lastName": "Dodiya",
+        "mobile": "9723445038",
+        "email": "homionapp@gmail.com",
+        "password": "Homion@123",
+        "panNumber": "DLHPV4433R",
+        "startTime": "",
+        "endTime": "",
+        "about": "about",
+        "rating": 0,
+        "ratingCount": 0,
+        "product": [],
+        "address": []
+        
+    }
+}
+###
 GET {{hostname}}/getUsers
 ###
 

@@ -28,10 +28,12 @@ const chefSchema = new Schema({
   },
   imageURL: {
     type: String,
-    required: true,
+    default: "https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg",
+    
   },
   status: {
     type: String,      //ACTIVE-BLOCK-DELETED
+    default: "PENDING",
     required: true,
   },
   panNumber: {
