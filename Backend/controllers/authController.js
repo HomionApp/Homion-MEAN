@@ -15,7 +15,10 @@ exports.registerUser = async (req, res) => {
     let user = req.body.user;
     user.password = await bcrypt.hash(user.password, 12);
     user = await new User(user).save();
-    const jwtToken = jwt.generate({ id: user._id, email: user.email }, "1s");
+    const jwtToken = jwt.generate(
+      { id: user._id, email: user.email, type: "USER" },
+      "1d"
+    );
     mail.setMailOptions(
       user.email,
       "Verification mail",
@@ -23,6 +26,33 @@ exports.registerUser = async (req, res) => {
     );
     mail.sendMail();
     res.json(new Response(201, "User Created"));
+  } catch (err) {
+    if (err.name === "MongoServerError") {
+      res.json(new Response(401, "Email already exists"));
+    }
+    console.log(err); //implement error handling middleware***************************************************
+  }
+};
+
+exports.registerChef = async (req, res) => {
+  try {
+    let chef = req.body.chef;
+    chef.startTime = new Date();
+    chef.endTime = new Date();
+    console.log(chef.endTime);
+    chef.password = await bcrypt.hash(chef.password, 12);
+    chef = await new Chef(chef).save();
+    const jwtToken = jwt.generate(
+      { id: chef._id, email: chef.email, type: "CHEF" },
+      "1d"
+    );
+    mail.setMailOptions(
+      chef.email,
+      "Verification mail",
+      `<a href="http://localhost:9999/auth/verify/${jwtToken}">Verify</a>`
+    );
+    mail.sendMail();
+    res.json(new Response(200, "Chef Created"));
   } catch (err) {
     console.log(err);
   }
@@ -32,14 +62,25 @@ exports.verify = async (req, res) => {
   const jwtToken = req.params.jwtToken;
   let email;
   try {
-    email = jwt.verify(jwtToken, false).email;
+    const decodedToken = jwt.verify(jwtToken, false);
+    email = decodedToken.email;
     if (email) {
-      await User.updateOne(
-        { email: email },
-        {
-          status: "ACTIVE",
-        }
-      );
+      const type = decodedToken.type;
+      if (type === "USER") {
+        await User.updateOne(
+          { email: email },
+          {
+            status: "ACTIVE",
+          }
+        );
+      } else {
+        await Chef.updateOne(
+          { email: email },
+          {
+            status: "ACTIVE",
+          }
+        );
+      }
       res.status(200).send(`
       <h1>Verification Successfull!!!!</h1>
       <a href="http://localhost:4200/"><button>Login</button></a>
@@ -82,45 +123,29 @@ exports.login = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const type = req.body.type;
+    let obj;
     if (type === "USER") {
-      const user = await User.findOne({ email: email });
-      if (user) {
-        if (user.status === "ACTIVE") {
-          const isMatched = await bcrypt.compare(password, user.password);
-          if (isMatched) {
-            const jwtToken = jwt.generate(
-              { id: user._id, email: user.email },
-              "1d"
-            );
-            res.json(new Response(200, "Login Successfully", jwtToken));
-          } else {
-            res.json(new Response(400, "Invalid password"));
-          }
+      obj = await User.findOne({ email: email });
+    } else {
+      obj = await Chef.findOne({ email: email });
+    }
+    if (obj) {
+      if (obj.status === "ACTIVE") {
+        const isMatched = await bcrypt.compare(password, obj.password);
+        if (isMatched) {
+          const jwtToken = jwt.generate(
+            { id: obj._id, email: obj.email },
+            "1d"
+          );
+          res.json(new Response(200, "Login Successfully", jwtToken));
         } else {
-          res.json(new Response(402, "User not activated"));
+          res.json(new Response(400, "Invalid password"));
         }
       } else {
-        res.json(new Response(404, "User not found"));
+        res.json(new Response(402, type + " not activated"));
       }
     } else {
-      const chef = await Chef.findOne({ email: email });
-      if (chef) {
-        if (chef.status === "ACTIVE") {
-          if (chef.password === password) {
-            const jwtToken = jwt.generate(
-              { id: chef._id, email: chef.email },
-              "1d"
-            );
-            res.json(new Response(200, "Login Successfully", jwtToken));
-          } else {
-            res.json(new Response(400, "Invalid password"));
-          }
-        } else {
-          res.json(new Response(402, "Chef not activated"));
-        }
-      } else {
-        res.json(new Response(404, "Chef not found"));
-      }
+      res.json(new Response(404, type + " not found"));
     }
   } catch (err) {
     console.log(err);
@@ -164,7 +189,7 @@ exports.resetPassword = async (req, res) => {
     const validationErr = validationResult(req);
     if (!validationErr.isEmpty())
       return res.send(new Response(401, validationErr.array()));
-      
+
     let password = req.body.password;
     const authHeaders = req.get("Authorization").split(" ");
     if (authHeaders[1]) {
@@ -189,27 +214,6 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
-exports.registerChef = async (req, res) => {
-  try {
-    let chef = req.body.chef;
-    chef.startTime = new Date();
-    chef.endTime = new Date();
-    console.log(chef.endTime);
-    chef.password = await bcrypt.hash(chef.password, 12);
-    chef = await new Chef(chef).save();
-    const jwtToken = jwt.generate({ id: chef._id, email: chef.email }, "1d");
-    mail.setMailOptions(
-      chef.email,
-      "Verification mail",
-      `<a href="https://localhost:9999/auth/verify/${jwtToken}">Verify</a>`
-    );
-    mail.sendMail();
-    res.json(new Response(200, "Chef Created"));
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 exports.getUsers = async (req, res) => {
   try {
     const users = await User.find({});
@@ -222,6 +226,24 @@ exports.getUsers = async (req, res) => {
 exports.dltUsers = async (req, res) => {
   try {
     await User.deleteMany({});
+    res.json("Deleted!!!");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.getChefs = async (req, res) => {
+  try {
+    const chefs = await Chef.find({});
+    res.json(chefs);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.dltChefs = async (req, res) => {
+  try {
+    await Chef.deleteMany({});
     res.json("Deleted!!!");
   } catch (err) {
     console.log(err);

@@ -11,7 +11,7 @@ Content-Type: application/json
         "lastName": "Dodiya",
         "mobile": "9723445038",
         "email": "homionapp@gmail.com",
-        "password": "Homion123"
+        "password": "Homion@123"
         
     }
 }
@@ -69,9 +69,16 @@ Content-Type: application/json
         
     }
 }
+
 ###
 GET {{hostname}}/getUsers
 ###
 
 DELETE  {{hostname}}/dltUsers
+###
+
+GET {{hostname}}/getChefs
+###
+
+DELETE  {{hostname}}/dltChefs
 ###

@@ -47,4 +47,8 @@ router.get("/getUsers", authController.getUsers);
 
 router.delete("/dltUsers", authController.dltUsers);
 
+router.get("/getChefs", authController.getChefs);
+
+router.delete("/dltChefs", authController.dltChefs);
+
 module.exports = router;

@@ -16,6 +16,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'auth',
+    redirectTo: 'auth',
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: 'not-found',
   },

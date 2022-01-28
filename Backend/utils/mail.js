@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 var transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "homionapp2@gmail.com",
+    user: "homionapp2@gmail.com",   //Change to homionapp and set in environment variable
     pass: "Homion@123",
   },
 });
