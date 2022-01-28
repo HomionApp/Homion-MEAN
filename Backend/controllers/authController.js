@@ -191,10 +191,15 @@ exports.resetPassword = async (req, res) => {
 
 exports.registerChef = async (req, res) => {
   try {
+    const validationErr = validationResult(req);
+    if (!validationErr.isEmpty())
+      return res.json(new Response(401, validationErr.array()));
+      
     let chef = req.body.chef;
     chef.startTime = new Date();
     chef.endTime = new Date();
     console.log(chef.endTime);
+
     chef.password = await bcrypt.hash(chef.password, 12);
     chef = await new Chef(chef).save();
     const jwtToken = jwt.generate({ id: chef._id, email: chef.email }, "1d");

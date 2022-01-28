@@ -41,7 +41,11 @@ router.post(
   authController.resetPassword
 );
 
-router.post("/registerChef", authController.registerChef);
+router.post(
+  "/registerChef",
+  validator.isRegisterChef(), 
+  authController.registerChef
+);
 
 router.get("/getUsers", authController.getUsers);
 
