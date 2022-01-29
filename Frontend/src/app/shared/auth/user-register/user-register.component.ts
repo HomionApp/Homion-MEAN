@@ -50,7 +50,11 @@ export class UserRegisterComponent implements OnInit {
     );
     this.authService.registerUser(user).subscribe((res) => {
       if (res.status == 201) {
-        this.router.navigateByUrl('');
+        this.router
+          .navigateByUrl('auth', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['']);
+          });
       } else {
         this.errorMessage = res.message;
       }

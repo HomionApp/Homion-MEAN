@@ -10,6 +10,10 @@ const routes: Routes = [
     component: AuthComponent,
   },
   {
+    path: 'auth',
+    component: AuthComponent,
+  },
+  {
     path: 'reset-password/:jwtToken',
     component: ResetPasswordComponent,
   },

@@ -55,7 +55,11 @@ export class ChefRegisterComponent implements OnInit {
     );
     this.authService.registerChef(chef).subscribe((res) => {
       if (res.status == 201) {
-        this.router.navigateByUrl('');
+        this.router
+          .navigateByUrl('auth', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['']);
+          });
       } else {
         this.errorMessage = res.message;
       }

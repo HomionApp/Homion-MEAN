@@ -53,7 +53,7 @@ Content-Type: application/json
 {
     "chef" : {
         "userName": "hardik123",
-        "firstName": "",
+        "firstName": "Amareliye",
         "lastName": "Dodiya",
         "mobile": "9723445038",
         "email": "homionapp@gmail.com",

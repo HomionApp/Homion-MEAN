@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChefAuthGuard } from '../chef-auth.guard';
 import { AddressComponent } from './address/address.component';
 import { BusinessComponent } from './business/business.component';
 import { HistoryComponent } from './business/history/history.component';
@@ -13,44 +14,50 @@ import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'menu',
-    component: MenuComponent,
-  },
-  {
-    path: 'products',
-    component: ProductsComponent,
-  },
-  {
-    path: 'addProduct',
-    component: AddProductComponent,
-  },
-  {
-    path: 'business',
-    component: BusinessComponent,
-  },
-  {
-    path: 'history',
-    component: HistoryComponent,
-  },
-  {
-    path: 'past-orders',
-    component: PastOrdersComponent,
-  },
-  {
-    path: 'invoice',
-    component: InvoiceComponent,
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-  },
-  {
-    path: 'address',
-    component: AddressComponent,
+    path: '',
+    canActivate: [ChefAuthGuard],
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'menu',
+        component: MenuComponent,
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+      },
+      {
+        path: 'addProduct',
+        component: AddProductComponent,
+      },
+      {
+        path: 'business',
+        component: BusinessComponent,
+      },
+      {
+        path: 'history',
+        component: HistoryComponent,
+      },
+      {
+        path: 'past-orders',
+        component: PastOrdersComponent,
+      },
+      {
+        path: 'invoice',
+        component: InvoiceComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: 'address',
+        component: AddressComponent,
+      },
+    ],
   },
 ];
 
