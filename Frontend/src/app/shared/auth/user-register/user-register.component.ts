@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/models/request/user.model';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -15,7 +15,6 @@ import { AuthService } from '../../service/auth.service';
 })
 export class UserRegisterComponent implements OnInit {
   errorMessage!: string;
-  constructor(private authService: AuthService) {}
 
   form = new FormGroup({
     userName: new FormControl('', Validators.required),
@@ -34,7 +33,25 @@ export class UserRegisterComponent implements OnInit {
     ]),
   });
 
+  constructor(private authService: AuthService) {}
+
   ngOnInit(): void {}
+
+  register() {
+    const user = new User(
+      this.form.controls['userName'].value,
+      this.form.controls['firstName'].value,
+      this.form.controls['lastName'].value,
+      this.form.controls['mobile'].value,
+      this.form.controls['email'].value,
+      this.form.controls['password'].value
+    );
+    this.authService.registerUser(user).subscribe((res) => {
+      if (res.status != 200) {
+        this.errorMessage = res.message;
+      }
+    });
+  }
 
   passwordValidator(control: AbstractControl): any {
     const password = control.value;
@@ -55,21 +72,5 @@ export class UserRegisterComponent implements OnInit {
       };
     }
     return null;
-  }
-
-  register() {
-    const user = new User(
-      this.form.controls['userName'].value,
-      this.form.controls['firstName'].value,
-      this.form.controls['lastName'].value,
-      this.form.controls['mobile'].value,
-      this.form.controls['email'].value,
-      this.form.controls['password'].value
-    );
-    this.authService.registerUser(user).subscribe((res) => {
-      if (res.status != 200) {
-        this.errorMessage = res.message;
-      }
-    });
   }
 }

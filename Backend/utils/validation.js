@@ -18,7 +18,7 @@ const isPassword = (exports.isPassword = (value) => {
 });
 
 const isPanNumber = exports.isPanNumber = (value) => {
-  const regpan = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
+  const regpan = /^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/;
 
   if(!regpan.test(value)){
     throw new Error("Invalid Pan Number");

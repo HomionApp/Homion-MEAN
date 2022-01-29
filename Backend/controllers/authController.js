@@ -37,9 +37,6 @@ exports.registerUser = async (req, res) => {
 exports.registerChef = async (req, res) => {
   try {
     let chef = req.body.chef;
-    chef.startTime = new Date();
-    chef.endTime = new Date();
-    console.log(chef.endTime);
     chef.password = await bcrypt.hash(chef.password, 12);
     chef = await new Chef(chef).save();
     const jwtToken = jwt.generate(
@@ -54,6 +51,9 @@ exports.registerChef = async (req, res) => {
     mail.sendMail();
     res.json(new Response(200, "Chef Created"));
   } catch (err) {
+    if (err.name === "MongoServerError") {
+      res.json(new Response(401, "Email already exists"));
+    }
     console.log(err);
   }
 };
