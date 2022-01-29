@@ -17,6 +17,7 @@ const chefSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true
   },
   password: {
     type: String,
@@ -42,36 +43,29 @@ const chefSchema = new Schema({
   },
   startTime: {
     type: Date,
-    required: true,
   },
   endTime: {
     type: Date,
-    required: true,
   },
   about: {
     type: String,
-    required: true,
   },
   rating: {
     type: mongoose.Decimal128,
-    required: true,
   },
   ratingCount: {
     type: Number,
-    required: true,
   },
   products: [
     {
       type: Schema.Types.ObjectId,
       ref: "Product",
-      required: true,
     },
   ],
   address: [
     {
       type: Schema.Types.ObjectId,
       ref: "Address",
-      required: true,
     },
   ],
 });

@@ -58,15 +58,7 @@ Content-Type: application/json
         "mobile": "9723445038",
         "email": "homionapp@gmail.com",
         "password": "Homion@123",
-        "panNumber": "DLH4433R",
-        "startTime": "",
-        "endTime": "",
-        "about": "about",
-        "rating": 0,
-        "ratingCount": 0,
-        "product": [],
-        "address": []
-        
+        "panNumber": "DLH4433R"
     }
 }
 
