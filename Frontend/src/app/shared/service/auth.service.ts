@@ -20,4 +20,8 @@ export class AuthService {
   public registerChef(chef: Chef): Observable<Response> {
     return this.http.post<Response>(`${host}/registerChef`, { chef: chef });
   }
+
+  public login(obj: Object): Observable<Response> {
+    return this.http.post<Response>(`${host}/login`, obj);
+  }
 }

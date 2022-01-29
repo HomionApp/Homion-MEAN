@@ -129,6 +129,7 @@ exports.login = async (req, res) => {
     } else {
       obj = await Chef.findOne({ email: email });
     }
+    console.log(obj)
     if (obj) {
       if (obj.status === "ACTIVE") {
         const isMatched = await bcrypt.compare(password, obj.password);
