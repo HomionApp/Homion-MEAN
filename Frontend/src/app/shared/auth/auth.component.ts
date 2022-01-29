@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
   isUser = true;
-  isLogin = false;
+  isLogin = true;
   isReset = false;
   constructor() {}
 
