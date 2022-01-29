@@ -22,7 +22,35 @@ exports.registerUser = async (req, res) => {
     mail.setMailOptions(
       user.email,
       "Verification mail",
-      `<a href='http://localhost:9999/auth/verify/${jwtToken}'>Verify</a>`
+      `
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      </head>
+      
+      <body style="text-align: center; margin-top: 20px; font-family: Arial, Helvetica, sans-serif;">
+        <h1 class="purple fw-bold" style="background-color: #e0d7d7; color: #5e2572;padding: 10px 0px; margin-bottom: 20px;">
+          Homion</h1>
+        <h2>Welcome!</h2>
+      
+        <p style="font-size: 16px; margin-top: 20px;">Hello @ ${user.firstName} ${user.lastName}</p>
+        <p style="font-size: 16px; color: gray;">You have successfully created a Homion account.</p>
+        <p style="font-size: 16px;">Just click below to verify your account.</p>
+      
+        <a href='http://localhost:9999/auth/verify/${jwtToken}'>
+          <button
+            style="background-color: #5e2572; border-radius: 5px; border-width: 0; color: white; font-size: 22px; padding: 5px 20px; cursor: pointer;">
+            Verify Email
+          </button>
+        </a>
+      
+        <p style="font-size: 16px; color: gray; margin-bottom: 7px; margin-top: 25px;">Thanks!!</p>
+        <p style="font-size: 16px; color: gray; margin: 0;">The Homion Team</p>
+      
+      </body>
+      </html>
+      `
     );
     mail.sendMail();
     res.json(new Response(201, "User Created"));
@@ -182,7 +210,33 @@ exports.forgotPassword = async (req, res) => {
       mail.setMailOptions(
         email,
         "Reset password",
-        `<a href='http://localhost:4200/reset-password/${jwtToken}'>Reset password</a>`
+        `
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+          </head>
+          
+          <body style="text-align: center; margin-top: 20px; font-family: Arial, Helvetica, sans-serif;">
+            <h1 class="purple fw-bold" style="background-color: #e0d7d7; color: #5e2572;padding: 10px 0px; margin-bottom: 20px;">
+              Homion</h1>
+          
+            <p style="font-size: 16px; margin-top: 20px;">Hello @ ${obj.firstName} ${obj.lastName}</p>
+            <p style="font-size: 16px;">Just click below to reset your password.</p>
+          
+            <a href='http://localhost:4200/reset-password/${jwtToken}'>
+              <button
+                style="background-color: #5e2572; border-radius: 5px; border-width: 0; color: white; font-size: 22px; padding: 5px 20px; cursor: pointer;">
+                Reset Password
+              </button>
+            </a>
+          
+            <p style="font-size: 16px; color: gray; margin-bottom: 7px; margin-top: 25px;">Thanks!!</p>
+            <p style="font-size: 16px; color: gray; margin: 0;">The Homion Team</p>
+          
+          </body>
+          </html>
+        `
       );
       mail.sendMail();
       res.json(

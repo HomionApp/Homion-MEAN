@@ -9,7 +9,7 @@ var transporter = nodemailer.createTransport({
 });
 
 var mailOptions = {
-  from: "homionapp2@gmail.com"
+  from: "Homion <homionapp2@gmail.com>"
 };
 
 exports.setMailOptions = (to, subject, html) => {

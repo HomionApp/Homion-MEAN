@@ -6,8 +6,8 @@ Content-Type: application/json
 
 {
     "user" : {
-        "userName": "dsad",
-        "firstName": "Dizkut",
+        "userName": "dixit.99",
+        "firstName": "Dixit",
         "lastName": "Dodiya",
         "mobile": "9723445038",
         "email": "homionapp@gmail.com",
