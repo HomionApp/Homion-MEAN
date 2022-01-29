@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
     component: AuthComponent,
+  },
+  {
+    path: 'reset-password/:jwtToken',
+    component: ResetPasswordComponent,
   },
   {
     path: 'not-found',

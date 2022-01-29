@@ -19,7 +19,6 @@
       </ng-container>
 
       <!-- register -->
-      <!-- Impl verify mail to activate account -->
       <ng-container *ngIf="!isLogin && !isReset">
         <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group" id="type">
           <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked
@@ -36,16 +35,24 @@
 
       <!-- forgot pwd -->
       <ng-container *ngIf="isReset">
-        <div *ngIf="true" class="alert alert-success" role="alert">
-          Show email sent message.
+        <div *ngIf="message" class="alert" [ngClass]="error ? 'alert-danger' : 'alert-success'" role="alert">
+          {{message}}
         </div>
-        <form class="py-4">
+        <form class="py-4" [formGroup]="form" (ngSubmit)="forgotPassword()">
           <div class="mb-3">
             <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="enail" placeholder="Email" name="email" />
+            <input type="email" class="form-control shadow-none" id="email" placeholder="Email" name="email"
+              formControlName="email" />
+          </div>
+          <div class="mb-3">
+            <label for="type" class="form-label">Type:</label>
+            <select class="form-select shadow-none" id="type" name="type" formControlName="type">
+              <option value="USER">User</option>
+              <option value="CHEF">Chef</option>
+            </select>
           </div>
           <div class="d-flex justify-content-center">
-            <button type="submit" class=" text-white bg-purple w-100 mb-2 mt-2 btn px-5">
+            <button type="submit" class=" text-white bg-purple w-100 mb-2 mt-2 btn px-5" [disabled]="form.invalid">
               Send Link
             </button>
           </div>

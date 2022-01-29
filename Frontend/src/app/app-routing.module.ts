@@ -12,13 +12,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'auth',
-    pathMatch: 'full',
-  },
-  {
-    path: 'auth',
-    redirectTo: 'auth',
-    pathMatch: 'full',
+    loadChildren: () => import('./shared/shared.module').then((m) => m.SharedModule),
   },
   {
     path: '**',

@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Chef } from 'src/app/models/request/chef.model';
 import { AuthService } from '../../service/auth.service';
 
@@ -37,7 +38,7 @@ export class ChefRegisterComponent implements OnInit {
     ),
   });
 
-  constructor(private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -52,7 +53,9 @@ export class ChefRegisterComponent implements OnInit {
       this.form.controls['panNumber'].value
     );
     this.authService.registerChef(chef).subscribe((res) => {
-      if (res.status != 200) {
+      if (res.status == 201) {
+        this.router.navigateByUrl('');
+      } else {
         this.errorMessage = res.message;
       }
     });

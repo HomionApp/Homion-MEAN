@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/request/user.model';
 import { AuthService } from '../../service/auth.service';
 
@@ -33,7 +34,7 @@ export class UserRegisterComponent implements OnInit {
     ]),
   });
 
-  constructor(private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -47,7 +48,9 @@ export class UserRegisterComponent implements OnInit {
       this.form.controls['password'].value
     );
     this.authService.registerUser(user).subscribe((res) => {
-      if (res.status != 200) {
+      if (res.status == 201) {
+        this.router.navigateByUrl('');
+      } else {
         this.errorMessage = res.message;
       }
     });

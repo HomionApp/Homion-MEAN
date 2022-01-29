@@ -49,7 +49,7 @@ exports.registerChef = async (req, res) => {
       `<a href="http://localhost:9999/auth/verify/${jwtToken}">Verify</a>`
     );
     mail.sendMail();
-    res.json(new Response(200, "Chef Created"));
+    res.json(new Response(201, "Chef Created"));
   } catch (err) {
     if (err.name === "MongoServerError") {
       res.json(new Response(401, "Email already exists"));
@@ -129,24 +129,23 @@ exports.login = async (req, res) => {
     } else {
       obj = await Chef.findOne({ email: email });
     }
-    console.log(obj)
     if (obj) {
       if (obj.status === "ACTIVE") {
         const isMatched = await bcrypt.compare(password, obj.password);
         if (isMatched) {
           const jwtToken = jwt.generate(
-            { id: obj._id, email: obj.email },
-            "1d"
+            { id: obj._id, email: obj.email, type: type},
+            "7d"
           );
           res.json(new Response(200, "Login Successfully", jwtToken));
         } else {
-          res.json(new Response(400, "Invalid password"));
+          res.json(new Response(400, "Invalid email or password"));
         }
       } else {
-        res.json(new Response(402, type + " not activated"));
+        res.json(new Response(402, (type === 'USER' ? 'User' : 'Chef') + " is not verified"));
       }
     } else {
-      res.json(new Response(404, type + " not found"));
+      res.json(new Response(404, (type === 'USER' ? 'User' : 'Chef') + " does not exist"));
     }
   } catch (err) {
     console.log(err);
@@ -173,10 +172,10 @@ exports.forgotPassword = async (req, res) => {
       mail.setMailOptions(
         email,
         "Reset password",
-        `<a href='http://localhost:4200/auth/reset-password/${jwtToken}'>Reset password</a>`
+        `<a href='http://localhost:4200/reset-password/${jwtToken}'>Reset password</a>`
       );
       mail.sendMail();
-      res.json(new Response(200, "Email sent successfully", jwtToken));
+      res.json(new Response(200, "Password reset link sent successfully", jwtToken));
     } else {
       res.json(new Response(404, "Email does not exist"));
     }

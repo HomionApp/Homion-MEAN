@@ -24,4 +24,13 @@ export class AuthService {
   public login(obj: Object): Observable<Response> {
     return this.http.post<Response>(`${host}/login`, obj);
   }
+
+  public forgotPassword(obj: Object): Observable<Response> {
+    return this.http.post<Response>(`${host}/forgotPassword`, obj);
+  }
+
+  public resetPassword(obj: any): Observable<Response> {
+    const options = { headers: { Authorization: `Bearer ${obj.token}` } };
+    return this.http.post<Response>(`${host}/resetPassword`, obj, options);
+  }
 }
