@@ -58,7 +58,7 @@ exports.registerChef = async (req, res) => {
   }
 };
 
-exports.verify = async (req, res) => {
+exports.verifyEmail = async (req, res) => {
   const jwtToken = req.params.jwtToken;
   let email;
   try {
@@ -134,7 +134,7 @@ exports.login = async (req, res) => {
         const isMatched = await bcrypt.compare(password, obj.password);
         if (isMatched) {
           const jwtToken = jwt.generate(
-            { id: obj._id, email: obj.email, type: type},
+            { id: obj._id, email: obj.email, type: type },
             "7d"
           );
           res.json(new Response(200, "Login Successfully", jwtToken));
@@ -142,10 +142,20 @@ exports.login = async (req, res) => {
           res.json(new Response(400, "Invalid email or password"));
         }
       } else {
-        res.json(new Response(402, (type === 'USER' ? 'User' : 'Chef') + " is not verified"));
+        res.json(
+          new Response(
+            402,
+            (type === "USER" ? "User" : "Chef") + " is not verified"
+          )
+        );
       }
     } else {
-      res.json(new Response(404, (type === 'USER' ? 'User' : 'Chef') + " does not exist"));
+      res.json(
+        new Response(
+          404,
+          (type === "USER" ? "User" : "Chef") + " does not exist"
+        )
+      );
     }
   } catch (err) {
     console.log(err);
@@ -175,7 +185,9 @@ exports.forgotPassword = async (req, res) => {
         `<a href='http://localhost:4200/reset-password/${jwtToken}'>Reset password</a>`
       );
       mail.sendMail();
-      res.json(new Response(200, "Password reset link sent successfully", jwtToken));
+      res.json(
+        new Response(200, "Password reset link sent successfully", jwtToken)
+      );
     } else {
       res.json(new Response(404, "Email does not exist"));
     }
@@ -205,6 +217,22 @@ exports.resetPassword = async (req, res) => {
       res.json(new Response(200, "Password updated"));
     } else {
       res.json(new Response(401, "Token does not exist"));
+    }
+  } catch (err) {
+    if (err.name === "TokenExpiredError") {
+      return res.json(new Response(500, "Token expired"));
+    }
+    console.log(err);
+  }
+};
+
+exports.verifyToken = async (req, res) => {
+  try {
+    const authHeaders = req.get("Authorization").split(" ");
+    if (authHeaders[1]) {
+      const jwtToken = authHeaders[1];
+      const { type } = jwt.verify(jwtToken, false);
+      return res.json(new Response(200, "Token verified", type));
     }
   } catch (err) {
     if (err.name === "TokenExpiredError") {

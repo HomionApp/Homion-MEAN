@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand shadow">
-  <div class="ms-4 logo purple" role="button" (click)="toggleNav()">
+  <div class="ms-4 logo purple" role="button" (click)="toggleNav()" *ngIf="type">
     <i class="fa fa-bars"></i>
   </div>
   <div class="container justify-content-center">
@@ -7,10 +7,10 @@
       <a class="navbar-brand font-weight-bold logo purple">Homion</a>
     </strong>
   </div>
-  <div class="me-4">
+  <div class="me-4" *ngIf="type === 'USER'">
     <a routerLink="/user/search" class="logo purple"><span class="h4"><i class="fa fa-search"></i></span></a>
   </div>
 </nav>
 
-<app-user-nav *ngIf="isOpen && isUser" (onCloseNav)="toggleNav()"></app-user-nav>
-<app-chef-nav *ngIf="isOpen && !isUser"></app-chef-nav>
+<app-user-nav *ngIf="isOpen && type === 'USER'" (onCloseNav)="toggleNav()"></app-user-nav>
+<app-chef-nav *ngIf="isOpen && type === 'CHEF'" (onCloseNav)="toggleNav()"></app-chef-nav>

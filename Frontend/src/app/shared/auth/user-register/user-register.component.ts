@@ -15,6 +15,7 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./user-register.component.css'],
 })
 export class UserRegisterComponent implements OnInit {
+  hidePassword = true;
   errorMessage!: string;
 
   form = new FormGroup({

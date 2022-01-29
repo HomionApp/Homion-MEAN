@@ -14,6 +14,7 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./reset-password.component.css'],
 })
 export class ResetPasswordComponent implements OnInit {
+  hidePassword = true;
   token!: string;
   isMatch = true;
 

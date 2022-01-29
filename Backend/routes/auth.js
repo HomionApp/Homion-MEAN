@@ -12,7 +12,7 @@ router.post(
   authController.registerUser
 );
 
-router.get("/verify/:jwtToken", authController.verify);
+router.get("/verify/:jwtToken", authController.verifyEmail);
 
 router.get(
   "/resend/:email",
@@ -43,9 +43,11 @@ router.post(
 
 router.post(
   "/registerChef",
-  validator.isRegisterChef(), 
+  validator.isRegisterChef(),
   authController.registerChef
 );
+
+router.post("/verifyToken", authController.verifyToken);
 
 router.get("/getUsers", authController.getUsers);
 

@@ -15,6 +15,7 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./chef-register.component.css'],
 })
 export class ChefRegisterComponent implements OnInit {
+  hidePassword = true;
   errorMessage!: string;
 
   form = new FormGroup({

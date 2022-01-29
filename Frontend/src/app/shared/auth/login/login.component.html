@@ -4,11 +4,16 @@
     <input type="email" class="form-control shadow-none" id="email" placeholder="Enter email" name="email"
       formControlName="email" />
   </div>
+
   <div class="mb-3">
     <label for="pwd" class="form-label">Password:</label>
-    <input type="password" class="form-control shadow-none" id="pwd" placeholder="Enter password" name="pswd"
-      formControlName="password" />
+    <div class="input-group">
+      <input [type]="hidePassword ? 'password' : 'text'" class="form-control shadow-none" id="pwd" placeholder="Enter password" name="pswd"
+        formControlName="password" />
+      <span class="input-group-text bg-white" id="basic-addon2" role="button" (click)="hidePassword = !hidePassword"><i [ngClass]="hidePassword ? 'fa fa-eye' : 'fa fa-eye-slash'"></i></span>
+    </div>
   </div>
+
   <div class="mb-3">
     <label for="type" class="form-label">Type:</label>
     <select class="form-select shadow-none" id="type" name="type" formControlName="type">

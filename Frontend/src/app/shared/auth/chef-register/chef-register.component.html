@@ -24,14 +24,21 @@
         <input type="email" class="form-control shadow-none" id="email" placeholder="Email" name="email"
             formControlName="email" />
     </div>
+
     <div class="mb-3">
-        <label for="password" class="form-label">Password:</label>
-        <input type="password" class="form-control shadow-none" id="password" placeholder="Password" name="password"
-            formControlName="password" />
+        <label for="pwd" class="form-label">Password:</label>
+        <div class="input-group">
+            <input [type]="hidePassword ? 'password' : 'text'" class="form-control shadow-none" id="pwd"
+                placeholder="Enter password" name="pswd" formControlName="password" />
+            <span class="input-group-text bg-white" id="basic-addon2" role="button"
+                (click)="hidePassword = !hidePassword"><i
+                    [ngClass]="hidePassword ? 'fa fa-eye' : 'fa fa-eye-slash'"></i></span>
+        </div>
         <div class="text-danger" *ngIf="form.controls['password'].dirty">
             {{ form.controls['password'].errors ? form.controls['password'].errors['message'] : '' }}
         </div>
     </div>
+
     <div class="mb-3">
         <label for="panNumber" class="form-label">PAN Number:</label>
         <input type="text" class="form-control shadow-none text-uppercase" id="panNumber" placeholder="PAN Number"
@@ -41,7 +48,7 @@
     <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
         {{errorMessage}}
     </div>
-    
+
     <div class="d-flex justify-content-center">
         <button type="submit" class=" text-white bg-purple w-100 mb-2 mt-2 btn px-5" [disabled]="form.invalid">
             Register

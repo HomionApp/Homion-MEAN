@@ -9,6 +9,7 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  hidePassword = true;
   errorMessage!: string;
 
   form = new FormGroup({
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
         this.errorMessage = res.message;
       } else {
         localStorage.setItem('token', res.data);
+        this.authService.isLoggedIn.emit(loginObj.type);
         const type = loginObj.type === 'USER' ? 'user' : 'chef';
         this.router.navigateByUrl(`/${type}/home`);
       }

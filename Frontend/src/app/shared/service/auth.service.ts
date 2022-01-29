@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Response } from 'src/app/models/response/response.model';
 import { User } from 'src/app/models/request/user.model';
@@ -11,6 +11,8 @@ const host = 'http://localhost:9999/auth';
   providedIn: 'root',
 })
 export class AuthService {
+  @Output() isLoggedIn = new EventEmitter<string>();
+
   constructor(private http: HttpClient) {}
 
   public registerUser(user: User): Observable<Response> {
@@ -32,5 +34,10 @@ export class AuthService {
   public resetPassword(obj: any): Observable<Response> {
     const options = { headers: { Authorization: `Bearer ${obj.token}` } };
     return this.http.post<Response>(`${host}/resetPassword`, obj, options);
+  }
+
+  public verifyToken(token: string): Observable<Response> {
+    const options = { headers: { Authorization: `Bearer ${token}` } };
+    return this.http.post<Response>(`${host}/verifyToken`, {}, options);
   }
 }
