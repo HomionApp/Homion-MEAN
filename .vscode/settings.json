@@ -7,6 +7,7 @@
     "Frontend\\karma.conf.js": true,
     "Frontend\\.editorconfig": true,
     "Frontend\\.browserslistrc": true,
+    "Frontend\\dist": true,
     "Frontend\\src\\test.ts": true,
     "Frontend\\src\\polyfills.ts": true,
     "Frontend\\src\\main.ts": true,
