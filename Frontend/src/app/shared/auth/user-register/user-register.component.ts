@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormControl,
   FormGroup,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/request/user.model';
@@ -31,7 +30,7 @@ export class UserRegisterComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      this.passwordValidator,
+      this.authService.passwordValidator,
     ]),
   });
 
@@ -59,26 +58,5 @@ export class UserRegisterComponent implements OnInit {
         this.errorMessage = res.message;
       }
     });
-  }
-
-  passwordValidator(control: AbstractControl): any {
-    const password = control.value;
-    if (password.length < 8) {
-      return { message: 'Your password must contain at least 8 characters.' };
-    }
-    if (password.search(/[A-Z]/) < 0) {
-      return {
-        message: 'Your password must contain at least one capital letter.',
-      };
-    }
-    if (password.search(/[0-9]/) < 0) {
-      return { message: 'Your password must contain at least one digit.' };
-    }
-    if (password.search(/[!@#$%^&*]/) < 0) {
-      return {
-        message: 'Your password must contain at least one special character.',
-      };
-    }
-    return null;
   }
 }

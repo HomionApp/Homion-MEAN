@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  AbstractControl,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 
@@ -21,7 +16,7 @@ export class ResetPasswordComponent implements OnInit {
   form = new FormGroup({
     password: new FormControl('', [
       Validators.required,
-      this.passwordValidator,
+      this.authService.passwordValidator,
     ]),
     confirmPassword: new FormControl('', [Validators.required]),
   });
@@ -34,7 +29,7 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.route.snapshot.params['jwtToken'];
-    window.history.replaceState({}, '', 'reset-password')
+    window.history.replaceState({}, '', 'reset-password');
   }
 
   resetPassword() {
@@ -54,26 +49,5 @@ export class ResetPasswordComponent implements OnInit {
           }
         });
     }
-  }
-
-  passwordValidator(control: AbstractControl): any {
-    const password = control.value;
-    if (password.length < 8) {
-      return { message: 'Your password must contain at least 8 characters.' };
-    }
-    if (password.search(/[A-Z]/) < 0) {
-      return {
-        message: 'Your password must contain at least one capital letter.',
-      };
-    }
-    if (password.search(/[0-9]/) < 0) {
-      return { message: 'Your password must contain at least one digit.' };
-    }
-    if (password.search(/[!@#$%^&*]/) < 0) {
-      return {
-        message: 'Your password must contain at least one special character.',
-      };
-    }
-    return null;
   }
 }
