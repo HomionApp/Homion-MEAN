@@ -13,6 +13,10 @@ app.use(cors());
 
 app.use("/auth", authRoute);
 
+app.use((error, req, res, next) => {
+  res.status(500).json("Internal Server Error");
+});
+
 mongoose
   .connect("mongodb+srv://root:root@cluster0.av2a6.mongodb.net/homion")
   .then((result) => {

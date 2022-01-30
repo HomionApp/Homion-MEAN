@@ -6,7 +6,8 @@ import { Chef } from 'src/app/models/request/chef.model';
 import { User } from 'src/app/models/request/user.model';
 import { Response } from 'src/app/models/response/response.model';
 
-const host = 'http://localhost:9999/auth';
+const host =
+  window.location.protocol + '//' + window.location.hostname + '/auth';
 
 @Injectable({
   providedIn: 'root',

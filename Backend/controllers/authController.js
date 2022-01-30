@@ -6,7 +6,7 @@ const Response = require("../models/Response");
 const mail = require("../utils/mail");
 const jwt = require("../utils/jwt");
 
-exports.registerUser = async (req, res) => {
+exports.registerUser = async (req, res, next) => {
   try {
     let user = req.body.user;
     user.password = await bcrypt.hash(user.password, 12);
@@ -26,11 +26,12 @@ exports.registerUser = async (req, res) => {
     if (err.name === "MongoServerError") {
       res.json(new Response(401, "Email already exists"));
     }
-    console.log(err); //implement error handling middleware***************************************************
+    console.log(err);
+    return next(err);
   }
 };
 
-exports.registerChef = async (req, res) => {
+exports.registerChef = async (req, res, next) => {
   try {
     let chef = req.body.chef;
     chef.password = await bcrypt.hash(chef.password, 12);
@@ -51,10 +52,11 @@ exports.registerChef = async (req, res) => {
       res.json(new Response(401, "Email already exists"));
     }
     console.log(err);
+    return next(err);
   }
 };
 
-exports.verifyEmail = async (req, res) => {
+exports.verifyEmail = async (req, res, next) => {
   const jwtToken = req.params.jwtToken;
   let email;
   try {
@@ -75,10 +77,11 @@ exports.verifyEmail = async (req, res) => {
       return res.send(mail.verificationHtmlPage(false, email));
     }
     console.log(err);
+    return next(err);
   }
 };
 
-exports.resend = async (req, res) => {
+exports.resend = async (req, res, next) => {
   try {
     const email = req.params.email;
     const jwtToken = jwt.generate({ email: email }, "2h");
@@ -91,10 +94,11 @@ exports.resend = async (req, res) => {
     res.send("<h1>Verification link sent successfully</h1>");
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
@@ -135,10 +139,11 @@ exports.login = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
-exports.forgotPassword = async (req, res) => {
+exports.forgotPassword = async (req, res, next) => {
   try {
     const email = req.body.email;
     const type = req.body.type;
@@ -165,10 +170,11 @@ exports.forgotPassword = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
-exports.resetPassword = async (req, res) => {
+exports.resetPassword = async (req, res, next) => {
   try {
     let password = req.body.password;
     const authHeaders = req.get("Authorization").split(" ");
@@ -191,10 +197,11 @@ exports.resetPassword = async (req, res) => {
       return res.json(new Response(500, "Token expired"));
     }
     console.log(err);
+    return next(err);
   }
 };
 
-exports.verifyToken = async (req, res) => {
+exports.verifyToken = async (req, res, next) => {
   try {
     const authHeaders = req.get("Authorization").split(" ");
     if (authHeaders[1]) {
@@ -207,43 +214,48 @@ exports.verifyToken = async (req, res) => {
       return res.json(new Response(500, "Token expired"));
     }
     console.log(err);
+    return next(err);
   }
 };
 
 /*************************************************************************************************************/
 
-exports.getUsers = async (req, res) => {
+exports.getUsers = async (req, res, next) => {
   try {
     const users = await User.find({});
     res.json(users);
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
-exports.dltUsers = async (req, res) => {
+exports.dltUsers = async (req, res, next) => {
   try {
     await User.deleteMany({});
     res.json("Deleted!!!");
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
-exports.getChefs = async (req, res) => {
+exports.getChefs = async (req, res, next) => {
   try {
     const chefs = await Chef.find({});
     res.json(chefs);
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
-exports.dltChefs = async (req, res) => {
+exports.dltChefs = async (req, res, next) => {
   try {
     await Chef.deleteMany({});
     res.json("Deleted!!!");
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
