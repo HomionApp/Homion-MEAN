@@ -34,6 +34,7 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.route.snapshot.params['jwtToken'];
+    window.history.replaceState({}, '', 'reset-password')
   }
 
   resetPassword() {

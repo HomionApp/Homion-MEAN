@@ -1,14 +1,16 @@
 const express = require("express");
-const authController = require("../controllers/authController");
 const { body, param } = require("express-validator");
 
 const validator = require("../utils/validation");
+const validationErr = require('../middleware/validationErr');
+const authController = require("../controllers/authController");
 
 const router = express.Router();
 
 router.post(
   "/registerUser",
   validator.isRegisterUser(),
+  validationErr,
   authController.registerUser
 );
 
@@ -17,18 +19,21 @@ router.get("/verify/:jwtToken", authController.verifyEmail);
 router.get(
   "/resend/:email",
   param("email").isEmail().withMessage("Invalid email"),
+  validationErr,
   authController.resend
 );
 
 router.post(
   "/login",
   body("email").isEmail().withMessage("Invalid email"),
+  validationErr,
   authController.login
 );
 
 router.post(
   "/forgotPassword",
   body("email").isEmail().withMessage("Invalid email"),
+  validationErr,
   authController.forgotPassword
 );
 
@@ -38,12 +43,14 @@ router.post(
     validator.isPassword(value);
     return true;
   }),
+  validationErr,
   authController.resetPassword
 );
 
 router.post(
   "/registerChef",
   validator.isRegisterChef(),
+  validationErr,
   authController.registerChef
 );
 

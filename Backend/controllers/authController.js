@@ -1,56 +1,24 @@
+const bcrypt = require("bcryptjs");
+
 const User = require("../models/User");
 const Chef = require("../models/Chef");
 const Response = require("../models/Response");
-const bcrypt = require("bcryptjs");
 const mail = require("../utils/mail");
 const jwt = require("../utils/jwt");
-const { validationResult } = require("express-validator");
 
 exports.registerUser = async (req, res) => {
   try {
-    const validationErr = validationResult(req);
-    if (!validationErr.isEmpty())
-      return res.json(new Response(401, validationErr.array()));
-
     let user = req.body.user;
     user.password = await bcrypt.hash(user.password, 12);
     user = await new User(user).save();
     const jwtToken = jwt.generate(
       { id: user._id, email: user.email, type: "USER" },
-      "1d"
+      "3d"
     );
     mail.setMailOptions(
       user.email,
       "Verification mail",
-      `
-      <html>
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-      </head>
-      
-      <body style="text-align: center; margin-top: 20px; font-family: Arial, Helvetica, sans-serif;">
-        <h1 class="purple fw-bold" style="background-color: #e0d7d7; color: #5e2572;padding: 10px 0px; margin-bottom: 20px;">
-          Homion</h1>
-        <h2>Welcome!</h2>
-      
-        <p style="font-size: 16px; margin-top: 20px;">Hello @ ${user.firstName} ${user.lastName}</p>
-        <p style="font-size: 16px; color: gray;">You have successfully created a Homion account.</p>
-        <p style="font-size: 16px;">Just click below to verify your account.</p>
-      
-        <a href='http://localhost:9999/auth/verify/${jwtToken}'>
-          <button
-            style="background-color: #5e2572; border-radius: 5px; border-width: 0; color: white; font-size: 22px; padding: 5px 20px; cursor: pointer;">
-            Verify Email
-          </button>
-        </a>
-      
-        <p style="font-size: 16px; color: gray; margin-bottom: 7px; margin-top: 25px;">Thanks!!</p>
-        <p style="font-size: 16px; color: gray; margin: 0;">The Homion Team</p>
-      
-      </body>
-      </html>
-      `
+      mail.registerMail(user.firstName, user.lastName, jwtToken)
     );
     mail.sendMail();
     res.json(new Response(201, "User Created"));
@@ -69,12 +37,12 @@ exports.registerChef = async (req, res) => {
     chef = await new Chef(chef).save();
     const jwtToken = jwt.generate(
       { id: chef._id, email: chef.email, type: "CHEF" },
-      "1d"
+      "3d"
     );
     mail.setMailOptions(
       chef.email,
       "Verification mail",
-      `<a href="http://localhost:9999/auth/verify/${jwtToken}">Verify</a>`
+      mail.registerMail(chef.firstName, chef.lastName, jwtToken)
     );
     mail.sendMail();
     res.json(new Response(201, "Chef Created"));
@@ -95,59 +63,39 @@ exports.verifyEmail = async (req, res) => {
     if (email) {
       const type = decodedToken.type;
       if (type === "USER") {
-        await User.updateOne(
-          { email: email },
-          {
-            status: "ACTIVE",
-          }
-        );
+        await User.updateOne({ email: email }, { status: "ACTIVE" });
       } else {
-        await Chef.updateOne(
-          { email: email },
-          {
-            status: "ACTIVE",
-          }
-        );
+        await Chef.updateOne({ email: email }, { status: "ACTIVE" });
       }
-      res.status(200).send(`
-      <h1>Verification Successfull!!!!</h1>
-      <a href="http://localhost:4200/"><button>Login</button></a>
-      `);
+      return res.send(mail.verificationHtmlPage(true));
     }
   } catch (err) {
     if (err.name === "TokenExpiredError") {
       email = jwt.verify(jwtToken, true).email;
-      return res.send(`
-      <h1>Link Expired!!</h1>
-      <a href='http://localhost:9999/auth/resend/${email}'><button>Send Again</button></a>
-      `);
+      return res.send(mail.verificationHtmlPage(false, email));
     }
     console.log(err);
   }
 };
 
 exports.resend = async (req, res) => {
-  const validationErr = validationResult(req);
-  if (!validationErr.isEmpty())
-    return res.send(new Response(401, validationErr.array()));
-
-  const email = req.params.email;
-  const jwtToken = jwt.generate({ email: email }, "2h");
-  mail.setMailOptions(
-    email,
-    "Verification mail",
-    `<a href='http://localhost:9999/auth/verify/${jwtToken}'>Verify</a>`
-  );
-  mail.sendMail();
-  res.send("<h1>Verification link sent successfully</h1>");
+  try {
+    const email = req.params.email;
+    const jwtToken = jwt.generate({ email: email }, "2h");
+    mail.setMailOptions(
+      email,
+      "Verification mail",
+      `<a href='http://localhost:9999/auth/verify/${jwtToken}'>Verify</a>`
+    );
+    mail.sendMail();
+    res.send("<h1>Verification link sent successfully</h1>");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 exports.login = async (req, res) => {
   try {
-    const validationErr = validationResult(req);
-    if (!validationErr.isEmpty())
-      return res.send(new Response(401, validationErr.array()));
-
     const email = req.body.email;
     const password = req.body.password;
     const type = req.body.type;
@@ -192,10 +140,6 @@ exports.login = async (req, res) => {
 
 exports.forgotPassword = async (req, res) => {
   try {
-    const validationErr = validationResult(req);
-    if (!validationErr.isEmpty())
-      return res.send(new Response(401, validationErr.array()));
-
     const email = req.body.email;
     const type = req.body.type;
     let obj;
@@ -210,33 +154,7 @@ exports.forgotPassword = async (req, res) => {
       mail.setMailOptions(
         email,
         "Reset password",
-        `
-          <html>
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-          </head>
-          
-          <body style="text-align: center; margin-top: 20px; font-family: Arial, Helvetica, sans-serif;">
-            <h1 class="purple fw-bold" style="background-color: #e0d7d7; color: #5e2572;padding: 10px 0px; margin-bottom: 20px;">
-              Homion</h1>
-          
-            <p style="font-size: 16px; margin-top: 20px;">Hello @ ${obj.firstName} ${obj.lastName}</p>
-            <p style="font-size: 16px;">Just click below to reset your password.</p>
-          
-            <a href='http://localhost:4200/reset-password/${jwtToken}'>
-              <button
-                style="background-color: #5e2572; border-radius: 5px; border-width: 0; color: white; font-size: 22px; padding: 5px 20px; cursor: pointer;">
-                Reset Password
-              </button>
-            </a>
-          
-            <p style="font-size: 16px; color: gray; margin-bottom: 7px; margin-top: 25px;">Thanks!!</p>
-            <p style="font-size: 16px; color: gray; margin: 0;">The Homion Team</p>
-          
-          </body>
-          </html>
-        `
+        mail.resetPasswordMail(obj.firstName, obj.lastName, jwtToken)
       );
       mail.sendMail();
       res.json(
@@ -252,10 +170,6 @@ exports.forgotPassword = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
   try {
-    const validationErr = validationResult(req);
-    if (!validationErr.isEmpty())
-      return res.send(new Response(401, validationErr.array()));
-
     let password = req.body.password;
     const authHeaders = req.get("Authorization").split(" ");
     if (authHeaders[1]) {
@@ -295,6 +209,8 @@ exports.verifyToken = async (req, res) => {
     console.log(err);
   }
 };
+
+/*************************************************************************************************************/
 
 exports.getUsers = async (req, res) => {
   try {
