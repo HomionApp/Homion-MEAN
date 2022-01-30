@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 import { Chef } from 'src/app/models/request/chef.model';
 import { User } from 'src/app/models/request/user.model';
 import { Response } from 'src/app/models/response/response.model';
+import { environment } from 'src/environments/environment';
 
-const host =
-  window.location.protocol + '//' + window.location.hostname + '/auth';
+const host = environment.url + 'auth';
 
 @Injectable({
   providedIn: 'root',
