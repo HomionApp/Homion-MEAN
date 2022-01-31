@@ -45,7 +45,7 @@ exports.registerMail = (firstName, lastName, jwtToken) => {
       <p style="font-size: 16px; color: gray;">You have successfully created a Homion account.</p>
       <p style="font-size: 16px;">Just click below to verify your account.</p>
     
-      <a href='http://localhost:9999/auth/verify/${jwtToken}'>
+      <a href='https://homionn.herokuapp.com/auth/verify/${jwtToken}'>
         <button
           style="background-color: #5e2572; border-radius: 5px; border-width: 0; color: white; font-size: 22px; padding: 5px 20px; cursor: pointer;">
           Verify Email
@@ -76,7 +76,7 @@ exports.resetPasswordMail = (firstName, lastName, jwtToken) => {
       <p style="font-size: 16px; margin-top: 20px;">Hello @ ${firstName} ${lastName}</p>
       <p style="font-size: 16px;">Just click below to reset your password.</p>
     
-      <a href='http://localhost:4200/reset-password/${jwtToken}'>
+      <a href='https://homion.netlify.app/reset-password/${jwtToken}'>
         <button
           style="background-color: #5e2572; border-radius: 5px; border-width: 0; color: white; font-size: 22px; padding: 5px 20px; cursor: pointer;">
           Reset Password
@@ -95,7 +95,7 @@ exports.resetPasswordMail = (firstName, lastName, jwtToken) => {
 exports.verificationHtmlPage = (flag, email = "") => {
   const verified = `
     <h2>Verification Successfull !!</h2>
-    <a href='http://localhost:4200/'>
+    <a href='https://homion.netlify.app/'>
       <button
         style="background-color: #5e2572; border-radius: 5px; border-width: 0; color: white; font-size: 22px; padding: 5px 20px; cursor: pointer;">
         Login
@@ -104,7 +104,7 @@ exports.verificationHtmlPage = (flag, email = "") => {
 
   const exipred = `
     <h2>Link Expired !!</h2>
-    <a href='http://localhost:9999/auth/resend/${email}'>
+    <a href='https://homionn.herokuapp.com/auth/resend/${email}'>
       <button
         style="background-color: #5e2572; border-radius: 5px; border-width: 0; color: white; font-size: 22px; padding: 5px 20px; cursor: pointer;">
         Send Again
