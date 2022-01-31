@@ -5,7 +5,3 @@
 .card:hover {
   transform: scale(1.07);
 }
-
-.chef-img {
-  max-height: 220px !important;
-}

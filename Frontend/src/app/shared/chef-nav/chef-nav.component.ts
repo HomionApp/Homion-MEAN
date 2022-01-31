@@ -15,6 +15,6 @@ export class ChefNavComponent implements OnInit {
 
   openNav() {
     document.getElementById('mySidenav')!.style.width = '200px';
-    document.getElementById("main")!.style.marginLeft = "200px";
+    // document.getElementById("main")!.style.marginLeft = "200px";
   }
 }
