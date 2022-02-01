@@ -58,7 +58,7 @@ Content-Type: application/json
         "mobile": "9723445038",
         "email": "homionapp@gmail.com",
         "password": "Homion@123",
-        "panNumber": "DLH4433R"
+        "panNumber": "DLHEF4433R"
     }
 }
 
@@ -74,3 +74,5 @@ GET {{hostname}}/getChefs
 
 DELETE  {{hostname}}/dltChefs
 ###
+
+GET {{hostname}}/pincode

@@ -15,8 +15,12 @@ import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [ChefAuthGuard],
+    canActivateChild: [ChefAuthGuard],
     children: [
+      {
+        path: '',
+        redirectTo: 'home',
+      },
       {
         path: 'home',
         component: HomeComponent,

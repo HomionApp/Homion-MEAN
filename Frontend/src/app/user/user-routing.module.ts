@@ -12,8 +12,12 @@ import { SearchComponent } from './search/search.component';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [UserAuthGuard],
+    canActivateChild: [UserAuthGuard],
     children: [
+      {
+        path: '',
+        redirectTo: 'home',
+      },
       {
         path: 'home',
         component: HomeComponent,
