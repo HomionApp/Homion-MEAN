@@ -55,36 +55,36 @@ router.post(
   authController.registerChef
 );
 
-router.get("/pincode", (request, response) => {
-  
+router.get("/location", (req, res) => {
+  my_lat = 23.035762375950828;
+  my_long = 72.45184701469832;
 
-  const options = {
-    method: "POST",
-    hostname: "india-pincode-with-latitude-and-longitude.p.rapidapi.com",
-    port: null,
-    path: "/api/v1/pincode/380058/nearby",
-    headers: {
-      "x-rapidapi-host":
-        "india-pincode-with-latitude-and-longitude.p.rapidapi.com",
-      "x-rapidapi-key": "42546e16demshf8e591b405eb7f7p125422jsn8681aeee1968",
-      useQueryString: true,
-    },
-  };
+  meters = 1500;
+  coef = meters * 0.0000089;
 
-  const req = http.request(options, function (res) {
-    const chunks = [];
+  x1 = my_lat + coef;
+  y1 = my_long + coef / Math.cos(my_lat * 0.018);
 
-    res.on("data", function (chunk) {
-      chunks.push(chunk);
-    });
+  x2 = my_lat - coef;
+  y2 = my_long + coef / Math.cos(my_lat * 0.018);
 
-    res.on("end", function () {
-      const body = Buffer.concat(chunks);
-      console.log(body.toString());
-    });
-  });
+  x3 = my_lat + coef;
+  y3 = my_long - coef / Math.cos(my_lat * 0.018);
 
-  req.end();
+  x4 = my_lat - coef;
+  y4 = my_long - coef / Math.cos(my_lat * 0.018);
+
+  min_x = Math.min(x1, x2, x3, x4);
+  max_x = Math.max(x1, x2, x3, x4);
+  min_y = Math.min(y1, y2, y3, y4);
+  max_y = Math.max(y1, y2, y3, y4);
+
+  console.log(
+    min_lat < new_lat &&
+      new_lat < max_lat &&
+      min_long < new_long &&
+      new_long < max_long
+  );
 });
 
 router.post("/verifyToken", authController.verifyToken);

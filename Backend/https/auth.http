@@ -75,4 +75,4 @@ GET {{hostname}}/getChefs
 DELETE  {{hostname}}/dltChefs
 ###
 
-GET {{hostname}}/pincode
+GET {{hostname}}/location
