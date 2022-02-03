@@ -137,6 +137,34 @@ body {
   margin-top: 4rem !important;
 }
 
+.mb-6 {
+  margin-bottom: 3rem !important;
+}
+
+.mb-7 {
+  margin-bottom: 3.25rem !important;
+}
+
+.mb-8 {
+  margin-bottom: 3.5rem !important;
+}
+
+.mb-9 {
+  margin-bottom: 3.75rem !important;
+}
+
+.mb-10 {
+  margin-bottom: 4rem !important;
+}
+
+.mb-16 {
+  margin-bottom: 5.5rem !important;
+}
+
+.mb-18 {
+  margin-bottom: 6rem !important;
+}
+
 .ng-touched{
   border-color: #dc3545;
 }
