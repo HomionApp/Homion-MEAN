@@ -31,7 +31,7 @@
         </div>
         <div class="col-12 col-sm-12 col-md-8 col-lg-7 px-2">
             <div class="row px-0" *ngIf="orderStatus === 'COMPLETED'">
-                <div class="col-12 col-sm-12 col-md-12 mb-3" *ngFor="let order of [1, 2, 3, 4, 5, 6, 7, 8]">
+                <div class="col-12 col-sm-12 col-md-12 mb-3" *ngFor="let order of [1, 2, 3]">
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
@@ -77,7 +77,7 @@
             </div>
 
             <div class="row px-0" *ngIf="orderStatus === 'INPROGRESS'">
-                <div class="col-12 col-sm-12 col-md-12 mb-3" *ngFor="let order of [1, 2, 3, 4, 5, 6, 7, 8]">
+                <div class="col-12 col-sm-12 col-md-12 mb-3" *ngFor="let order of [1, 2, 3]">
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
@@ -123,7 +123,7 @@
             </div>
 
             <div class="row px-0" *ngIf="orderStatus === 'CANCELLED'">
-                <div class="col-12 col-sm-12 col-md-12 mb-3" *ngFor="let order of [1, 2, 3, 4, 5, 6, 7, 8]">
+                <div class="col-12 col-sm-12 col-md-12 mb-3" *ngFor="let order of [1, 2, 3]">
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
