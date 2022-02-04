@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
-  active = 1
+  history = "TODAY"
   constructor() { }
 
   ngOnInit(): void {

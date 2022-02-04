@@ -1,4 +1,4 @@
-<div class="container mt-3 mx-auto">
+<div class="container mt-3">
     <div class="row mt-3">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <h2 class="mt-3 ms-4 fw-bold">Harshil Dangi</h2>
@@ -7,164 +7,298 @@
     </div>
 
     <div class="row mt-0">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="own-border-3 bg-purple m-4"></div>
+        <div class="col-xs-12 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="own-border-3 bg-purple my-4 w-100"></div>
         </div>
     </div>
 
+
     <div class="row">
-        <div class="col-md-10 mx-auto">
-            <ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false" class="nav-tabs mx-auto" >
-                <li [ngbNavItem]="1" [destroyOnHide]="true">
-                    <a ngbNavLink class="fw-bold h5"><i class="fa fa-calendar-o"></i> &nbsp;Today</a>
-                    <ng-template ngbNavContent >
-                        <div class="card shadow mb-3 mx-auto" *ngFor="let item of [1,2,3]">
-                            <div class="row pt-0">
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2">
+        <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-3 px-2 mb-3">
+            <div class="row bg-grey order-status">
+                <div class="col-12">
+                    <div class="list-group border-white shadow bg-white p-2">
+                        <button type="button" class="rounded border-0 list-group-item list-group-item-action py-3"
+                            [ngClass]="history === 'TODAY' ? 'bg-purple text-white' : ''" (click)="history = 'TODAY'">
+                            <span class="float-start ms-1 mt-1"><i class="fa fa-check-circle-o"
+                                    [ngClass]="history === 'TODAY' ? '' : 'text-success'"></i>
+                                &nbsp;Today</span>
+                        </button>
+                        <button type="button" class="rounded border-0 list-group-item list-group-item-action py-3"
+                            [ngClass]="history === 'THISWEEK' ? 'bg-purple text-white' : ''"
+                            (click)="history = 'THISWEEK'">
+                            <span class="float-start ms-1 mt-1"><i class="fa fa-clock-o"
+                                    [ngClass]="history === 'THISWEEK' ? '' : 'text-warning'">&nbsp;</i> &nbsp;This
+                                Week</span>
+                        </button>
+                        <button type="button" class="rounded border-0  list-group-item list-group-item-action py-3"
+                            [ngClass]="history === 'THISMONTH' ? 'bg-purple text-white' : ''"
+                            (click)="history = 'THISMONTH'">
+                            <span class="float-start ms-1 mt-1"><i class="fa fa-times-circle"
+                                    [ngClass]="history === 'THISMONTH' ? '' : 'text-danger'">&nbsp;</i>
+                                &nbsp;This Month</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-7">
+            <div class="row" *ngIf="history === 'TODAY'">
+                <div class="col-12 px-2 mb-3" *ngFor="let item of [1,2]">
+                    <div class="card shadow">
+                        <div class="card-body py-1">
+                            <div class="row">
+                                <div class="col-3 col-sm-3 col-md-3 col-lg-3">
                                     <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
-                                        class="img-fluid rounded mt-3 ms-2" height="82%" width="100%"
-                                        alt="Prduct Image">
+                                        class="img-fluid rounded mt-2" alt="Prduct Image">
                                 </div>
-                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 mt-0 p-0">
-                                    <div class="card-body">
-                                        <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
-                                        <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
-                                        </p>
-                                        <a class="card-text purple h5 mt-1 text-decoration-none" type="button">View
-                                            Details</a>
-                                    </div>
+                                <div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-0">
+                                    <span class="card-title fw-bold mb-1 fs-20">Dixit Dodiya</span>
+                                    <p class="card-text text-muted fw-bold mt-2 h6 text-wrap">#1641439040550
+                                    </p>
+                                    <a class="card-text purple h5 mt-0 text-decoration-none fs-14" type="button">View
+                                        Details</a>
                                 </div>
                                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
                                     <span
-                                        class="badge bg-success position-absolute top-0 end-0 mt-3 me-2">Delivered</span>
-                                    <span class="position-absolute top-0 end-0 mt-5 me-2 fs-6"><i
-                                            class="fa fa-clock-o"></i>&nbsp;6/0/2022</span>
+                                        class="badge bg-success position-absolute top-0 end-0 mt-3 me-3 d-none d-sm-block">Delivered</span>
+                                    <span
+                                        class="text-success d-sm-none d-block mt-3 me-3 position-absolute top-0 end-0 float-end fs-14"><i
+                                            class="fa fa-check fs-20"></i></span>
+                                    <span class="position-absolute end-0 bottom-85 mb-5 me-3 fs-14"><i
+                                            class="fa fa-clock-o text-wrap"></i>&nbsp;6/01/2022</span>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
-                                        <div *ngFor="let item of [1,2,3,4]">
-                                            <span class="fw-bold">
-                                                ABC x 3
-                                            </span><br>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
-                                        <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
-                                            <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
-                                        </span>
-                                        <div class="mt-2">
-                                            <button class="btn bg-purple text-white" routerLink="/chef/invoice">Invoice</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                    </ng-template>
-                </li>
-                <li [ngbNavItem]="2">
-                    <a ngbNavLink class="fw-bold h5"><i class="fa fa-calendar-check-o"></i>&nbsp;This Week</a>
-                    <ng-template ngbNavContent>
-                        <div class="card shadow mb-3" *ngFor="let item of [1,2]">
-                            <div class="row pt-0">
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2">
-                                    <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
-                                        class="img-fluid rounded mt-3 ms-2" height="82%" width="100%"
-                                        alt="Prduct Image">
-                                </div>
-                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 mt-0 p-0">
-                                    <div class="card-body">
-                                        <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
-                                        <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
-                                        </p>
-                                        <a class="card-text purple h5 mt-1 text-decoration-none" type="button">View
-                                            Details</a>
-                                    </div>
-                                </div>
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
-                                    <span class="badge bg-info position-absolute top-0 end-0 mt-3 me-2">New Order</span>
-                                    <span class="position-absolute top-0 end-0 mt-5 me-2 fs-6"><i
-                                            class="fa fa-clock-o"></i>&nbsp;6/0/2022</span>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
-                                        <div *ngFor="let item of [1,2]">
-                                            <span class="fw-bold">
-                                                ABC x 3
-                                            </span><br>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
-                                        <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
-                                            <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                        <div class="card-footer mb-1">
+                            <div class="row">
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
+                                    <div *ngFor="let item of [1]">
+                                        <span class="fw-bold">
+                                            ABC x 3 <br>
+                                            ABC x 3 <br>
+                                            ABC x 3 <br>
+                                            ABC x 3
                                         </span>
-                                        <!-- <div class="mt-2">
+                                    </div>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
+                                    <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
+                                        <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                                    </span>
+                                    <div class="mt-2">
                                         <button class="btn bg-purple text-white">Invoice</button>
-                                    </div> -->
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </ng-template>
-                </li>
-                <li [ngbNavItem]="3">
-                    <a ngbNavLink class="fw-bold h5"><i class="fa fa-calendar"></i>&nbsp;This Month</a>
-                    <ng-template ngbNavContent let-active>
-                        <div class="card shadow mb-3" *ngFor="let item of [1,2,3]">
-                            <div class="row pt-0">
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" *ngIf="history === 'THISWEEK'">
+                <div class="col-12 px-2 mb-3" *ngFor="let item of [1,2]">
+                    <div class="card shadow">
+                        <div class="card-body py-1">
+                            <div class="row">
+                                <div class="col-3 col-sm-3 col-md-3 col-lg-3">
                                     <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
-                                        class="img-fluid rounded mt-3 ms-2" height="82%" width="100%"
-                                        alt="Prduct Image">
+                                        class="img-fluid rounded mt-2" alt="Prduct Image">
                                 </div>
-                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 mt-0 p-0">
-                                    <div class="card-body">
-                                        <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
-                                        <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
-                                        </p>
-                                        <a class="card-text purple h5 mt-1 text-decoration-none" type="button">View
-                                            Details</a>
-                                    </div>
+                                <div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-0">
+                                    <span class="card-title fw-bold mb-1 fs-20">Dixit Dodiya</span>
+                                    <p class="card-text text-muted fw-bold mt-2 h6 text-wrap">#1641439040550
+                                    </p>
+                                    <a class="card-text purple h5 mt-0 text-decoration-none fs-14" type="button">View
+                                        Details</a>
                                 </div>
                                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
                                     <span
-                                        class="badge bg-danger position-absolute top-0 end-0 mt-3 me-2">Cancelled</span>
-                                    <span class="position-absolute top-0 end-0 mt-5 me-2 fs-6"><i
-                                            class="fa fa-clock-o"></i>&nbsp;6/0/2022</span>
+                                        class="badge bg-info position-absolute top-0 end-0 mt-3 me-3 d-none d-sm-block">New
+                                        Order</span>
+                                    <!-- <span
+                                        class="text-success d-sm-none d-block mt-3 me-3 position-absolute top-0 end-0 float-end fs-14"><i
+                                            class="fa fa-check fs-20"></i></span> -->
+                                    <span class="position-absolute end-0 bottom-85 mb-5 me-3 fs-14"><i
+                                            class="fa fa-clock-o text-wrap"></i>&nbsp;6/01/2022</span>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
-                                        <div *ngFor="let item of [1,2,3,4]">
-                                            <span class="fw-bold">
-                                                ABC x 3
-                                            </span><br>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
-                                        <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
-                                            <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                        </div>
+                        <div class="card-footer mb-1">
+                            <div class="row">
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
+                                    <div *ngFor="let item of [1]">
+                                        <span class="fw-bold">
+                                            ABC x 3 <br>
+                                            ABC x 3 <br>
+                                            ABC x 3 <br>
+                                            ABC x 3
                                         </span>
-                                        <!-- <div class="mt-2">
+                                    </div>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
+                                    <span class="text-muted me-0 text-nowrap text-end">Total Payment<br>
+                                        <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                                    </span>
+                                    <!-- <div class="mt-2">
                                         <button class="btn bg-purple text-white">Invoice</button>
                                     </div> -->
-                                    </div>
                                 </div>
                             </div>
-
                         </div>
-                    </ng-template>
-                </li>
-            </ul>
+                    </div>
+                </div>
+            </div>
 
-            <div [ngbNavOutlet]="nav" class="mt-2"></div> <!-- Do not remove this div -->
-
+            <div class="row" *ngIf="history === 'THISMONTH'">
+                <div class="col-12 px-2 mb-3" *ngFor="let item of [1,2]">
+                    <div class="card shadow">
+                        <div class="card-body py-1">
+                            <div class="row">
+                                <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                    <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
+                                        class="img-fluid rounded mt-2" alt="Prduct Image">
+                                </div>
+                                <div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-0">
+                                    <span class="card-title fw-bold mb-1 fs-20">Dixit Dodiya</span>
+                                    <p class="card-text text-muted fw-bold mt-2 h6 text-wrap">#1641439040550
+                                    </p>
+                                    <a class="card-text purple h5 mt-0 text-decoration-none fs-14" type="button">View
+                                        Details</a>
+                                </div>
+                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
+                                    <span
+                                        class="badge bg-danger position-absolute top-0 end-0 mt-3 me-3 d-none d-sm-block">Cancelled</span>
+                                    <span
+                                        class="text-danger d-sm-none d-block mt-3 me-3 position-absolute top-0 end-0 float-end fs-14"><i
+                                            class="fa fa-times-circle fs-20"></i></span>
+                                    <span class="position-absolute end-0 bottom-85 mb-5 me-3 fs-14"><i
+                                            class="fa fa-clock-o text-wrap"></i>&nbsp;6/01/2022</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer mb-1">
+                            <div class="row">
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
+                                    <div *ngFor="let item of [1]">
+                                        <span class="fw-bold">
+                                            ABC x 3 <br>
+                                            ABC x 3 <br>
+                                            ABC x 3 <br>
+                                            ABC x 3
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
+                                    <span class="text-muted me-0 text-nowrap text-end">Total Payment<br>
+                                        <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                                    </span>
+                                    <!-- <div class="mt-2">
+                                        <button class="btn bg-purple text-white">Invoice</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+
+<!-- <div class="card shadow mb-3" *ngFor="let item of [1,2]">
+    <div class="row pt-0">
+        <div class="col-4 col-sm-4 col-md-3 col-lg-3">
+            <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
+                class="img-fluid rounded mt-3 ms-2" alt="Prduct Image">
+        </div>
+        <div class="col-8 col-sm-8 col-md-7 col-lg-7 mt-0 p-0">
+            <div class="card-body">
+                <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
+                <p class="card-text text-muted fw-bold mt-4 mb-3 h6">Order Id : #1641439040550
+                </p>
+                <a class="card-text purple h5 mt-1 text-decoration-none" type="button">View
+                    Details</a>
+            </div>
+        </div>
+        <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
+            <span
+                class="badge bg-info position-absolute top-0 end-0 mt-3 me-2 d-none d-sm-block">New
+                Order</span>
+            <span
+                class="badge bg-info position-absolute top-0 end-0 mt-3 me-2 d-sm-none">New</span>
+            <span class="position-absolute top-0 end-0 mt-5 me-2" style="font-size: 14px;"><i
+                    class="fa fa-clock-o"></i>&nbsp;6/01/2022</span>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
+                <div *ngFor="let item of [1,2]">
+                    <span class="fw-bold">
+                        ABC x 3
+                    </span><br>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
+                <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
+                    <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                </span>
+                 <div class="mt-2">
+                    <button class="btn bg-purple text-white">Invoice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> -->
+
+<!-- <div class="card shadow mb-3 mx-auto" *ngFor="let item of [1,2]">
+    <div class="row pt-0">
+        <div class="col-4 col-sm-4 col-md-3 col-lg-3">
+            <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
+                class="img-fluid rounded mt-3 ms-2" alt="Prduct Image">
+        </div>
+        <div class="col-8 col-sm-8 col-md-7 col-lg-7 mt-0 p-0">
+            <div class="card-body">
+                <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
+                <p class="card-text text-muted fw-bold mt-4 mb-3 h6">Order Id : #1641439040550
+                </p>
+                <a class="card-text purple h5 mt-1 text-decoration-none" type="button">View
+                    Details</a>
+            </div>
+        </div>
+        <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
+            <span
+                class="badge bg-danger position-absolute top-0 end-0 mt-3 me-2 d-none d-sm-block">Cancelled</span>
+            <span
+                class="text-danger d-sm-none d-block mt-3 me-2 position-absolute top-0 end-0 float-end fs-14"><i
+                    class="fa fa-times-circle fs-20"></i></span>
+            <span class="position-absolute top-0 end-0 mt-5 me-2" style="font-size: 14px;"><i
+                    class="fa fa-clock-o"></i>&nbsp;6/01/2022</span>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
+                <div *ngFor="let item of [1,2]">
+                    <span class="fw-bold">
+                        ABC x 3
+                    </span><br>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
+                <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
+                    <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                </span>
+                 <div class="mt-2">
+                    <button class="btn bg-purple text-white">Invoice</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+</div> -->
