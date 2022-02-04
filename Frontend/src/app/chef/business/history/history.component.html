@@ -20,22 +20,22 @@
                     <div class="list-group border-white shadow bg-white p-2">
                         <button type="button" class="rounded border-0 list-group-item list-group-item-action py-3"
                             [ngClass]="history === 'TODAY' ? 'bg-purple text-white' : ''" (click)="history = 'TODAY'">
-                            <span class="float-start ms-1 mt-1"><i class="fa fa-check-circle-o"
-                                    [ngClass]="history === 'TODAY' ? '' : 'text-success'"></i>
+                            <span class="float-start ms-1 mt-1"><i class="fa fa-calendar-o"
+                                    [ngClass]="history === 'TODAY' ? '' : 'purple'"></i>
                                 &nbsp;Today</span>
                         </button>
                         <button type="button" class="rounded border-0 list-group-item list-group-item-action py-3"
                             [ngClass]="history === 'THISWEEK' ? 'bg-purple text-white' : ''"
                             (click)="history = 'THISWEEK'">
-                            <span class="float-start ms-1 mt-1"><i class="fa fa-clock-o"
-                                    [ngClass]="history === 'THISWEEK' ? '' : 'text-warning'">&nbsp;</i> &nbsp;This
+                            <span class="float-start ms-1 mt-1"><i class="fa fa-calendar-check-o"
+                                    [ngClass]="history === 'THISWEEK' ? '' : 'purple'">&nbsp;</i> &nbsp;This
                                 Week</span>
                         </button>
                         <button type="button" class="rounded border-0  list-group-item list-group-item-action py-3"
                             [ngClass]="history === 'THISMONTH' ? 'bg-purple text-white' : ''"
                             (click)="history = 'THISMONTH'">
-                            <span class="float-start ms-1 mt-1"><i class="fa fa-times-circle"
-                                    [ngClass]="history === 'THISMONTH' ? '' : 'text-danger'">&nbsp;</i>
+                            <span class="float-start ms-1 mt-1"><i class="fa fa-calendar"
+                                    [ngClass]="history === 'THISMONTH' ? '' : 'purple'">&nbsp;</i>
                                 &nbsp;This Month</span>
                         </button>
                     </div>
@@ -66,7 +66,7 @@
                                     <span
                                         class="text-success d-sm-none d-block mt-3 me-3 position-absolute top-0 end-0 float-end fs-14"><i
                                             class="fa fa-check fs-20"></i></span>
-                                    <span class="position-absolute end-0 bottom-85 mb-5 me-3 fs-14"><i
+                                    <span class="position-absolute end-0 top-73 me-3 fs-14"><i
                                             class="fa fa-clock-o text-wrap"></i>&nbsp;6/01/2022</span>
                                 </div>
                             </div>
@@ -79,15 +79,18 @@
                                             ABC x 3 <br>
                                             ABC x 3 <br>
                                             ABC x 3 <br>
+                                            ABC x 3 <br>
+                                            ABC x 3 <br>
+                                            ABC x 3 <br>
                                             ABC x 3
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
-                                    <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="text-muted text-nowrap text-end float-end">Total Payment<br>
                                         <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
-                                    </span>
-                                    <div class="mt-2">
+                                    </div>
+                                    <div class="float-end mt-2 position-absolute bottom-0 end-0 me-2 mb-2">
                                         <button class="btn bg-purple text-white">Invoice</button>
                                     </div>
                                 </div>
@@ -120,7 +123,7 @@
                                     <!-- <span
                                         class="text-success d-sm-none d-block mt-3 me-3 position-absolute top-0 end-0 float-end fs-14"><i
                                             class="fa fa-check fs-20"></i></span> -->
-                                    <span class="position-absolute end-0 bottom-85 mb-5 me-3 fs-14"><i
+                                    <span class="position-absolute end-0 top-73 mb-5 me-3 fs-14"><i
                                             class="fa fa-clock-o text-wrap"></i>&nbsp;6/01/2022</span>
                                 </div>
                             </div>
@@ -173,7 +176,7 @@
                                     <span
                                         class="text-danger d-sm-none d-block mt-3 me-3 position-absolute top-0 end-0 float-end fs-14"><i
                                             class="fa fa-times-circle fs-20"></i></span>
-                                    <span class="position-absolute end-0 bottom-85 mb-5 me-3 fs-14"><i
+                                    <span class="position-absolute end-0 top-73 mb-5 me-3 fs-14"><i
                                             class="fa fa-clock-o text-wrap"></i>&nbsp;6/01/2022</span>
                                 </div>
                             </div>

@@ -7,6 +7,10 @@
   border-color: var(--purple);
 }
 
+.mt-36{
+  margin-top: 36px;
+}
+
 .btn:hover {
   background-color: var(--purple);
   color: white !important;
