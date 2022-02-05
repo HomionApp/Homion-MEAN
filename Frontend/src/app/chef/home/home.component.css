@@ -1,3 +1,7 @@
+.fs-larger{
+  font-size: 2vmax;
+}
+
 .nav-pills .nav-link {
   border-radius: 0.25rem;
   background-color: transparent;
