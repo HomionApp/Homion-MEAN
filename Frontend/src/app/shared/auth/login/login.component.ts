@@ -10,6 +10,7 @@ import { AuthService } from '../../service/auth.service';
 })
 export class LoginComponent implements OnInit {
   hidePassword = true;
+  showSpinner = false;
   errorMessage!: string;
 
   form = new FormGroup({
@@ -23,13 +24,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
-    console.log(this.form.controls);
+    this.showSpinner = true;
     const loginObj = {
       email: this.form.controls['email'].value,
       password: this.form.controls['password'].value,
       type: this.form.controls['type'].value,
     };
     this.authService.login(loginObj).subscribe((res) => {
+      this.showSpinner = false;
       if (res.status != 200) {
         this.errorMessage = res.message;
       } else {

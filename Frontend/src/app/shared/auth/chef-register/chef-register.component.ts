@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Chef } from 'src/app/models/request/chef.model';
 import { AuthService } from '../../service/auth.service';
@@ -15,6 +11,7 @@ import { AuthService } from '../../service/auth.service';
 })
 export class ChefRegisterComponent implements OnInit {
   hidePassword = true;
+  showSpinner = false;
   errorMessage!: string;
 
   form = new FormGroup({
@@ -43,6 +40,7 @@ export class ChefRegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   register() {
+    this.showSpinner = true;
     const chef = new Chef(
       this.form.controls['userName'].value,
       this.form.controls['firstName'].value,
@@ -53,6 +51,8 @@ export class ChefRegisterComponent implements OnInit {
       this.form.controls['panNumber'].value
     );
     this.authService.registerChef(chef).subscribe((res) => {
+      this.showSpinner = false;
+      this.form.reset();
       if (res.status == 201) {
         this.router
           .navigateByUrl('auth', { skipLocationChange: true })

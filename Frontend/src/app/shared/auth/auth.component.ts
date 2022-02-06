@@ -11,8 +11,9 @@ export class AuthComponent implements OnInit {
   isUser = true;
   isLogin = true;
   isReset = false;
-  message!: string;
   error = false;
+  message!: string;
+  showSpinner = false;
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -25,11 +26,14 @@ export class AuthComponent implements OnInit {
 
   forgotPassword() {
     this.error = false;
+    this.showSpinner = true;
     const obj = {
       email: this.form.controls['email'].value,
       type: this.form.controls['type'].value,
     };
     this.authService.forgotPassword(obj).subscribe((res) => {
+      this.showSpinner = false;
+      this.form.reset();
       this.message = res.message;
       if (res.status != 200) this.error = true;
     });

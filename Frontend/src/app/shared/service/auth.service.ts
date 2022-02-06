@@ -45,18 +45,18 @@ export class AuthService {
 
   passwordValidator(control: AbstractControl): any {
     const password = control.value;
-    if (password.length < 8) {
+    if (password?.length < 8) {
       return { message: 'Your password must contain at least 8 characters.' };
     }
-    if (password.search(/[A-Z]/) < 0) {
+    if (password?.search(/[A-Z]/) < 0) {
       return {
         message: 'Your password must contain at least one capital letter.',
       };
     }
-    if (password.search(/[0-9]/) < 0) {
+    if (password?.search(/[0-9]/) < 0) {
       return { message: 'Your password must contain at least one digit.' };
     }
-    if (password.search(/[!@#$%^&*]/) < 0) {
+    if (password?.search(/[!@#$%^&*]/) < 0) {
       return {
         message: 'Your password must contain at least one special character.',
       };
