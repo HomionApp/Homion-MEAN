@@ -7,7 +7,7 @@ const productSchema = new Schema({
     required: true,
   },
   price: {
-    type: mongoose.Decimal128,
+    type: Number,
     required: true,
   },
   unitValue: {
@@ -26,7 +26,6 @@ const productSchema = new Schema({
   },
   imageURL: {
     type: String,
-    required: true,
   },
   isJainAvailable: {
     type: Boolean,
@@ -39,7 +38,7 @@ const productSchema = new Schema({
   status: {
     //DELETED-AVAILABLE-OUT OF STOCK
     type: String,
-    required: true,
+    default: "OUT_OF_STOCK",
   },
   isSpeciality: {
     type: Boolean,
@@ -47,11 +46,9 @@ const productSchema = new Schema({
   },
   rating: {
     type: mongoose.Decimal128,
-    required: true,
   },
   count: {
     type: Number,
-    required: true,
   },
   chefId: {
     type: Schema.Types.ObjectId,
@@ -61,12 +58,12 @@ const productSchema = new Schema({
   categoryId: {
     type: Schema.Types.ObjectId,
     ref: "Category",
-    required: true,
+    required: true
   },
   subCategoryId: {
     type: Schema.Types.ObjectId,
     ref: "SubCategory",
-    required: true,
+    required: true
   },
 });
 

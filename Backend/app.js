@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const authRoute = require("./routes/auth");
+const chefRoute = require("./routes/chef");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/auth", authRoute);
+app.use("/chef", chefRoute);
 
 app.use((error, req, res, next) => {
   res.status(500).json("Internal Server Error");

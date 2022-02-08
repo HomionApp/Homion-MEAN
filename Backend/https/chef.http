@@ -1,0 +1,43 @@
+@hostname = http://localhost:9999/chef
+@id = "61f028f9f2120edbc5fa8a21"
+
+
+post {{hostname}}/addProduct
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjk1OTA4MTdlNzhjZThmNDE3MzM4MCIsImVtYWlsIjoiaG9taW9uYXBwQGdtYWlsLmNvbSIsInR5cGUiOiJDSEVGIiwiaWF0IjoxNjQ0MzM5OTY2LCJleHAiOjE2NDQ5NDQ3NjZ9.sRq8lDK-7Mkh0NAoNBNq0bxIlEOSyHAW37FfNtjTxqc
+Content-Type: application/json
+
+{
+    "product" : {
+        "name": "Fafda",
+        "price": 100,
+        "unitValue": 100,
+        "unitType": "gm",
+        "prepTime": 30,
+        "isSpeciality": true,
+        "isOpenForHome": false,
+        "isJainAvailable": false        
+    }
+}
+###
+
+post {{hostname}}/addCategory
+Content-Type: application/json
+
+{
+    "name" : "Gujarati"
+}
+###
+
+get {{hostname}}/getCategories
+###
+
+post {{hostname}}/addSubCategory
+Content-Type: application/json
+
+{
+    "name" : "Breakfast"
+}
+###
+
+get {{hostname}}/getSubCategories
+###
