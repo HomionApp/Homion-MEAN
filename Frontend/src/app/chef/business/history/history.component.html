@@ -49,15 +49,15 @@
                     <div class="card shadow">
                         <div class="card-body py-1">
                             <div class="row">
-                                <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <!-- <div class="col-3 col-sm-3 col-md-3 col-lg-3">
                                     <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
                                         class="img-fluid rounded mt-2" alt="Prduct Image">
-                                </div>
+                                </div> -->
                                 <div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-0">
                                     <span class="card-title fw-bold mb-1 fs-20">Dixit Dodiya</span>
-                                    <p class="card-text text-muted fw-bold mt-2 h6 text-wrap">#1641439040550
+                                    <p class="card-text text-muted fw-bold mt-2 h6 text-wrap">Order Id : #1641439040550
                                     </p>
-                                    <a class="card-text purple h5 mt-0 text-decoration-none fs-14" type="button">View
+                                    <a class="card-text purple h5 mt-0 text-decoration-none fs-16" type="button" (click)="showDetails = true">View
                                         Details</a>
                                 </div>
                                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
@@ -91,7 +91,7 @@
                                         <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
                                     </div>
                                     <div class="float-end mt-2 position-absolute bottom-0 end-0 me-2 mb-2">
-                                        <button class="btn bg-purple text-white">Invoice</button>
+                                        <button class="btn bg-purple text-white" routerLink="/chef/invoice">Invoice</button>
                                     </div>
                                 </div>
                             </div>
@@ -105,15 +105,15 @@
                     <div class="card shadow">
                         <div class="card-body py-1">
                             <div class="row">
-                                <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <!-- <div class="col-3 col-sm-3 col-md-3 col-lg-3">
                                     <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
                                         class="img-fluid rounded mt-2" alt="Prduct Image">
-                                </div>
+                                </div> -->
                                 <div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-0">
                                     <span class="card-title fw-bold mb-1 fs-20">Dixit Dodiya</span>
-                                    <p class="card-text text-muted fw-bold mt-2 h6 text-wrap">#1641439040550
+                                    <p class="card-text text-muted fw-bold mt-2 h6 text-wrap">Order Id : #1641439040550
                                     </p>
-                                    <a class="card-text purple h5 mt-0 text-decoration-none fs-14" type="button">View
+                                    <a class="card-text purple h5 mt-0 text-decoration-none fs-16" type="button" (click)="showDetails = true">View
                                         Details</a>
                                 </div>
                                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
@@ -145,7 +145,7 @@
                                         <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
                                     </span>
                                     <!-- <div class="mt-2">
-                                        <button class="btn bg-purple text-white">Invoice</button>
+                                        <button class="btn bg-purple text-white" routerLink="/chef/invoice">Invoice</button>
                                     </div> -->
                                 </div>
                             </div>
@@ -159,15 +159,15 @@
                     <div class="card shadow">
                         <div class="card-body py-1">
                             <div class="row">
-                                <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <!-- <div class="col-3 col-sm-3 col-md-3 col-lg-3">
                                     <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
                                         class="img-fluid rounded mt-2" alt="Prduct Image">
-                                </div>
+                                </div> -->
                                 <div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-0">
                                     <span class="card-title fw-bold mb-1 fs-20">Dixit Dodiya</span>
-                                    <p class="card-text text-muted fw-bold mt-2 h6 text-wrap">#1641439040550
+                                    <p class="card-text text-muted fw-bold mt-2 h6 text-wrap">Order Id : #1641439040550
                                     </p>
-                                    <a class="card-text purple h5 mt-0 text-decoration-none fs-14" type="button">View
+                                    <a class="card-text purple h5 mt-0 text-decoration-none fs-16" type="button" (click)="showDetails = true">View
                                         Details</a>
                                 </div>
                                 <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
@@ -198,7 +198,7 @@
                                         <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
                                     </span>
                                     <!-- <div class="mt-2">
-                                        <button class="btn bg-purple text-white">Invoice</button>
+                                        <button class="btn bg-purple text-white" routerLink="/chef/invoice">Invoice</button>
                                     </div> -->
                                 </div>
                             </div>
@@ -210,98 +210,4 @@
     </div>
 </div>
 
-
-
-<!-- <div class="card shadow mb-3" *ngFor="let item of [1,2]">
-    <div class="row pt-0">
-        <div class="col-4 col-sm-4 col-md-3 col-lg-3">
-            <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
-                class="img-fluid rounded mt-3 ms-2" alt="Prduct Image">
-        </div>
-        <div class="col-8 col-sm-8 col-md-7 col-lg-7 mt-0 p-0">
-            <div class="card-body">
-                <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
-                <p class="card-text text-muted fw-bold mt-4 mb-3 h6">Order Id : #1641439040550
-                </p>
-                <a class="card-text purple h5 mt-1 text-decoration-none" type="button">View
-                    Details</a>
-            </div>
-        </div>
-        <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
-            <span
-                class="badge bg-info position-absolute top-0 end-0 mt-3 me-2 d-none d-sm-block">New
-                Order</span>
-            <span
-                class="badge bg-info position-absolute top-0 end-0 mt-3 me-2 d-sm-none">New</span>
-            <span class="position-absolute top-0 end-0 mt-5 me-2" style="font-size: 14px;"><i
-                    class="fa fa-clock-o"></i>&nbsp;6/01/2022</span>
-        </div>
-    </div>
-    <div class="card-footer">
-        <div class="row">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
-                <div *ngFor="let item of [1,2]">
-                    <span class="fw-bold">
-                        ABC x 3
-                    </span><br>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
-                <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
-                    <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
-                </span>
-                 <div class="mt-2">
-                    <button class="btn bg-purple text-white">Invoice</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div> -->
-
-<!-- <div class="card shadow mb-3 mx-auto" *ngFor="let item of [1,2]">
-    <div class="row pt-0">
-        <div class="col-4 col-sm-4 col-md-3 col-lg-3">
-            <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
-                class="img-fluid rounded mt-3 ms-2" alt="Prduct Image">
-        </div>
-        <div class="col-8 col-sm-8 col-md-7 col-lg-7 mt-0 p-0">
-            <div class="card-body">
-                <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
-                <p class="card-text text-muted fw-bold mt-4 mb-3 h6">Order Id : #1641439040550
-                </p>
-                <a class="card-text purple h5 mt-1 text-decoration-none" type="button">View
-                    Details</a>
-            </div>
-        </div>
-        <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
-            <span
-                class="badge bg-danger position-absolute top-0 end-0 mt-3 me-2 d-none d-sm-block">Cancelled</span>
-            <span
-                class="text-danger d-sm-none d-block mt-3 me-2 position-absolute top-0 end-0 float-end fs-14"><i
-                    class="fa fa-times-circle fs-20"></i></span>
-            <span class="position-absolute top-0 end-0 mt-5 me-2" style="font-size: 14px;"><i
-                    class="fa fa-clock-o"></i>&nbsp;6/01/2022</span>
-        </div>
-    </div>
-    <div class="card-footer">
-        <div class="row">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-2">
-                <div *ngFor="let item of [1,2]">
-                    <span class="fw-bold">
-                        ABC x 3
-                    </span><br>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
-                <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
-                    <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
-                </span>
-                 <div class="mt-2">
-                    <button class="btn bg-purple text-white">Invoice</button>
-                </div> 
-            </div>
-        </div>
-    </div>
-
-</div> -->
+<app-order-details-modal *ngIf="showDetails" (closeModal)="showDetails = false"></app-order-details-modal>

@@ -1,26 +1,26 @@
 <div id="mySidenav" class="sidenav shadow mt-2">
-    <a routerLink="/chef" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    <a routerLink="/chef" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeNav()">
         <i class="fa fa-home w-15"></i> &nbsp; Home
     </a>
-    <a routerLink="/chef/menu" routerLinkActive="active">
+    <a routerLink="/chef/menu" routerLinkActive="active" (click)="closeNav()">
         <i class="fa fa-list-ul w-15"></i> &nbsp; Menu
     </a>
-    <a routerLink="/chef/products" routerLinkActive="active">
+    <a routerLink="/chef/products" routerLinkActive="active" (click)="closeNav()">
         <i class="fa fa-cutlery w-15"></i> &nbsp; Products
     </a>
-    <a routerLink="/chef/business" routerLinkActive="active">
+    <a routerLink="/chef/business" routerLinkActive="active" (click)="closeNav()">
         <i class="fa fa-inr w-15"></i> &nbsp; Business
     </a>
-    <a routerLink="/chef/past-orders" routerLinkActive="active">
+    <a routerLink="/chef/past-orders" routerLinkActive="active" (click)="closeNav()">
         <i class="fa fa-history w-15"></i> &nbsp; Past-Orders
     </a>
-    <a href="#">
+    <a href="#" (click)="closeNav()">
         <i class="fa fa-map-marker w-15"></i> &nbsp; Address
     </a>
-    <a routerLink="/chef/profile" routerLinkActive="active">
+    <a routerLink="/chef/profile" routerLinkActive="active" (click)="closeNav()">
         <i class="fa fa-user w-15">&nbsp;</i> &nbsp; Profile
     </a>
-    <a routerLink="/">
+    <a routerLink="/" (click)="closeNav()">
         <i class="fa fa-sign-out w-15"></i> &nbsp; Logout
     </a>
 </div>

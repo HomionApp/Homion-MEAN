@@ -13,22 +13,17 @@
     </div>
 
     <div class="row mb-5">
-        <div class="col-md-10 mx-auto">
+        <div class="col-12 col-md-10 mx-auto">
             <ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false"
                 class="nav nav-pills nav-fill m-3 mx-auto">
 
-                <li [ngbNavItem]="1" [destroyOnHide]="true">
+                <li [ngbNavItem]="1" [destroyOnHide]="true" class="col-12">
                     <a ngbNavLink class="fw-bold h5"><i class="fa fa-check-circle"></i> &nbsp;Completed</a>
                     <ng-template ngbNavContent>
-                        <div class="card shadow mb-3 mx-auto" *ngFor="let item of [1,2,3]">
+                        <div class="card shadow mb-3" *ngFor="let item of [1,2,3]">
                             <div class="row pt-0">
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2">
-                                    <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
-                                        class="img-fluid rounded mt-3 ms-2" height="82%" width="100%"
-                                        alt="Prduct Image">
-                                </div>
-                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 mt-0 p-0">
-                                    <div class="card-body">
+                                <div class="card-body">
+                                    <div class="col-8 mt-0 px-2">
                                         <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
                                         <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
                                         </p>
@@ -36,12 +31,12 @@
                                             (click)="viewDetailsModal = true">View
                                             Details</a>
                                     </div>
-                                </div>
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
-                                    <span
-                                        class="badge bg-success position-absolute top-0 end-0 mt-3 me-2">Delivered</span>
-                                    <span class="position-absolute top-0 end-0 mt-5 me-2 fs-6"><i
-                                            class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
+                                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
+                                        <span
+                                            class="badge bg-success position-absolute top-0 end-0 mt-3 me-3">Delivered</span>
+                                        <span class="position-absolute top-0 end-0 mt-5 me-3 fs-6"><i
+                                                class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -57,13 +52,13 @@
                                         <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
                                             <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
                                         </span>
-                                        <div class="mt-2">
-                                            <button class="btn bg-purple text-white" routerLink="/chef/invoice">Invoice</button>
+                                        <div class="float-end mt-2 position-absolute bottom-0 end-0 me-3 mb-2">
+                                            <button class="btn bg-purple text-white"
+                                                routerLink="/chef/invoice">Invoice</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </ng-template>
                 </li>
@@ -73,13 +68,8 @@
                     <ng-template ngbNavContent>
                         <div class="card shadow mb-3" *ngFor="let item of [1,2]">
                             <div class="row pt-0">
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2">
-                                    <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
-                                        class="img-fluid rounded mt-3 ms-2" height="82%" width="100%"
-                                        alt="Prduct Image">
-                                </div>
-                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 mt-0 p-0">
-                                    <div class="card-body">
+                                <div class="card-body">
+                                    <div class="col-8 mt-0 px-2">
                                         <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
                                         <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
                                         </p>
@@ -87,11 +77,12 @@
                                             (click)="viewDetailsModal = true">View
                                             Details</a>
                                     </div>
-                                </div>
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
-                                    <span class="badge bg-info position-absolute top-0 end-0 mt-3 me-2">New Order</span>
-                                    <span class="position-absolute top-0 end-0 mt-5 me-2 fs-6"><i
-                                            class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
+                                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
+                                        <span class="badge bg-info position-absolute top-0 end-0 mt-3 me-3">New
+                                            Order</span>
+                                        <span class="position-absolute top-0 end-0 mt-5 me-3 fs-6"><i
+                                                class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -103,11 +94,11 @@
                                             </span><br>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
-                                        <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="text-muted text-nowrap text-end float-end mb-5">Total Payment<br>
                                             <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
-                                        </span>
-                                        <div class="mt-2">
+                                        </div>
+                                        <div class="float-end mt-5 position-absolute bottom-0 end-0 me-2 mb-2">
                                             <button class="btn bg-purple text-white">Delivered</button>
                                         </div>
                                     </div>
@@ -123,12 +114,7 @@
                     <ng-template ngbNavContent let-active>
                         <div class="card shadow mb-3" *ngFor="let item of [1,2,3]">
                             <div class="row pt-0">
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2">
-                                    <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
-                                        class="img-fluid rounded mt-3 ms-2" height="82%" width="100%"
-                                        alt="Prduct Image">
-                                </div>
-                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 mt-0 p-0">
+                                <div class="col-8 mt-0 px-2">
                                     <div class="card-body">
                                         <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
                                         <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
@@ -138,7 +124,7 @@
                                             Details</a>
                                     </div>
                                 </div>
-                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
+                                <div class="col-2 h5">
                                     <span
                                         class="badge bg-danger position-absolute top-0 end-0 mt-3 me-2">Cancelled</span>
                                     <span class="position-absolute top-0 end-0 mt-5 me-2 fs-6"><i
@@ -177,3 +163,8 @@
 </div>
 
 <app-order-details-modal *ngIf="viewDetailsModal" (closeModal)="viewDetailsModal = false"></app-order-details-modal>
+
+<!-- <div class="col-2 col-sm-2 col-md-2 col-lg-2">
+        <img src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"
+            class="img-fluid rounded mt-3 ms-2" height="82%" width="100%" alt="Prduct Image">
+    </div> -->

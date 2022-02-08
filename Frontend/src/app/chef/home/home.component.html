@@ -5,11 +5,11 @@
                 <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-larger"
                     (click)="orderType = 'NEW'" [ngClass]="{'bg-purple text-white': orderType === 'NEW'}">New</button>
                 <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-larger"
-                    (click)="orderType = 'ONGOING'">Ongoing</button>
+                    (click)="orderType = 'ONGOING'" [ngClass]="{'bg-purple text-white': orderType === 'ONGOING'}">Ongoing</button>
                 <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-larger"
-                    (click)="orderType = 'PREPARED'">Prepared</button>
+                    (click)="orderType = 'PREPARED'" [ngClass]="{'bg-purple text-white': orderType === 'PREPARED'}">Prepared</button>
                 <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-larger"
-                    (click)="orderType = 'CANCELLED'">Cancelled</button>
+                    (click)="orderType = 'CANCELLED'" [ngClass]="{'bg-purple text-white': orderType === 'CANCELLED'}">Cancelled</button>
             </div>
         </div>
     </div>

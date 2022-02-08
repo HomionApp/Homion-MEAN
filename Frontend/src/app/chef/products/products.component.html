@@ -4,65 +4,38 @@
 
             <!-- Working area start-->
 
-            <span class="ms-4">
-                <span class="h4">Manage Products</span>
-                <a routerLink="/chef/addProduct"> <button type="button"
-                        class="btn btn-outline-primary border-2 float-end fw-bolder purple">ADD</button> </a>
-            </span>
+            <div class="row">
+                <div class="col-12">
+                    <span class="h4 text-wrap">Manage Products</span>
+                    <a routerLink="/chef/addProduct"> <button type="button"
+                            class="btn btn-outline-primary border-2 float-end fw-bolder purple">ADD</button> </a>
+                </div>
+            </div>
 
             <div class="row mt-3">
-                <div class="mx-auto mb-3 col-12 col-sm-10 col-md-8 col-lg-8 col-xl-7">
+                <div class="mx-auto mb-3 col-12 col-sm-10 col-md-8 col-lg-8 col-xl-7" *ngFor="let item of [1,2,3]">
                     <div class="card d-flex shadow-sm rounded">
                         <div class="row">
                             <div class="col-3 col-xxl-3 col-md-3 col-xl-3 col-sm-3 col-lg-3 pe-0 text-center">
                                 <img alt="productImage" class="rounded mt-3 ms-3" width="100%" height="60%"
                                     src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"><br>
-                                <p class="mt-2 ms-3 text-center badge purple badge-info fs-16"> 
-                                        <i class="fa fa-star">&nbsp;</i>0.0(10)</p>
+                                <p class="mt-2 ms-3 text-center badge purple badge-info fs-16">
+                                    <i class="fa fa-star">&nbsp;</i>0.0(10)
+                                </p>
                             </div>
                             <div class="col-9 col-xxl-9 col-md-9 col-xl-9 col-sm-9 col-lg-9">
                                 <div class="row ms-3">
                                     <div class="mt-3 ms-0">
                                         <div>
                                             <span class="mb-2 h4 fw-bolder">Fafda</span>
-                                            <span class="badge me-3 text-white bg-purple float-end fs-16">30 Minutes</span>
+                                            <span
+                                                class="badge me-3 text-white bg-purple float-end fs-16 d-none d-sm-block">30
+                                                Minutes</span>
+                                            <span
+                                                class="me-3 purple float-end fs-16 fw-bold d-sm-none d-sm-none"><i class="fa fa-clock-o"></i>
+                                                30 M</span>
                                         </div>
-                                        <p class="mb-2 h6 fw-normal">Breakfast,Gujarati</p>
-                                        <p class="h6 fw-normal"><i class="fa fa-inr"></i>100 Per 500 grams</p>
-                                    </div>
-                                </div>
-                                <div class="row mt-4 ms-3 mb-2">
-                                    <div class="col-11 mx-auto">
-                                        <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
-                                            <button type="button"
-                                                class="btn btn-outline-primary purple border-2 fw-bolder">EDIT</button>
-                                            <button
-                                                class="btn btn-outline-primary purple border-2 fw-bolder">DELETE</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mx-auto mb-2 col-12 col-sm-10 col-md-8 col-lg-8 col-xl-7">
-                    <div class="card d-flex shadow-sm rounded">
-                        <div class="row">
-                            <div class="col-3 col-xxl-3 col-md-3 col-xl-3 col-sm-3 col-lg-3 pe-0 text-center">
-                                <img alt="productImage" class="rounded mt-3 ms-3" width="100%" height="60%"
-                                    src="http://res.cloudinary.com/homioncloud/image/upload/v1627223014/product/400002.png"><br>
-                                <p class="mt-2 ms-3 text-center badge purple badge-info fs-16"> 
-                                        <i class="fa fa-star">&nbsp;</i>0.0(10)</p>
-                            </div>
-                            <div class="col-9 col-xxl-9 col-md-9 col-xl-9 col-sm-9 col-lg-9">
-                                <div class="row ms-3">
-                                    <div class="mt-3 ms-0">
-                                        <div>
-                                            <span class="mb-2 h4 fw-bolder">Fafda</span>
-                                            <span class="badge me-3 text-white bg-purple float-end fs-16">30 Minutes</span>
-                                        </div>
-                                        <p class="mb-2 h6 fw-normal">Breakfast,Gujarati</p>
+                                        <p class="mb-2 h6 fw-normal text-nowrap">Breakfast,Gujarati</p>
                                         <p class="h6 fw-normal"><i class="fa fa-inr"></i>100 Per 500 grams</p>
                                     </div>
                                 </div>

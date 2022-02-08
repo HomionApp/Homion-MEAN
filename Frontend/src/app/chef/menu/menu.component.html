@@ -7,58 +7,53 @@
                 <h2 class="m-2">Menu</h2>
             </div>
 
-            <div class="row mx-2 px-5 mt-4">
-                <div class="col-md-6 mb-4">
+            <div class="row mx-2 mt-4">
+                <div class="col-12 col-sm-12 col-md-6 mb-4" *ngFor="let item of [1,2,3]">
                     <div class="card shadow rounded">
                         <div class="card-body">
-                            <h4>Product Name<span class="badge badge-pill badge-primary fs-5 float-end">Available</span>
-                            </h4>
-                            <!-- <h4>Product Name<span class="badge badge-pill badge-primary float-end"> 
-                                Out Of Stock</span>
-                            </h4>  -->
-                            <h5 class="text-muted">Category Name | UnitValue | Unit
-                                <i class="mdi mdi-currency-inr menu-icon"></i> Price
-                            </h5>
-                            <div class="mt-1 w-100 btn-group btn-group-sm mt-2">
+                            <div>
+                                <span class="h4">Fafda</span>
+                                <span class="badge badge-pill badge-primary float-end fs-16 d-none d-sm-block">Available</span>
+                                <span class="purple float-end h4 d-sm-none d-block"><i class="fa fa-check"></i></span>
+                            </div>
+                            <div class="my-2">
+                                <span class="text-muted fs-18">
+                                    <i class="fa fa-inr menu-icon"></i> 50 | 100 gm | Gujarati
+                                </span>
+                            </div>
+
+                            <div class="w-100 btn-group btn-group-sm mt-2">
                                 <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder"
                                     disabled="disabled">AVAILABLE</button>
                                 <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">OUT OF
                                     STOCK</button>
-                                <!-- <button type="button"
-                                        class="btn btn-outline-primary purple border-2 fw-bolder">AVAILABLE</button> -->
-                                <!-- <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder"
-                                            disabled>OUT OF STOCK</button> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="own-border-95 bg-purple m-4"></div>
+            <div class="own-border-95 bg-purple mx-auto"></div>
 
             <h2 class="d-block m-3">Speciality</h2>
 
-            <div class="row mx-2 px-5 mt-4">
-                <div class="col-md-6 mb-4">
+            <div class="row mx-2 mt-4">
+                <div class="col-12 col-sm-12 col-md-6 mb-4" *ngFor="let item of [1,2,3]">
                     <div class="card shadow rounded">
                         <div class="card-body">
                             <div>
-                                <h4>Product Name
-                                    <span class="float-end text-warning">
-                                        <h5>Chef's Special</h5>
-                                    </span>
-                                </h4>
+                                <span class="h4">Fafda</span>
+                                <span class="badge badge-pill bg-warning float-end fs-16 d-none d-sm-block">Chef's Special</span>
+                                <span class="text-warning float-end h4 d-sm-none d-block"><i class="fa fa-star"></i></span>
                             </div>
-                            <div>
-                                <h5 class="text-muted">Category Name | UnitValue
-                                    | Unit<i class="mdi mdi-currency-inr menu-icon"></i>Price
-                                    <span class="badge badge-pill badge-primary float-end fs-5">Available</span>
-                                    <!-- <span class="badge badge-pill badge-primary float-end fs-5">Out of Stoc</span> -->
-                                </h5>
+                            <div class="my-2">
+                                <span class="text-muted fs-18">
+                                    <i class="fa fa-inr menu-icon"></i> 50 | 100 gm | Gujarati
+                                    <span class="badge badge-pill badge-primary float-end fs-16 d-none d-sm-block">Available</span>
+                                    <span class="purple float-end h4 d-sm-none d-block"><i class="fa fa-check"></i></span>
+                                </span>
                             </div>
-                            <div>
-                            </div>
-                            <div class="mt-1 w-100 btn-group btn-group-sm mt-2">
+                            <div class="w-100 btn-group btn-group-sm mt-2">
                                 <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder"
                                     disabled="disabled">AVAILABLE</button>
                                 <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">OUT OF
@@ -71,6 +66,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
         <!-- Working area end-->

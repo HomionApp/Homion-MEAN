@@ -1,20 +1,19 @@
-<div class="container">
+<div class="container mt-3">
     <div class="row align-items-center">
-        <div class="col-11 col-sm-11 col-md-10 col-lg-10 col-xl-10 mx-auto">
+        <div class="col-11 col-md-10 mx-auto">
             <form class="row g-3" enctype="multipart/form-data">
-
-                <div class="mt-4 row text-center">
-                    <div class="col-md-12">
-                        <div class="cotainer">
+                <div class="mt-4 row mx-auto w-100">
+                    <div class="col-12 text-center">
+                        <div>
                             <img id="image" src="https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg"
-                                alt="profile Image" class="rounded-circle" style="height: 250px;">
-                            <div><i class="fa fa-camera menu-icon purple h4 mt-2" type="button"
-                                    (click)="chefImage.click()"></i></div>
-                            <input type="file" id="file" name="file" hidden="true" accept="image/*" #chefImage>
+                                alt="Chef Image" class="rounded-circle" height="250px" (click)="chefImage.click()"
+                                role="button">
                         </div>
-
-                        <h3 class="mt-n1">Harshil Dangi</h3>
-                        <!-- <h6 class="mt-1 text-muted">Bopal, Ahmedabad</h6> -->
+                        <div class="mx-auto purple h4 mt-2" type="button"><span (click)="chefImage.click()">Upload
+                                Image</span>
+                        </div>
+                        <input type="file" id="file" name="file" hidden="true" accept="image/*"
+                            formControlName="productImage" #chefImage>
                     </div>
                 </div>
 
@@ -23,32 +22,32 @@
 
                 <div class="col-md-12">
                     <label class="form-label fw-bold" for="username">User Name</label>
-                    <input type="text" class="form-control" id="userName" name="userName" />
+                    <input type="text" class="form-control shadow-none" id="userName" name="userName" />
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold" for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" />
+                    <input type="text" class="form-control shadow-none" id="firstName" name="firstName" />
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold" for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" />
+                    <input type="text" class="form-control shadow-none" id="lastName" name="lastName" />
                 </div>
 
                 <div class="col-md-12">
                     <label class="form-label fw-bold" for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" disabled />
+                    <input type="text" class="form-control shadow-none" id="email" name="email" disabled />
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold" for="mobileno">Mobile No</label>
-                    <input type="text" class="form-control" id="mobileno" name="mobileno" disabled />
+                    <input type="text" class="form-control shadow-none" id="mobileno" name="mobileno" disabled />
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label fw-bold" for="panno">PAN No</label>
-                    <input type="text" class="form-control" id="panno" name="panno" readonly="true" />
+                    <input type="text" class="form-control shadow-none" id="panno" name="panno" readonly="true" />
                 </div>
 
                 <div class="col-md-12">
@@ -58,18 +57,20 @@
                         </div>
                         <div class="col-md-5">
                             <label for="start-time" class="ml-3 mb-2 mr-sm-2 form-label fw-bold">Start : </label>
-                            <input type="time" class="form-control mb-2 mr-sm-2" id="start-time" name="startTime" />
+                            <input type="time" class="form-control shadow-none mb-2 mr-sm-2" id="start-time"
+                                name="startTime" />
                         </div>
                         <div class="col-md-5">
                             <label for="end-time" class="mb-2 mr-sm-2 form-label fw-bold">End : </label>
-                            <input type="time" class="form-control mb-2 mr-sm-2" id="end-time" name="endTime" />
+                            <input type="time" class="form-control shadow-none mb-2 mr-sm-2" id="end-time"
+                                name="endTime" />
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <label class="form-label fw-bold" for="about">About</label>
-                    <textarea id="comment" class="form-control" name="comment" rows="3"></textarea>
+                    <textarea id="comment" class="form-control shadow-none" name="comment" rows="3"></textarea>
                 </div>
 
                 <div class="col-12 mb-5 mt-5">

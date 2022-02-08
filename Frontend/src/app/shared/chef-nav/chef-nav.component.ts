@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-chef-nav',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChefNavComponent implements OnInit {
 
+  @Output() onCloseNav = new EventEmitter<false>();
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -16,5 +18,8 @@ export class ChefNavComponent implements OnInit {
   openNav() {
     document.getElementById('mySidenav')!.style.width = '200px';
     // document.getElementById("main")!.style.marginLeft = "200px";
+  }
+  closeNav() {
+    this.onCloseNav.emit(false);
   }
 }

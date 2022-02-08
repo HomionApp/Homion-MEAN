@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
   history = "TODAY"
+  showDetails = false;
   constructor() { }
 
   ngOnInit(): void {
