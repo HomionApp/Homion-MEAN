@@ -1,163 +1,156 @@
 <div class="container mt-3 mx-auto">
     <div class="row mt-3">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-12">
             <h2 class="mt-3 ms-4 fw-bold">Harshil Dangi</h2>
             <h4 class="mt-0 ms-4 text-muted fw-bold">Bopal</h4>
         </div>
     </div>
 
     <div class="row mt-0">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="own-border-3 bg-purple m-4"></div>
+        <div class="col-12">
+            <div class="own-border-3 w-100 bg-purple my-4 mx-auto"></div>
         </div>
     </div>
 
-    <div class="row mb-5">
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="btn-group d-flex" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-6"
+                    (click)="orderType = 'COMPLETED'" [ngClass]="{'bg-purple text-white': orderType === 'COMPLETED'}"><i class="fa fa-check-circle"></i>&nbsp; Completed</button>
+                <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-6"
+                    (click)="orderType = 'ONGOING'" [ngClass]="{'bg-purple text-white': orderType === 'ONGOING'}"><i class="fa fa-clock-o text-warning"></i>&nbsp; Ongoing</button>
+                <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-6"
+                    (click)="orderType = 'CANCELLED'" [ngClass]="{'bg-purple text-white': orderType === 'CANCELLED'}"><i class="fa fa-times-circle-o text-danger"></i>&nbsp; Cancelled</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-4">
         <div class="col-12 col-md-10 mx-auto">
-            <ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false"
-                class="nav nav-pills nav-fill m-3 mx-auto">
-
-                <li [ngbNavItem]="1" [destroyOnHide]="true" class="col-12">
-                    <a ngbNavLink class="fw-bold h5"><i class="fa fa-check-circle"></i> &nbsp;Completed</a>
-                    <ng-template ngbNavContent>
-                        <div class="card shadow mb-3" *ngFor="let item of [1,2,3]">
-                            <div class="row pt-0">
-                                <div class="card-body">
-                                    <div class="col-8 mt-0 px-2">
-                                        <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
-                                        <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
-                                        </p>
-                                        <a class="card-text purple h5 mt-1 text-decoration-none" type="button"
-                                            (click)="viewDetailsModal = true">View
-                                            Details</a>
-                                    </div>
-                                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
-                                        <span
-                                            class="badge bg-success position-absolute top-0 end-0 mt-3 me-3">Delivered</span>
-                                        <span class="position-absolute top-0 end-0 mt-5 me-3 fs-6"><i
-                                                class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
-                                    </div>
+            <div *ngIf="orderType === 'COMPLETED'">
+                <div class="card shadow mb-3" *ngFor="let item of [1,2,3]">
+                    <div class="row pt-0">
+                        <div class="card-body">
+                            <div class="col-8 mt-0 px-2">
+                                <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
+                                <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
+                                </p>
+                                <a class="card-text purple h5 mt-1 text-decoration-none" type="button"
+                                    (click)="viewDetailsModal = true">View
+                                    Details</a>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
+                                <span class="badge bg-success position-absolute top-0 end-0 mt-3 me-3">Delivered</span>
+                                <span class="position-absolute top-0 end-0 mt-5 me-3 fs-6"><i
+                                        class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-6 mt-0">
+                                <div *ngFor="let item of [1,2,3,4]">
+                                    <span class="fw-bold">
+                                        ABC x 3
+                                    </span><br>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-0">
-                                        <div *ngFor="let item of [1,2,3,4]">
-                                            <span class="fw-bold">
-                                                ABC x 3
-                                            </span><br>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
-                                        <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
-                                            <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
-                                        </span>
-                                        <div class="float-end mt-2 position-absolute bottom-0 end-0 me-3 mb-2">
-                                            <button class="btn bg-purple text-white"
-                                                routerLink="/chef/invoice">Invoice</button>
-                                        </div>
-                                    </div>
+                            <div class="col-6 justify-content-end d-flex">
+                                <span class="text-muted text-nowrap text-end float-end mb-5">Total Payment<br>
+                                    <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                                </span>
+                                <div class="float-end mt-2 position-absolute bottom-0 end-0 me-3 mb-2">
+                                    <button class="btn bg-purple text-white" routerLink="/chef/invoice">Invoice</button>
                                 </div>
                             </div>
                         </div>
-                    </ng-template>
-                </li>
+                    </div>
+                </div>
+            </div>
 
-                <li [ngbNavItem]="2">
-                    <a ngbNavLink class="fw-bold h5"><i class="fa fa-clock-o text-warning"></i>&nbsp;In Progress</a>
-                    <ng-template ngbNavContent>
-                        <div class="card shadow mb-3" *ngFor="let item of [1,2]">
-                            <div class="row pt-0">
-                                <div class="card-body">
-                                    <div class="col-8 mt-0 px-2">
-                                        <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
-                                        <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
-                                        </p>
-                                        <a class="card-text purple h5 mt-1 text-decoration-none" type="button"
-                                            (click)="viewDetailsModal = true">View
-                                            Details</a>
-                                    </div>
-                                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
-                                        <span class="badge bg-info position-absolute top-0 end-0 mt-3 me-3">New
-                                            Order</span>
-                                        <span class="position-absolute top-0 end-0 mt-5 me-3 fs-6"><i
-                                                class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
-                                    </div>
-                                </div>
+            <div *ngIf="orderType === 'ONGOING'">
+                <div class="card shadow mb-3" *ngFor="let item of [1,2]">
+                    <div class="row pt-0">
+                        <div class="card-body">
+                            <div class="col-8 mt-0 px-2">
+                                <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
+                                <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
+                                </p>
+                                <a class="card-text purple h5 mt-1 text-decoration-none" type="button"
+                                    (click)="viewDetailsModal = true">View
+                                    Details</a>
                             </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-0">
-                                        <div *ngFor="let item of [1,2]">
-                                            <span class="fw-bold">
-                                                ABC x 3
-                                            </span><br>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                        <div class="text-muted text-nowrap text-end float-end mb-5">Total Payment<br>
-                                            <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
-                                        </div>
-                                        <div class="float-end mt-5 position-absolute bottom-0 end-0 me-2 mb-2">
-                                            <button class="btn bg-purple text-white">Delivered</button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 h5">
+                                <span class="badge bg-info position-absolute top-0 end-0 mt-3 me-3">New
+                                    Order</span>
+                                <span class="position-absolute top-0 end-0 mt-5 me-3 fs-6"><i
+                                        class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
                             </div>
-
                         </div>
-                    </ng-template>
-                </li>
-
-                <li [ngbNavItem]="3">
-                    <a ngbNavLink class="fw-bold h5"><i class="fa fa-times-circle-o text-danger"></i>&nbsp;Cancelled</a>
-                    <ng-template ngbNavContent let-active>
-                        <div class="card shadow mb-3" *ngFor="let item of [1,2,3]">
-                            <div class="row pt-0">
-                                <div class="col-8 mt-0 px-2">
-                                    <div class="card-body">
-                                        <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
-                                        <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
-                                        </p>
-                                        <a class="card-text purple h5 mt-1 text-decoration-none" type="button"
-                                            (click)="viewDetailsModal = true">View
-                                            Details</a>
-                                    </div>
-                                </div>
-                                <div class="col-2 h5">
-                                    <span
-                                        class="badge bg-danger position-absolute top-0 end-0 mt-3 me-2">Cancelled</span>
-                                    <span class="position-absolute top-0 end-0 mt-5 me-2 fs-6"><i
-                                            class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-6 mt-0">
+                                <div *ngFor="let item of [1,2]">
+                                    <span class="fw-bold">
+                                        ABC x 3
+                                    </span><br>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-0">
-                                        <div *ngFor="let item of [1,2,3,4]">
-                                            <span class="fw-bold">
-                                                ABC x 3
-                                            </span><br>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 justify-content-end d-flex">
-                                        <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
-                                            <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
-                                        </span>
-                                        <!-- <div class="mt-2">
-                                        <button class="btn bg-purple text-white">Invoice</button>
-                                    </div> -->
-                                    </div>
+                            <div class="col-6">
+                                <div class="text-muted text-nowrap text-end float-end mb-5">Total Payment<br>
+                                    <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                                </div>
+                                <div class="float-end mt-5 position-absolute bottom-0 end-0 me-3 mb-2">
+                                    <button class="btn bg-purple text-white">Delivered</button>
                                 </div>
                             </div>
-
                         </div>
-                    </ng-template>
-                </li>
-            </ul>
+                    </div>
+                </div>
+            </div>
 
-            <div [ngbNavOutlet]="nav" class="mt-2"></div> <!-- Do not remove this div -->
+            <div *ngIf="orderType === 'CANCELLED'">
+                <div class="card shadow mb-3" *ngFor="let item of [1,2,3]">
+                    <div class="row pt-0">
+                        <div class="col-8 mt-0 px-2">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold mb-3 h4">Dixit Dodiya</h5>
+                                <p class="card-text text-muted fw-bold mt-2 mb-3 h6">Order Id : #1641439040550
+                                </p>
+                                <a class="card-text purple h5 mt-1 text-decoration-none" type="button"
+                                    (click)="viewDetailsModal = true">View
+                                    Details</a>
+                            </div>
+                        </div>
+                        <div class="col-2 h5">
+                            <span class="badge bg-danger position-absolute top-0 end-0 mt-3 me-3">Cancelled</span>
+                            <span class="position-absolute top-0 end-0 mt-5 me-3 fs-6"><i
+                                    class="fa fa-clock-o"></i>&nbsp;6/1/2022</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-6 mt-0">
+                                <div *ngFor="let item of [1,2,3,4]">
+                                    <span class="fw-bold">
+                                        ABC x 3
+                                    </span><br>
+                                </div>
+                            </div>
+                            <div class="col-6 justify-content-end d-flex">
+                                <span class="text-muted me-2 text-nowrap text-end">Total Payment<br>
+                                    <span class="text-dark fw-bold me-1"><i class="fa fa-inr"></i>2000.0</span>
+                                </span>
+                                <!-- <div class="mt-2">
+                                <button class="btn bg-purple text-white">Invoice</button>
+                            </div> -->
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
         </div>
     </div>
 </div>
