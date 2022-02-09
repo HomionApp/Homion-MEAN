@@ -1,7 +1,7 @@
 <div class="container mt-3">
     <div class="row align-items-center">
         <div class="col-11 col-md-10 mx-auto">
-            <form class="row g-3" enctype="multipart/form-data" [formGroup]="productForm" (ngSubmit)="addProduct()">
+            <form class="row g-3" enctype="multipart/form-data" [formGroup]="form" (ngSubmit)="addProduct()">
 
                 <div class="mt-4 row mx-auto w-100">
                     <div class="col-12 text-center">
@@ -12,8 +12,8 @@
                         <div class="mx-auto purple h4 mt-2" type="button"><span (click)="productImage.click()">Upload
                                 Image</span>
                         </div>
-                        <input type="file" id="file" name="file" hidden="true" accept="image/*"
-                            formControlName="productImage" #productImage>
+                        <input type="file" id="file" name="file" hidden="true" accept="image/*" 
+                            formControlName="productImage" (change)="fileChangeEvent($event)" #productImage>
                     </div>
                 </div>
 
@@ -46,7 +46,8 @@
                     <div class="row">
                         <div class="col-4 col-sm-4 col-md-4 float-start">
                             <label for="price" class="form-label">Price</label>
-                            <input type="number" class="form-control shadow-none" id="price" formControlName="price">
+                            <input type="number" class="form-control shadow-none" id="price" placeholder="0"
+                                formControlName="price">
                         </div>
                         <div class="col-1 col-sm-1 col-md-1 fw-bold mx-auto mt-36">Per</div>
                         <div class="col-3 col-sm-3 col-md-3 mt-2">
@@ -67,7 +68,7 @@
 
                 <div class="col-md-12">
                     <label for="preparationTime" class="form-label">Preparation Time (In minutes)</label>
-                    <input type="number" class="form-control shadow-none" id="preparationTime"
+                    <input type="number" class="form-control shadow-none" id="preparationTime" placeholder="0"
                         formControlName="prepTime">
                 </div>
 
