@@ -37,7 +37,7 @@ exports.addCategory = async (req, res, next) => {
 exports.getCategories = async (req, res, next) => {
   try {
     let categories = await Category.find();
-    res.json(categories);
+    res.json(new Response(200, "", categories));
   } catch (err) {
     console.log(err);
   }
@@ -55,7 +55,7 @@ exports.addSubCategory = async (req, res, next) => {
 exports.getSubCategories = async (req, res, next) => {
   try {
     let subCategories = await SubCategory.find();
-    res.json(subCategories);
+    res.json(new Response(200, "", subCategories));
   } catch (err) {
     console.log(err);
   }

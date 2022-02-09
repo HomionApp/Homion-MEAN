@@ -13,11 +13,13 @@ router.post("/addProduct", isAuth, chefController.addProduct);
 
 router.get("/getProducts", isAuth, chefController.getProducts);
 
+router.get("/getCategories", isAuth, chefController.getCategories);
+
+router.get("/getSubCategories", isAuth, chefController.getSubCategories);
+
 // ------------------------------------------------------------------------------------------
 
 router.post("/addCategory", chefController.addCategory);
-router.get("/getCategories", chefController.getCategories);
 router.post("/addSubCategory", chefController.addSubCategory);
-router.get("/getSubCategories", chefController.getSubCategories);
 
 module.exports = router;

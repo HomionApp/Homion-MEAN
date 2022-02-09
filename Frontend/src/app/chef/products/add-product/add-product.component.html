@@ -30,16 +30,15 @@
                 <div class="col-md-6">
                     <label for="category" class="form-label">Category</label>
                     <select id="category" class="form-select shadow-none" formControlName="category">
-                        <option selected>Choose...</option>
-                        <option value="Gujarati">Gujarati</option>
+                        <option [value]="category._id" *ngFor="let category of categories">{{category.name}}</option>
                     </select>
                 </div>
 
                 <div class="col-md-6">
                     <label for="subCategory" class="form-label">Sub-Category</label>
                     <select id="subCategory" class="form-select shadow-none" formControlName="subCategory">
-                        <option selected>Choose...</option>
-                        <option value="Starter">Starter</option>
+                        <option [value]="subCategory._id" *ngFor="let subCategory of subCategories">{{subCategory.name}}
+                        </option>
                     </select>
                 </div>
 

@@ -26,6 +26,7 @@ const productSchema = new Schema({
   },
   imageURL: {
     type: String,
+    required: true
   },
   isJainAvailable: {
     type: Boolean,

@@ -3,7 +3,7 @@
 
 
 post {{hostname}}/addProduct
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjk1OTA4MTdlNzhjZThmNDE3MzM4MCIsImVtYWlsIjoiaG9taW9uYXBwQGdtYWlsLmNvbSIsInR5cGUiOiJDSEVGIiwiaWF0IjoxNjQ0MzM5OTY2LCJleHAiOjE2NDQ5NDQ3NjZ9.sRq8lDK-7Mkh0NAoNBNq0bxIlEOSyHAW37FfNtjTxqc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjk1OTA4MTdlNzhjZThmNDE3MzM4MCIsImVtYWlsIjoiaG9taW9uYXBwQGdtYWlsLmNvbSIsInR5cGUiOiJDSEVGIiwiaWF0IjoxNjQ0NDIyMTA1LCJleHAiOjE2NDUwMjY5MDV9.aBivnE2m8yanPETjtagvuIzOwDBcQwKdUJXZPtFZ6tg
 Content-Type: application/json
 
 {
@@ -24,11 +24,13 @@ post {{hostname}}/addCategory
 Content-Type: application/json
 
 {
-    "name" : "Gujarati"
+    "name" : "Punjabi"
 }
 ###
 
 get {{hostname}}/getCategories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjk1OTA4MTdlNzhjZThmNDE3MzM4MCIsImVtYWlsIjoiaG9taW9uYXBwQGdtYWlsLmNvbSIsInR5cGUiOiJDSEVGIiwiaWF0IjoxNjQ0NDIyMTA1LCJleHAiOjE2NDUwMjY5MDV9.aBivnE2m8yanPETjtagvuIzOwDBcQwKdUJXZPtFZ6tg
+Content-Type: application/json
 ###
 
 post {{hostname}}/addSubCategory
@@ -40,4 +42,6 @@ Content-Type: application/json
 ###
 
 get {{hostname}}/getSubCategories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjk1OTA4MTdlNzhjZThmNDE3MzM4MCIsImVtYWlsIjoiaG9taW9uYXBwQGdtYWlsLmNvbSIsInR5cGUiOiJDSEVGIiwiaWF0IjoxNjQ0NDIyMTA1LCJleHAiOjE2NDUwMjY5MDV9.aBivnE2m8yanPETjtagvuIzOwDBcQwKdUJXZPtFZ6tg
+Content-Type: application/json
 ###
