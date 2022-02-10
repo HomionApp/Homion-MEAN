@@ -10,20 +10,21 @@ import { ChefService } from '../../chef.service';
 export class AddProductComponent implements OnInit {
   categories: { _id: string; name: string }[] = [];
   subCategories: { _id: string; name: string }[] = [];
-  imgPath = "";
+  imgPath: any = '../../../../assets/image/defaultProduct.png';
+  selectedFile!: File;
 
   form = new FormGroup({
-    productName: new FormControl(null, Validators.required),
-    category: new FormControl(null, Validators.required),
-    subCategory: new FormControl(null, Validators.required),
+    name: new FormControl(null, Validators.required),
     price: new FormControl(null, [Validators.required, Validators.min(1)]),
     unitValue: new FormControl(null, [Validators.required, Validators.min(1)]),
-    unit: new FormControl('gm', Validators.required),
+    unitType: new FormControl('gm', Validators.required),
     prepTime: new FormControl(null, Validators.required),
-    openForHome: new FormControl('no', Validators.required),
-    jainAvailable: new FormControl('no', Validators.required),
+    categoryId: new FormControl(null, Validators.required),
+    subCategoryId: new FormControl(null, Validators.required),
+    isOpenForHome: new FormControl('no', Validators.required),
+    isJainAvailable: new FormControl('no', Validators.required),
     isSpeciality: new FormControl('no', Validators.required),
-    productImage: new FormControl(null, Validators.required),
+    productImage: new FormControl(''),
   });
 
   constructor(private chefService: ChefService) {}
@@ -38,7 +39,7 @@ export class AddProductComponent implements OnInit {
       if (res.status == 200) {
         this.categories = res.data;
         this.form.patchValue({
-          category: this.categories[0]?._id,
+          categoryId: this.categories[0]?._id,
         });
       }
     });
@@ -49,7 +50,7 @@ export class AddProductComponent implements OnInit {
       if (res.status == 200) {
         this.subCategories = res.data;
         this.form.patchValue({
-          subCategory: this.subCategories[0]?._id,
+          subCategoryId: this.subCategories[0]?._id,
         });
       }
     });
@@ -57,25 +58,47 @@ export class AddProductComponent implements OnInit {
 
   fileChangeEvent(event: any) {
     const files = event.target.files;
-    let file;
-    if(files){
-      file = files[0];
-      
-      const reader = new FileReader();
-      reader.readAsDataURL(file)
-      reader.onload = (_event) => {
-        this.imgPath = reader.result as string; 
-      }
-      console.log(this.imgPath)
+    if (files?.length > 0) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onloadend = (e: any) => {
+        this.imgPath = e.target.result;
+        this.selectedFile = files[0];
+      };
     }
-    // this.filesToUpload = event.srcElement.files;
-    // console.log(this.filesToUpload);
-    // this.fileInput = event.srcElement;
- }
-
-  addProduct() {
-    console.log(this.form);
   }
 
-  
+  addProduct() {
+    if (this.form.valid) {
+      const formData = new FormData();
+      formData.append('name', this.form.controls['name'].value);
+      formData.append('price', this.form.controls['price'].value);
+      formData.append('unitValue', this.form.controls['unitValue'].value);
+      formData.append('unitType', this.form.controls['unitType'].value);
+      formData.append('prepTime', this.form.controls['prepTime'].value);
+      formData.append('categoryId', this.form.controls['categoryId'].value);
+      formData.append(
+        'subCategoryId',
+        this.form.controls['subCategoryId'].value
+      );
+      formData.append(
+        'isOpenForHome',
+        this.form.controls['isOpenForHome'].value
+      );
+      formData.append(
+        'isJainAvailable',
+        this.form.controls['isJainAvailable'].value
+      );
+      formData.append('isSpeciality', this.form.controls['isSpeciality'].value);
+      formData.append('file', this.selectedFile);
+
+      // formData.forEach((value, key) => {
+      //   console.log(key, '--', value);
+      // });
+
+      this.chefService.addProduct(formData).subscribe((res) => {
+        console.log(res);
+      });
+    }
+  }
 }

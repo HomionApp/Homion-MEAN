@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/request/user.model';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -37,14 +36,7 @@ export class UserRegisterComponent implements OnInit {
 
   register() {
     this.showSpinner = true;
-    const user = new User(
-      this.form.controls['userName'].value,
-      this.form.controls['firstName'].value,
-      this.form.controls['lastName'].value,
-      this.form.controls['mobile'].value,
-      this.form.controls['email'].value,
-      this.form.controls['password'].value
-    );
+    const user = { ...this.form.value };
     this.authService.registerUser(user).subscribe((res) => {
       this.showSpinner = false;
       this.form.reset();

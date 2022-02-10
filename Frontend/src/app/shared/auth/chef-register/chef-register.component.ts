@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Chef } from 'src/app/models/request/chef.model';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -41,15 +40,7 @@ export class ChefRegisterComponent implements OnInit {
 
   register() {
     this.showSpinner = true;
-    const chef = new Chef(
-      this.form.controls['userName'].value,
-      this.form.controls['firstName'].value,
-      this.form.controls['lastName'].value,
-      this.form.controls['mobile'].value,
-      this.form.controls['email'].value,
-      this.form.controls['password'].value,
-      this.form.controls['panNumber'].value
-    );
+    let chef = { ...this.form.value };
     this.authService.registerChef(chef).subscribe((res) => {
       this.showSpinner = false;
       this.form.reset();

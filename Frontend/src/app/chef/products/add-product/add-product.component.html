@@ -6,13 +6,13 @@
                 <div class="mt-4 row mx-auto w-100">
                     <div class="col-12 text-center">
                         <div>
-                            <img id="image" src="../../../../assets/image/defaultProduct.png" alt="Product Image"
-                                class="rounded-circle" height="250px" (click)="productImage.click()" role="button">
+                            <img id="image" [src]="imgPath" alt="Product Image" class="rounded-circle" height="245px"
+                                width="245px" (click)="productImage.click()" role="button">
                         </div>
                         <div class="mx-auto purple h4 mt-2" type="button"><span (click)="productImage.click()">Upload
                                 Image</span>
                         </div>
-                        <input type="file" id="file" name="file" hidden="true" accept="image/*" 
+                        <input type="file" id="file" name="file" hidden="true" accept="image/*"
                             formControlName="productImage" (change)="fileChangeEvent($event)" #productImage>
                     </div>
                 </div>
@@ -23,20 +23,20 @@
                 </div>
 
                 <div class="col-md-12">
-                    <label for="productName" class="form-label">Product Name</label>
-                    <input type="text" class="form-control shadow-none" id="productName" formControlName="productName">
+                    <label for="name" class="form-label">Product Name</label>
+                    <input type="text" class="form-control shadow-none" id="name" formControlName="name">
                 </div>
 
                 <div class="col-md-6">
-                    <label for="category" class="form-label">Category</label>
-                    <select id="category" class="form-select shadow-none" formControlName="category">
+                    <label for="categoryId" class="form-label">Category</label>
+                    <select id="categoryId" class="form-select shadow-none" formControlName="categoryId">
                         <option [value]="category._id" *ngFor="let category of categories">{{category.name}}</option>
                     </select>
                 </div>
 
                 <div class="col-md-6">
-                    <label for="subCategory" class="form-label">Sub-Category</label>
-                    <select id="subCategory" class="form-select shadow-none" formControlName="subCategory">
+                    <label for="subCategoryId" class="form-label">Sub-Category</label>
+                    <select id="subCategoryId" class="form-select shadow-none" formControlName="subCategoryId">
                         <option [value]="subCategory._id" *ngFor="let subCategory of subCategories">{{subCategory.name}}
                         </option>
                     </select>
@@ -56,8 +56,8 @@
                                 formControlName="unitValue">
                         </div>
                         <div class="col-4 col-sm-4 col-md-4 mt-2">
-                            <label for="units" class="form-label"></label>
-                            <select id="units" class="form-select shadow-none" formControlName="unit">
+                            <label for="unitType" class="form-label"></label>
+                            <select id="unitType" class="form-select shadow-none" formControlName="unitType">
                                 <option value="gm" selected>gm</option>
                                 <option value="ml">ml</option>
                                 <option value="piece">piece</option>
@@ -67,8 +67,8 @@
                 </div>
 
                 <div class="col-md-12">
-                    <label for="preparationTime" class="form-label">Preparation Time (In minutes)</label>
-                    <input type="number" class="form-control shadow-none" id="preparationTime" placeholder="0"
+                    <label for="prepTime" class="form-label">Preparation Time (In minutes)</label>
+                    <input type="number" class="form-control shadow-none" id="prepTime" placeholder="0"
                         formControlName="prepTime">
                 </div>
 
@@ -80,15 +80,15 @@
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" value="yes" name="openForHome"
-                                    id="radio1" formControlName="openForHome">
+                                <input class="form-check-input shadow-none" type="radio" value="yes"
+                                    name="isOpenForHome" id="radio1" formControlName="isOpenForHome">
                                 <label class="form-check-label" for="radio1">Yes</label>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" value="no" name="openForHome"
-                                    id="radio1" formControlName="openForHome" checked>
+                                <input class="form-check-input shadow-none" type="radio" value="no" name="isOpenForHome"
+                                    id="radio1" formControlName="isOpenForHome" checked>
                                 <label class="form-check-label" for="radio1">No</label>
                             </div>
                         </div>
@@ -103,14 +103,14 @@
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
                                 <input class="form-check-input shadow-none" type="radio" value="yes"
-                                    name="jainAvailable" id="radio2" formControlName="jainAvailable">
+                                    name="isJainAvailable" id="radio2" formControlName="isJainAvailable">
                                 <label class="form-check-label" for="radio2">Yes</label>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" value="no" name="jainAvailable"
-                                    id="radio2" formControlName="jainAvailable" checked>
+                                <input class="form-check-input shadow-none" type="radio" value="no"
+                                    name="isJainAvailable" id="radio2" formControlName="isJainAvailable" checked>
                                 <label class="form-check-label" for="radio2">No</label>
                             </div>
                         </div>
@@ -140,7 +140,8 @@
                 </div>
 
                 <div class="col-12 my-5">
-                    <button type="submit" class="btn btn-outline-primary fw-bolder purple w-100">Add</button>
+                    <button type="submit" class="btn bg-purple text-white fw-bolder w-100"
+                        [disabled]="form.invalid">Add</button>
                 </div>
 
             </form>

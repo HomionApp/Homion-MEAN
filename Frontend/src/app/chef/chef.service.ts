@@ -18,4 +18,8 @@ export class ChefService {
   public getSubCategories(): Observable<Response> {
     return this.http.get<Response>(`${host}/getSubCategories`);
   }
+
+  public addProduct(formData: FormData): Observable<Response> {
+    return this.http.post<Response>(`${host}/addProduct`, formData);
+  }
 }

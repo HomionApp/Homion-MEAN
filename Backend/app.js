@@ -2,6 +2,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const multer = require("multer");
 
 const authRoute = require("./routes/auth");
 const chefRoute = require("./routes/chef");
@@ -9,6 +10,7 @@ const chefRoute = require("./routes/chef");
 const app = express();
 
 app.use(bodyParser.json());
+app.use(multer().single("file"));
 
 app.use(cors());
 
