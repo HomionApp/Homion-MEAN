@@ -6,45 +6,47 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form [formGroup]="form" (ngSubmit)="saveAddress()">
       <div class="mb-2">
         <label for="homeNo" class="form-label">Home No/Flat No</label>
-        <input type="number" class="form-control" id="homeNo" aria-describedby="emailHelp"
-          placeholder="Home No/Flat No" />
+        <input type="number" class="form-control shadow-none" id="homeNo" placeholder="Home No/Flat No"
+          formControlName="homeNo" />
       </div>
       <div class="mb-2">
         <label for="society" class="form-label">Society Name</label>
-        <input type="text" class="form-control" id="society" placeholder="Society Name" />
+        <input type="text" class="form-control shadow-none" id="society" placeholder="Society Name"
+          formControlName="society" />
       </div>
       <div class="mb-2">
         <label for="landmark" class="form-label">Landmark</label>
-        <input type="text" class="form-control" id="landmark" placeholder="Landmark" />
+        <input type="text" class="form-control shadow-none" id="landmark" placeholder="Landmark"
+          formControlName="landmark" />
       </div>
       <div class="mb-2">
-        <label for="area" class="form-label">Area</label>
-        <select class="form-select" id="area">
-          <option value="1">Bhabhar</option>
-          <option value="2">Bopal</option>
-          <option value="3">Sanand</option>
-          <option value="4">Surat</option>
+        <label for="areaId" class="form-label">Area</label>
+        <select class="form-select shadow-none" id="areaId" formControlName="areaId">
+          <option [value]="area.key" *ngFor="let area of areas | keyvalue">{{area?.value?.name}}</option>
         </select>
       </div>
       <div class="my-2">
         <label for="pincode" class="form-label">PIN code</label>
-        <input type="number" class="form-control" id="pincode" placeholder="PIN code" disabled />
+        <input type="number" class="form-control shadow-none" id="pincode"
+          [value]="areas[form.controls['areaId'].value]?.pincode" placeholder="PIN code" formControlName="pincode" />
       </div>
-
       <div class="my-2">
-        <label for="type" class="form-label">Type</label>
-        <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group" id="type">
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked />
-          <label class="btn btn-outline-secondary" for="btnradio1">Home</label>
+        <label for="addressType" class="form-label">Type</label>
+        <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group" id="addressType">
+          <input type="radio" class="btn-check" id="HOME" value="HOME" autocomplete="off" formControlName="addressType"
+            checked />
+          <label class="btn btn-outline-secondary" for="HOME">Home</label>
 
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
-          <label class="btn btn-outline-secondary" for="btnradio2">Work</label>
+          <input type="radio" class="btn-check" id="WORK" value="WORK" autocomplete="off"
+            formControlName="addressType" />
+          <label class="btn btn-outline-secondary" for="WORK">Work</label>
 
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
-          <label class="btn btn-outline-secondary" for="btnradio3">Other</label>
+          <input type="radio" class="btn-check" id="OTHER" value="OTHER" autocomplete="off"
+            formControlName="addressType" />
+          <label class="btn btn-outline-secondary" for="OTHER">Other</label>
         </div>
       </div>
     </form>

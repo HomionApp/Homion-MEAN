@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressComponent } from './address/address.component';
 import { EditAddressComponent } from './address/edit-address/edit-address.component';
@@ -37,6 +37,7 @@ import { UserRoutingModule } from './user-routing.module';
     UserRoutingModule,
     ChefDetailsModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule,
   ],
   exports: [],

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserAuthGuard } from '../user-auth.guard';
+import { AddressComponent } from './address/address.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ChefDeatilsComponenet } from './chef-details/chef-details.component';
 import { FavouritesComponent } from './favourites/favourites.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'chef-details/:id',
         component: ChefDeatilsComponenet,
+      },
+      {
+        path: 'address',
+        component: AddressComponent,
       },
       {
         path: 'profile',

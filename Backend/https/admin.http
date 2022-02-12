@@ -1,0 +1,15 @@
+@hostname = http://localhost:9999/admin
+
+post {{hostname}}/addArea
+Content-Type: application/json
+
+{
+    "area" : {
+        "name": "Vijapur",
+        "pincode": 382830
+    }
+}
+###
+
+get {{hostname}}/getAreas
+###

@@ -6,6 +6,7 @@ const multer = require("multer");
 
 const authRoute = require("./routes/auth");
 const chefRoute = require("./routes/chef");
+const adminRoute = require("./routes/admin");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cors());
 
 app.use("/auth", authRoute);
 app.use("/chef", chefRoute);
+app.use("/admin", adminRoute);
 
 app.use((error, req, res, next) => {
   res.status(500).json("Internal Server Error");
