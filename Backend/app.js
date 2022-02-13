@@ -6,6 +6,7 @@ const multer = require("multer");
 
 const authRoute = require("./routes/auth");
 const chefRoute = require("./routes/chef");
+const userRoute = require("./routes/user");
 const adminRoute = require("./routes/admin");
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 
 app.use("/auth", authRoute);
 app.use("/chef", chefRoute);
+app.use("/user", userRoute);
 app.use("/admin", adminRoute);
 
 app.use((error, req, res, next) => {

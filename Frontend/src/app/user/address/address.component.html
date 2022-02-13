@@ -55,4 +55,9 @@
   </div>
 </div>
 
+<ngb-toast *ngIf="isSaved" [class]="'bg-success text-light position-fixed top-0 end-0 mt-10 me-2 w-auto'"
+  [autohide]="true" [delay]="4000" (hidden)="false">
+  Address saved successfully !!!
+</ngb-toast>
+
 <app-edit-address *ngIf="addNewAddress" (output)="getChildData($event)"></app-edit-address>

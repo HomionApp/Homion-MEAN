@@ -7,15 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddressComponent implements OnInit {
   addNewAddress = false;
+  isSaved = false;
   constructor() {}
 
   ngOnInit(): void {}
 
   editAddress() {
+    this.isSaved = false;
     this.addNewAddress = true;
   }
 
-  getChildData(isNewAdded: boolean) {
+  getChildData(isSaved: boolean) {
+    this.isSaved = isSaved;
     this.addNewAddress = false;
   }
 }
