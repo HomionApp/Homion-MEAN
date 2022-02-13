@@ -5,10 +5,9 @@ const SubCategory = require("../models/SubCategory");
 
 exports.addProduct = async (req, res, next) => {
   try {
-    console.log(req);
-    // let product = req.body.product;
-    // product.chefId = req.id;
-    // await new Product(product).save();
+    let product = req.body.product;
+    product.chefId = req.id;
+    await new Product(product).save();
     res.json(new Response(201, "Product added!!"));
   } catch (err) {
     console.log(err);

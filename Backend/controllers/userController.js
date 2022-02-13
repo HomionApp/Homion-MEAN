@@ -1,13 +1,69 @@
 const Address = require("../models/Address");
+const User = require("../models/User");
 const Response = require("../models/Response");
+
+var mongoose = require("mongoose");
 
 exports.saveAddress = async (req, res, next) => {
   try {
-    const address = req.body.address;
+    let address = req.body.address;
     const userId = req.id;
-    // await new Address(address).save();
+    address = await new Address(address).save();
+    await User.findByIdAndUpdate(userId, { $push: { address: address._id } });
     res.json(new Response(201, "Address saved!!"));
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.getAddress = async (req, res, next) => {
+  try {
+    const userId = req.id;
+    const address = await User.findById(userId, "address").populate({
+      path: "address",
+      populate: {
+        path: "areaId",
+        model: "Area",
+      },
+    });
+    res.json(new Response(200, "", address.address));
   } catch (err) {
     console.log(err);
   }
+};
+
+exports.getAddressById = async (req, res, next) => {
+  try {
+    const addressId = req.get("addressId");
+    const address = await Address.findById(addressId);
+    res.json(new Response(200, "", address));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.editAddress = async (req, res, next) => {
+  try {
+    const address = req.body.address;
+    const updatedAddress = await Address.findByIdAndUpdate(
+      address.addressId,
+      address
+    );
+    console.log(updatedAddress);
+    res.json(new Response(201, "Address edited!!"));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.deleteAddress = async (req, res, next) => {
+  try {
+    const addressId = req.get("addressId");
+    const userId = req.id;
+    await User.findByIdAndUpdate(userId, {
+      $pull: { address: mongoose.Types.ObjectId(addressId) },
+    });
+    await Address.findByIdAndDelete(addressId);
+    res.json(new Response(202, "Address deleted successfully!!!"));
+  } catch (err) {}
 };

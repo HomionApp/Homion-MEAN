@@ -12,6 +12,7 @@ module.exports = Response;
 /*  Status
     200 : Success
     201 : Created
+    202 : Deleted
 
     400 : Incorrect password
     401 : Bad request

@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   ViewChild,
@@ -19,8 +20,11 @@ import { UserService } from '../../user.service';
 export class EditAddressComponent implements OnInit {
   @ViewChild('editaddress', { static: true }) modal!: ElementRef;
   @Output() output = new EventEmitter<boolean>();
+  @Input() addressId!: string;
   areas: { [id: string]: any } = {};
   isLoading = false;
+  isEditMode = false;
+
   form = new FormGroup({
     homeNo: new FormControl(null, [Validators.required, Validators.min(1)]),
     society: new FormControl('', Validators.required),
@@ -45,6 +49,10 @@ export class EditAddressComponent implements OnInit {
       .catch((err) => {
         console.log(err);
       });
+    if (this.addressId.length > 0) {
+      this.isEditMode = true;
+      this.getAddressById();
+    }
 
     this.getAreas();
   }
@@ -57,16 +65,26 @@ export class EditAddressComponent implements OnInit {
           (area: any) =>
             (this.areas[area._id] = { name: area.name, pincode: area.pincode })
         );
-        this.form.patchValue({
-          areaId: res.data[0]?._id,
-          pincode: res.data[0]?.pincode,
-        });
+        if (!this.isEditMode) {
+          this.form.patchValue({
+            areaId: res.data[0]?._id,
+            pincode: res.data[0]?.pincode,
+          });
+        }
         this.isLoading = false;
       }
     });
   }
 
   saveAddress() {
+    if (this.isEditMode) {
+      this.editAddress();
+    } else {
+      this.addNewAddress();
+    }
+  }
+
+  addNewAddress() {
     if (this.form.valid) {
       const address = {
         ...this.form.value,
@@ -80,6 +98,39 @@ export class EditAddressComponent implements OnInit {
         }
       });
     }
+  }
+
+  editAddress() {
+    if (this.form.valid) {
+      const address = {
+        ...this.form.value,
+        pincode: this.form.controls['pincode'].value,
+        addressId: this.addressId,
+      };
+      this.userService.editAddress(address).subscribe((res) => {
+        if (res.status === 201) {
+          console.log(res);
+          this.modalService.dismissAll();
+          this.output.emit(true);
+        }
+      });
+    }
+  }
+
+  getAddressById() {
+    this.userService.getAddressById(this.addressId).subscribe((res) => {
+      if (res.status == 200) {
+        const address = res.data;
+        this.form.setValue({
+          homeNo: address.homeNo,
+          society: address.society,
+          landmark: address.landmark,
+          pincode: address.pincode,
+          addressType: address.addressType,
+          areaId: address.areaId,
+        });
+      }
+    });
   }
 
   closeModal() {
