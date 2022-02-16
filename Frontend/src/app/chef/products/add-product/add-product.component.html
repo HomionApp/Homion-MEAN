@@ -2,7 +2,6 @@
     <div class="row align-items-center">
         <div class="col-11 col-md-10 mx-auto">
             <form class="row g-3" enctype="multipart/form-data" [formGroup]="form" (ngSubmit)="addProduct()">
-
                 <div class="mt-4 row mx-auto w-100">
                     <div class="col-12 text-center">
                         <div>
@@ -30,14 +29,16 @@
                 <div class="col-md-6">
                     <label for="categoryId" class="form-label">Category</label>
                     <select id="categoryId" class="form-select shadow-none" formControlName="categoryId">
-                        <option [value]="category._id" *ngFor="let category of categories">{{category.name}}</option>
+                        <option [value]="category._id" *ngFor="let category of categories">{{category.name}}
+                        </option>
                     </select>
                 </div>
 
                 <div class="col-md-6">
                     <label for="subCategoryId" class="form-label">Sub-Category</label>
                     <select id="subCategoryId" class="form-select shadow-none" formControlName="subCategoryId">
-                        <option [value]="subCategory._id" *ngFor="let subCategory of subCategories">{{subCategory.name}}
+                        <option [value]="subCategory._id" *ngFor="let subCategory of subCategories">
+                            {{subCategory.name}}
                         </option>
                     </select>
                 </div>
@@ -140,11 +141,22 @@
                 </div>
 
                 <div class="col-12 my-5">
-                    <button type="submit" class="btn bg-purple text-white fw-bolder w-100"
-                        [disabled]="form.invalid">Add</button>
+                    <button class="btn bg-purple text-white fw-bolder w-100" [disabled]="form.invalid">
+                        <div *ngIf="showSpinner; else Add"
+                            class="spinner-border spinner-border-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <ng-template #Add>
+                            Add
+                        </ng-template>
+                    </button>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
+
+<ngb-toast *ngIf="showToast" [class]="'bg-success text-light position-fixed top-0 end-0 mt-10 me-2 w-auto'" [autohide]="true"
+  [delay]="3000" (hidden)="false">
+  Product Added Successfully!!
+</ngb-toast>

@@ -10,8 +10,10 @@ import { ChefService } from '../../chef.service';
 export class AddProductComponent implements OnInit {
   categories: { _id: string; name: string }[] = [];
   subCategories: { _id: string; name: string }[] = [];
-  imgPath: any = '../../../../assets/image/defaultProduct.png';
+  imgPath: string = '../../../../assets/image/defaultProduct.png';
   selectedFile!: File;
+  showSpinner = false;
+  showToast = false;
 
   form = new FormGroup({
     name: new FormControl(null, Validators.required),
@@ -70,6 +72,7 @@ export class AddProductComponent implements OnInit {
 
   addProduct() {
     if (this.form.valid) {
+      this.showSpinner = true;
       const formData = new FormData();
       formData.append('name', this.form.controls['name'].value);
       formData.append('price', this.form.controls['price'].value);
@@ -97,7 +100,10 @@ export class AddProductComponent implements OnInit {
       // });
 
       this.chefService.addProduct(formData).subscribe((res) => {
-        console.log(res);
+        this.form.reset();
+        this.imgPath = '../../../../assets/image/defaultProduct.png';
+        this.showSpinner = false;
+        this.showToast = true;
       });
     }
   }

@@ -2,13 +2,26 @@ const Product = require("../models/Product");
 const Response = require("../models/Response");
 const Category = require("../models/Category");
 const SubCategory = require("../models/SubCategory");
+const cloudinary = require("cloudinary").v2;
 
 exports.addProduct = async (req, res, next) => {
   try {
-    let product = req.body.product;
+    let product = req.body;
     product.chefId = req.id;
-    await new Product(product).save();
-    res.json(new Response(201, "Product added!!"));
+    await cloudinary.uploader
+      .upload_stream(
+        { resource_type: "image", folder: "mean/product" },
+        async (error, result) => {
+          if (error) {
+            console.log("Error in cloudinary.uploader.upload_stream\n", error);
+            return;
+          }
+          product = new Product({ ...product, imageURL: result.url });
+          await product.save();
+          res.json(new Response(201, "Product added!!"));
+        }
+      )
+      .end(req.file.buffer);
   } catch (err) {
     console.log(err);
   }

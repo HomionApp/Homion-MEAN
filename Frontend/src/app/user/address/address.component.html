@@ -53,4 +53,4 @@
   Address saved successfully !!!
 </ngb-toast>
 
-<app-edit-address *ngIf="addNewAddress" (output)="getChildData($event)" [addressId]="addressId"></app-edit-address>
+<app-edit-address *ngIf="isNewAddress || isEditMode" (output)="getChildData($event)" [addressId]="addressId"></app-edit-address>

@@ -9,6 +9,7 @@ import { UserService } from '../user.service';
 export class AddressComponent implements OnInit {
   address: any[] = [];
   isNewAddress = false;
+  isEditMode = false;
   isSaved = false;
   isLoading = false;
   addressId: string = '';
@@ -31,12 +32,14 @@ export class AddressComponent implements OnInit {
 
   addNewAddress() {
     this.isNewAddress = true;
+    this.isEditMode = false;
     this.addressId = '';
   }
 
   editAddress(addressId: string) {
     this.isSaved = false;
-    this.isNewAddress = true;
+    this.isNewAddress = false;
+    this.isEditMode = true;
     this.addressId = addressId;
   }
 
@@ -57,6 +60,7 @@ export class AddressComponent implements OnInit {
   getChildData(isSaved: boolean) {
     this.isSaved = isSaved;
     this.isNewAddress = false;
+    this.isEditMode = false;
     if (isSaved) {
       this.getAddress();
     }
