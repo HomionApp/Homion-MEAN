@@ -19,7 +19,7 @@ exports.saveAddress = async (req, res, next) => {
 exports.getAddress = async (req, res, next) => {
   try {
     const userId = req.id;
-    const address = await User.findById(userId, "address").populate({
+    const address = await User.findById(userId).populate({
       path: "address",
       populate: {
         path: "areaId",

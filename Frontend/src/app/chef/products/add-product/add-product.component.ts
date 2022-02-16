@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ChefService } from '../../chef.service';
 
 @Component({
@@ -29,7 +30,7 @@ export class AddProductComponent implements OnInit {
     productImage: new FormControl(''),
   });
 
-  constructor(private chefService: ChefService) {}
+  constructor(private chefService: ChefService, private router: Router) {}
 
   ngOnInit(): void {
     this.getCategories();
@@ -95,15 +96,14 @@ export class AddProductComponent implements OnInit {
       formData.append('isSpeciality', this.form.controls['isSpeciality'].value);
       formData.append('file', this.selectedFile);
 
-      // formData.forEach((value, key) => {
-      //   console.log(key, '--', value);
-      // });
-
       this.chefService.addProduct(formData).subscribe((res) => {
-        this.form.reset();
-        this.imgPath = '../../../../assets/image/defaultProduct.png';
-        this.showSpinner = false;
-        this.showToast = true;
+        if (res.status == 201) {
+          this.showSpinner = false;
+          this.showToast = true;
+          setTimeout(() => {
+            this.router.navigateByUrl('/chef/products');
+          }, 500);
+        }
       });
     }
   }

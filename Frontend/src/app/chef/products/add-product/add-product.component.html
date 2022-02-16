@@ -142,8 +142,7 @@
 
                 <div class="col-12 my-5">
                     <button class="btn bg-purple text-white fw-bolder w-100" [disabled]="form.invalid">
-                        <div *ngIf="showSpinner; else Add"
-                            class="spinner-border spinner-border-sm" role="status">
+                        <div *ngIf="showSpinner; else Add" class="spinner-border spinner-border-sm" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
                         <ng-template #Add>
@@ -156,7 +155,7 @@
     </div>
 </div>
 
-<ngb-toast *ngIf="showToast" [class]="'bg-success text-light position-fixed top-0 end-0 mt-10 me-2 w-auto'" [autohide]="true"
-  [delay]="3000" (hidden)="false">
-  Product Added Successfully!!
+<ngb-toast *ngIf="showToast" [class]="'bg-success text-light position-fixed top-0 end-0 mt-10 me-2 w-auto'"
+    [autohide]="true" [delay]="3000" (hidden)="showToast = false">
+    Product Added Successfully!!
 </ngb-toast>

@@ -23,4 +23,16 @@ export class ChefService {
   public addProduct(formData: FormData): Observable<Response> {
     return this.http.post<Response>(`${host}/addProduct`, formData);
   }
+
+  public getProducts(): Observable<Response> {
+    return this.http.get<Response>(`${host}/getProducts`);
+  }
+
+  public deleteProduct(
+    productId: string,
+    publicId: string
+  ): Observable<Response> {
+    let options = { headers: { productId: productId, publicId: publicId } };
+    return this.http.delete<Response>(`${host}/deleteProduct`, options);
+  }
 }

@@ -26,7 +26,11 @@ const productSchema = new Schema({
   },
   imageURL: {
     type: String,
-    required: false
+    required: false,
+  },
+  publicId: {
+    type: String,
+    required: false,
   },
   isJainAvailable: {
     type: Boolean,
@@ -47,9 +51,11 @@ const productSchema = new Schema({
   },
   rating: {
     type: mongoose.Decimal128,
+    default: 0,
   },
   count: {
     type: Number,
+    default: 0
   },
   chefId: {
     type: Schema.Types.ObjectId,
@@ -59,12 +65,12 @@ const productSchema = new Schema({
   categoryId: {
     type: Schema.Types.ObjectId,
     ref: "Category",
-    required: true
+    required: true,
   },
   subCategoryId: {
     type: Schema.Types.ObjectId,
     ref: "SubCategory",
-    required: true
+    required: true,
   },
 });
 
