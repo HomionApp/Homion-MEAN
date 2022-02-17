@@ -19,14 +19,15 @@ export class ProductsComponent implements OnInit {
     this.chefService.getProducts().subscribe((res) => {
       if (res.status == 200) {
         this.products = res.data;
-        console.log(this.products);
         this.isLoading = false;
       }
     });
   }
 
-  deleteProduct(productId: string, publicId: string) {
-    this.chefService.deleteProduct(productId, publicId).subscribe((res) => {
+  editProduct(productId: string) {}
+
+  deleteProduct(productId: string) {
+    this.chefService.deleteProduct(productId).subscribe((res) => {
       if (res.status == 202) {
         this.products = this.products.filter(
           (product) => product._id !== productId

@@ -11,31 +11,44 @@ exports.addProduct = async (req, res, next) => {
   try {
     let product = req.body;
     product.chefId = req.id;
-    await cloudinary.uploader
-      .upload_stream(
-        {
-          resource_type: "image",
-          folder: "mean/product",
-          width: 508,
-          height: 320,
-          crop: "scale",
-        },
-        async (error, result) => {
-          if (error) {
-            console.log("Error in cloudinary.uploader.upload_stream\n", error);
-            return;
+    if (product._id) {
+      product = await Product.findByIdAndUpdate(product._id, product);
+    } else {
+      product = new Product({
+        ...product,
+      });
+      product = await product.save();
+    }
+
+    if (req.file) {
+      await cloudinary.uploader
+        .upload_stream(
+          {
+            resource_type: "image",
+            folder: "mean/product",
+            public_id: product._id,
+            width: 508,
+            height: 320,
+            crop: "scale",
+          },
+          async (error, result) => {
+            if (error) {
+              console.log(
+                "Error in cloudinary.uploader.upload_stream\n",
+                error
+              );
+              return;
+            }
+            console.log(result);
+            product.imageURL = result.url;
+            await product.save();
+            return res.json(new Response(201, "Product added!!"));
           }
-          product = new Product({
-            ...product,
-            imageURL: result.url,
-            publicId: result.public_id,
-          });
-          console.log(result);
-          await product.save();
-          res.json(new Response(201, "Product added!!"));
-        }
-      )
-      .end(req.file.buffer);
+        )
+        .end(req.file.buffer);
+    } else {
+      res.json(new Response(201, "Product updated!!"));
+    }
   } catch (err) {
     console.log(err);
   }
@@ -56,10 +69,9 @@ exports.deleteProduct = async (req, res, next) => {
   try {
     const chefId = req.id;
     const productId = req.get("productId");
-    const publicId = req.get("publicId");
 
     await cloudinary.uploader.destroy(
-      publicId,
+      "mean/product/" + productId,
       { invalidate: true, resource_type: "image" },
       async (err, res) => {
         if (err) {
@@ -74,6 +86,17 @@ exports.deleteProduct = async (req, res, next) => {
     return res.json(new Response(202, "Product deleted !!!"));
   } catch (err) {
     console.log(err);
+  }
+};
+
+exports.getProductById = async (req, res, next) => {
+  try {
+    const productId = req.get("productId");
+    const product = await Product.findById(productId);
+    console.log(product);
+    res.json(new Response(201, "", product));
+  } catch (error) {
+    console.log(error);
   }
 };
 

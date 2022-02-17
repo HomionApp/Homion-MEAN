@@ -10,6 +10,8 @@ const host = environment.url + 'chef';
   providedIn: 'root',
 })
 export class ChefService {
+  productId?: string;
+
   constructor(private http: HttpClient) {}
 
   public getCategories(): Observable<Response> {
@@ -28,11 +30,13 @@ export class ChefService {
     return this.http.get<Response>(`${host}/getProducts`);
   }
 
-  public deleteProduct(
-    productId: string,
-    publicId: string
-  ): Observable<Response> {
-    let options = { headers: { productId: productId, publicId: publicId } };
+  public getProductbyId(productId: string): Observable<Response> {
+    let options = { headers: { productId: productId } };
+    return this.http.get<Response>(`${host}/getProductById`, options);
+  }
+
+  public deleteProduct(productId: string): Observable<Response> {
+    let options = { headers: { productId: productId } };
     return this.http.delete<Response>(`${host}/deleteProduct`, options);
   }
 }

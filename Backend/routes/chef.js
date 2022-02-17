@@ -9,6 +9,8 @@ router.post("/addProduct", isAuth, chefController.addProduct);
 
 router.get("/getProducts", isAuth, chefController.getProducts);
 
+router.get("/getProductById", isAuth, chefController.getProductById);
+
 router.delete("/deleteProduct", isAuth, chefController.deleteProduct);
 
 router.get("/getCategories", isAuth, chefController.getCategories);

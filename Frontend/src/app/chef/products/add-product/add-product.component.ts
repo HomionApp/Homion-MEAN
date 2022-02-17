@@ -1,6 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChefService } from '../../chef.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class AddProductComponent implements OnInit {
   selectedFile!: File;
   showSpinner = false;
   showToast = false;
+  productId!: string;
 
   form = new FormGroup({
     name: new FormControl(null, Validators.required),
@@ -24,17 +26,26 @@ export class AddProductComponent implements OnInit {
     prepTime: new FormControl(null, Validators.required),
     categoryId: new FormControl(null, Validators.required),
     subCategoryId: new FormControl(null, Validators.required),
-    isOpenForHome: new FormControl('no', Validators.required),
-    isJainAvailable: new FormControl('no', Validators.required),
-    isSpeciality: new FormControl('no', Validators.required),
-    productImage: new FormControl(''),
+    isOpenForHome: new FormControl(false, Validators.required),
+    isJainAvailable: new FormControl(false, Validators.required),
+    isSpeciality: new FormControl(false, Validators.required),
   });
 
-  constructor(private chefService: ChefService, private router: Router) {}
+  constructor(
+    private chefService: ChefService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.getCategories();
     this.getSubCategories();
+    this.productId = this.activatedRoute.snapshot.queryParams['productId'];
+    if (this.productId) {
+      this.location.replaceState('/chef/editProduct');
+      this.getProductById();
+    }
   }
 
   getCategories() {
@@ -75,6 +86,7 @@ export class AddProductComponent implements OnInit {
     if (this.form.valid) {
       this.showSpinner = true;
       const formData = new FormData();
+      formData.append('_id', this.productId);
       formData.append('name', this.form.controls['name'].value);
       formData.append('price', this.form.controls['price'].value);
       formData.append('unitValue', this.form.controls['unitValue'].value);
@@ -106,5 +118,26 @@ export class AddProductComponent implements OnInit {
         }
       });
     }
+  }
+
+  getProductById() {
+    this.chefService.getProductbyId(this.productId).subscribe((res) => {
+      if (res.status == 201) {
+        const product = res.data;
+        this.form.setValue({
+          name: product.name,
+          price: product.price,
+          unitValue: product.unitValue,
+          unitType: product.unitType,
+          prepTime: product.prepTime,
+          categoryId: product.categoryId,
+          subCategoryId: product.subCategoryId,
+          isOpenForHome: product.isOpenForHome,
+          isJainAvailable: product.isJainAvailable,
+          isSpeciality: product.isSpeciality,
+        });
+        this.imgPath = product.imageURL;
+      }
+    });
   }
 }

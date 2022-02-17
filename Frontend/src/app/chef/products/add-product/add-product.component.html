@@ -12,7 +12,7 @@
                                 Image</span>
                         </div>
                         <input type="file" id="file" name="file" hidden="true" accept="image/*"
-                            formControlName="productImage" (change)="fileChangeEvent($event)" #productImage>
+                             (change)="fileChangeEvent($event)" #productImage>
                     </div>
                 </div>
 
@@ -76,19 +76,19 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-sm-6 col-md-6">
-                            <label class="form-check-label text-nowrap">Open for making dish at customer's place
+                            <label class="form-check-label text-nowrap ">Open for making dish at customer's place
                                 :</label>
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" value="yes"
+                                <input class="form-check-input shadow-none" type="radio" [value]="true"
                                     name="isOpenForHome" id="radio1" formControlName="isOpenForHome">
                                 <label class="form-check-label" for="radio1">Yes</label>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" value="no" name="isOpenForHome"
+                                <input class="form-check-input shadow-none" type="radio" [value]="false" name="isOpenForHome"
                                     id="radio1" formControlName="isOpenForHome" checked>
                                 <label class="form-check-label" for="radio1">No</label>
                             </div>
@@ -103,14 +103,14 @@
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" value="yes"
+                                <input class="form-check-input shadow-none" type="radio" [value]="true"
                                     name="isJainAvailable" id="radio2" formControlName="isJainAvailable">
                                 <label class="form-check-label" for="radio2">Yes</label>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" value="no"
+                                <input class="form-check-input shadow-none" type="radio" [value]="false"
                                     name="isJainAvailable" id="radio2" formControlName="isJainAvailable" checked>
                                 <label class="form-check-label" for="radio2">No</label>
                             </div>
@@ -125,14 +125,14 @@
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none purple" type="radio" value="yes"
+                                <input class="form-check-input shadow-none purple" type="radio" [value]="true"
                                     name="isSpeciality" id="radio3" formControlName="isSpeciality">
                                 <label class="form-check-label" for="radio3">Yes</label>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" value="no" name="isSpeciality"
+                                <input class="form-check-input shadow-none" type="radio" [value]="false" name="isSpeciality"
                                     id="radio3" formControlName="isSpeciality">
                                 <label class="form-check-label" for="radio3">No</label>
                             </div>

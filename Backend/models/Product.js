@@ -28,10 +28,6 @@ const productSchema = new Schema({
     type: String,
     required: false,
   },
-  publicId: {
-    type: String,
-    required: false,
-  },
   isJainAvailable: {
     type: Boolean,
     required: true,
@@ -55,7 +51,7 @@ const productSchema = new Schema({
   },
   count: {
     type: Number,
-    default: 0
+    default: 0,
   },
   chefId: {
     type: Schema.Types.ObjectId,

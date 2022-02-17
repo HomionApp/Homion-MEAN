@@ -57,9 +57,10 @@
                                         <div class="col-11 mx-auto">
                                             <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
                                                 <button type="button"
-                                                    class="btn btn-outline-primary purple border-2 fw-bolder">EDIT</button>
+                                                    class="btn btn-outline-primary purple border-2 fw-bolder"
+                                                    routerLink="/chef/addProduct" [queryParams]="{productId : product._id}">EDIT</button>
                                                 <button class="btn btn-outline-primary purple border-2 fw-bolder"
-                                                    (click)="deleteProduct(product._id, product.publicId)">DELETE</button>
+                                                    (click)="deleteProduct(product._id)">DELETE</button>
                                             </div>
                                         </div>
                                     </div>
