@@ -39,7 +39,6 @@ exports.addProduct = async (req, res, next) => {
               );
               return;
             }
-            console.log(result);
             product.imageURL = result.url;
             await product.save();
             return res.json(new Response(201, "Product added!!"));

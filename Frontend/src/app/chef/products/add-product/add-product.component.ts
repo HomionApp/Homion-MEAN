@@ -46,6 +46,7 @@ export class AddProductComponent implements OnInit {
       this.location.replaceState('/chef/editProduct');
       this.getProductById();
     }
+    console.log(this.productId);
   }
 
   getCategories() {
@@ -86,7 +87,9 @@ export class AddProductComponent implements OnInit {
     if (this.form.valid) {
       this.showSpinner = true;
       const formData = new FormData();
-      formData.append('_id', this.productId);
+      if (this.productId) {
+        formData.append('_id', this.productId);
+      }
       formData.append('name', this.form.controls['name'].value);
       formData.append('price', this.form.controls['price'].value);
       formData.append('unitValue', this.form.controls['unitValue'].value);

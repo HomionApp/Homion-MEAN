@@ -12,7 +12,7 @@
                                 Image</span>
                         </div>
                         <input type="file" id="file" name="file" hidden="true" accept="image/*"
-                             (change)="fileChangeEvent($event)" #productImage>
+                            (change)="fileChangeEvent($event)" #productImage>
                     </div>
                 </div>
 
@@ -88,8 +88,8 @@
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" [value]="false" name="isOpenForHome"
-                                    id="radio1" formControlName="isOpenForHome" checked>
+                                <input class="form-check-input shadow-none" type="radio" [value]="false"
+                                    name="isOpenForHome" id="radio1" formControlName="isOpenForHome" checked>
                                 <label class="form-check-label" for="radio1">No</label>
                             </div>
                         </div>
@@ -132,8 +132,8 @@
                         </div>
                         <div class="col-sm-3 col-md-3">
                             <div class="form-check">
-                                <input class="form-check-input shadow-none" type="radio" [value]="false" name="isSpeciality"
-                                    id="radio3" formControlName="isSpeciality">
+                                <input class="form-check-input shadow-none" type="radio" [value]="false"
+                                    name="isSpeciality" id="radio3" formControlName="isSpeciality">
                                 <label class="form-check-label" for="radio3">No</label>
                             </div>
                         </div>
@@ -142,12 +142,15 @@
 
                 <div class="col-12 my-5">
                     <button class="btn bg-purple text-white fw-bolder w-100" [disabled]="form.invalid">
-                        <div *ngIf="showSpinner; else Add" class="spinner-border spinner-border-sm" role="status">
+                        <div *ngIf="showSpinner" class="spinner-border spinner-border-sm" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                        <ng-template #Add>
+                        <ng-container *ngIf="!showSpinner && productId !== undefined">
+                            Update
+                        </ng-container>
+                        <ng-container *ngIf="!showSpinner && productId === undefined">
                             Add
-                        </ng-template>
+                        </ng-container>
                     </button>
                 </div>
             </form>
@@ -157,5 +160,5 @@
 
 <ngb-toast *ngIf="showToast" [class]="'bg-success text-light position-fixed top-0 end-0 mt-10 me-2 w-auto'"
     [autohide]="true" [delay]="3000" (hidden)="showToast = false">
-    Product Added Successfully!!
+    Product Saved Successfully!!
 </ngb-toast>
