@@ -117,6 +117,41 @@ exports.getSubCategories = async (req, res, next) => {
   }
 };
 
+exports.getMenuItems = async (req, res, next) => {
+  try {
+    const products = await Product.find(
+      { chefId: req.id },
+      {
+        _id: 1,
+        name: 1,
+        price: 1,
+        unitValue: 1,
+        unitType: 1,
+        prepTime: 1,
+        status: 1,
+        isSpeciality: 1,
+        categoryId: 1,
+        subCategoryId: 1,
+      }
+    ).populate("categoryId subCategoryId");
+    res.json(new Response(200, "", products));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.changeProductStatus = async (req, res, next) => {
+  try {
+    const productId = req.get("productId");
+    const status = req.get("status");
+    console.log(status);
+    await Product.findByIdAndUpdate(productId, { $set: { status: status } });
+    res.json(new Response(200, "Status changed successfully!!"));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // ----------------------------------------------------------------------------------------
 
 exports.addCategory = async (req, res, next) => {

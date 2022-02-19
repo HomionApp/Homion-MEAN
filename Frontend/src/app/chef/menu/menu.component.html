@@ -1,56 +1,83 @@
 <div class="container-scroller mt-4 h-100">
     <div class="container-fluid page-body-wrapper">
         <div class="main-panel own-body">
-
-            <!-- Working area start-->
             <div class="m-2">
                 <h2 class="m-2">Menu</h2>
             </div>
 
-            <div class="row mx-2 mt-4">
-                <div class="col-12 col-sm-12 col-md-6 mb-4" *ngFor="let item of [1,2,3]">
+            <div class="row mx-2 mt-4" *ngIf="items.length > 0">
+                <div class="col-12 col-sm-12 col-md-6 mb-4" *ngFor="let item of items">
                     <div class="card shadow rounded">
                         <div class="card-body">
                             <div>
-                                <span class="h4">Fafda</span>
-                                <span class="badge badge-pill badge-primary float-end fs-16 d-none d-sm-block">Available</span>
-                                <span class="purple float-end h4 d-sm-none d-block"><i class="fa fa-check"></i></span>
+                                <span class="h4">{{item.name}}</span>
+                                <ng-container *ngIf="item.isSpeciality; else Available">
+                                    <span class="badge badge-pill bg-warning float-end fs-16 d-none d-sm-block">Chef's
+                                        Special</span>
+                                    <span class="text-warning float-end h4 d-sm-none d-block"><i
+                                            class="fa fa-star"></i></span>
+                                </ng-container>
+                                <ng-template #Available>
+                                    <span class="badge badge-pill badge-primary float-end fs-16 d-none d-sm-block">
+                                        <ng-container *ngIf="item.status === 'AVAILABLE'; else OUT_OF_STOCK">
+                                            Available
+                                        </ng-container>
+                                        <ng-template #OUT_OF_STOCK>
+                                            Out of Stock
+                                        </ng-template>
+                                    </span>
+                                    <span class="purple float-end h4 d-sm-none d-block"><i
+                                            class="fa fa-check"></i></span>
+                                </ng-template>
                             </div>
                             <div class="my-2">
                                 <span class="text-muted fs-18">
-                                    <i class="fa fa-inr menu-icon"></i> 50 | 100 gm | Gujarati
+                                    <i class="fa fa-inr menu-icon"></i> {{item.price}} | {{item.unitValue}}
+                                    {{item.unitType}} | {{item.categoryId.name}}
                                 </span>
+                                <ng-container *ngIf="item.isSpeciality">
+                                    <ng-container *ngIf="item.status === 'AVAILABLE'; else OUT_OF_STOCK">
+                                        <span class="badge badge-pill badge-primary float-end fs-16 d-none d-sm-block">Available</span>
+                                        <span class="purple float-end h4 d-sm-none d-block"><i class="fa fa-check"></i></span>
+                                    </ng-container>
+                                    <ng-template #OUT_OF_STOCK>
+                                        <span class="badge badge-pill badge-primary float-end fs-16 d-none d-sm-block">Out of Stock</span>
+                                        <span class="purple float-end h4 d-sm-none d-block"><i class="fa fa-close"></i></span>
+                                    </ng-template>
+                                </ng-container>
                             </div>
 
                             <div class="w-100 btn-group btn-group-sm mt-2">
-                                <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder"
-                                    disabled="disabled">AVAILABLE</button>
-                                <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">OUT OF
-                                    STOCK</button>
+                                <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder" [disabled]="item.status === 'AVAILABLE'" (click)="changeStatus(item._id, 'AVAILABLE')">AVAILABLE</button>
+                                <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder" [disabled]="item.status === 'OUT_OF_STOCK'" (click)="changeStatus(item._id, 'OUT_OF_STOCK')">OUT OF STOCK</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="own-border-95 bg-purple mx-auto"></div>
+            <!-- <div class="own-border-95 bg-purple mx-auto"></div>
 
-            <h2 class="d-block m-3">Speciality</h2>
+            <h2 class="d-block m-3">Speciality</h2> -->
 
-            <div class="row mx-2 mt-4">
+            <!-- <div class="row mx-2 mt-4">
                 <div class="col-12 col-sm-12 col-md-6 mb-4" *ngFor="let item of [1,2,3]">
                     <div class="card shadow rounded">
                         <div class="card-body">
                             <div>
                                 <span class="h4">Fafda</span>
-                                <span class="badge badge-pill bg-warning float-end fs-16 d-none d-sm-block">Chef's Special</span>
-                                <span class="text-warning float-end h4 d-sm-none d-block"><i class="fa fa-star"></i></span>
+                                <span class="badge badge-pill bg-warning float-end fs-16 d-none d-sm-block">Chef's
+                                    Special</span>
+                                <span class="text-warning float-end h4 d-sm-none d-block"><i
+                                        class="fa fa-star"></i></span>
                             </div>
                             <div class="my-2">
                                 <span class="text-muted fs-18">
                                     <i class="fa fa-inr menu-icon"></i> 50 | 100 gm | Gujarati
-                                    <span class="badge badge-pill badge-primary float-end fs-16 d-none d-sm-block">Available</span>
-                                    <span class="purple float-end h4 d-sm-none d-block"><i class="fa fa-check"></i></span>
+                                    <span
+                                        class="badge badge-pill badge-primary float-end fs-16 d-none d-sm-block">Available</span>
+                                    <span class="purple float-end h4 d-sm-none d-block"><i
+                                            class="fa fa-check"></i></span>
                                 </span>
                             </div>
                             <div class="w-100 btn-group btn-group-sm mt-2">
@@ -58,17 +85,15 @@
                                     disabled="disabled">AVAILABLE</button>
                                 <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder">OUT OF
                                     STOCK</button>
-                                <!-- <button type="button"
-                            class="btn btn-outline-primary purple border-2 fw-bolder">AVAILABLE</button> -->
-                                <!-- <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder"
-                            disabled>OUT OF STOCK</button> -->
+                                <button type="button"
+                            class="btn btn-outline-primary purple border-2 fw-bolder">AVAILABLE</button>
+                                <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder"
+                            disabled>OUT OF STOCK</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-            </div>
+            </div> -->
         </div>
-        <!-- Working area end-->
     </div>
 </div>

@@ -13,6 +13,10 @@ router.get("/getProductById", isAuth, chefController.getProductById);
 
 router.delete("/deleteProduct", isAuth, chefController.deleteProduct);
 
+router.get("/getMenuItems", isAuth, chefController.getMenuItems);
+
+router.get("/changeProductStatus", isAuth, chefController.changeProductStatus);
+
 router.get("/getCategories", isAuth, chefController.getCategories);
 
 router.get("/getSubCategories", isAuth, chefController.getSubCategories);

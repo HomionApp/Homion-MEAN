@@ -39,4 +39,13 @@ export class ChefService {
     let options = { headers: { productId: productId } };
     return this.http.delete<Response>(`${host}/deleteProduct`, options);
   }
+
+  public getMenuItems(): Observable<Response> {
+    return this.http.get<Response>(`${host}/getMenuItems`);
+  }
+
+  public changeProductStatus(productId: string, status: string): Observable<Response> {
+    let options = { headers: { productId: productId, status: status } };
+    return this.http.get<Response>(`${host}/changeProductStatus`, options);
+  }
 }
