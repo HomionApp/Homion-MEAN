@@ -154,7 +154,7 @@ exports.getProfileDetails = async (req, res, next) => {
   try {
     const chef = await Chef.findById(req.id, {
       products: 0,
-      address: 0
+      address: 0,
     });
     return res.json(new Response(200, "", chef));
   } catch (err) {
@@ -195,3 +195,4 @@ exports.deleteProducts = async (req, res, next) => {
     console.log(err);
   }
 };
+

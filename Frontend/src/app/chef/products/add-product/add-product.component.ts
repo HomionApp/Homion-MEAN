@@ -46,7 +46,6 @@ export class AddProductComponent implements OnInit {
       this.location.replaceState('/chef/editProduct');
       this.getProductById();
     }
-    console.log(this.productId);
   }
 
   getCategories() {

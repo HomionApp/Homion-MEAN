@@ -75,11 +75,13 @@ exports.search = async (req, res, next) => {
     const criteria = req.params.criteria;
     const products = await Product.find({
       name: { $regex: criteria, $options: "i" },
-    });
+    }).populate("categoryId subCategoryId");
     const chefs = await Chef.find({
-      name: { $regex: criteria, $options: "i" },
+      $or: [
+        { firstName: { $regex: criteria, $options: "i" } },
+        { lastName: { $regex: criteria, $options: "i" } },
+      ],
     });
-    console.log(products);
     res.json(new Response(200, "", { products: products, chefs: chefs }));
   } catch (err) {
     console.log(err);

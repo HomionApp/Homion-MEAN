@@ -17,7 +17,7 @@ const chefSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
@@ -29,11 +29,11 @@ const chefSchema = new Schema({
   },
   imageURL: {
     type: String,
-    default: "https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg",
-    
+    default:
+      "https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg",
   },
   status: {
-    type: String,      //ACTIVE-BLOCK-DELETED
+    type: String, //ACTIVE-BLOCK-DELETED
     default: "PENDING",
     required: true,
   },
@@ -49,12 +49,15 @@ const chefSchema = new Schema({
   },
   about: {
     type: String,
+    default: "",
   },
   rating: {
     type: mongoose.Decimal128,
+    default: 0,
   },
   ratingCount: {
     type: Number,
+    default: 0,
   },
   products: [
     {

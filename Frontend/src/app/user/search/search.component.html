@@ -10,8 +10,11 @@
             <ng-container *ngIf="searchResults">
                 <hr class="m-0">
                 <ul class="list-group mx-0">
-                    <li class="list-group-item list-group-item-action border-0" *ngFor="let result of searchResults">
-                        {{result}}</li>
+                    <li class="list-group-item list-group-item-action border-0" *ngFor="let result of searchResults"
+                        (click)="onSelectResult(result)" role="button">
+                        <span class="fa fa-clock-o" *ngIf="searchQuery === ''">&nbsp;</span>
+                        {{result}}
+                    </li>
                 </ul>
             </ng-container>
         </div>
@@ -40,30 +43,32 @@
     <hr class="my-3">
 
     <div class="row px-0 mt-2" *ngIf="!isChef">
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let dish of [1, 2, 3, 4, 5, 6]">
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let product of searchedProducts">
             <div class="card float-start pb-2">
                 <div class="row">
                     <div class="col-12">
-                        <img src="https://res.cloudinary.com/homioncloud/image/upload/v1641230930/product/400007.png"
-                            width="100%" alt="productImage">
-                        <button class="btn bg-light purple px-1 p-0 m-2 fs-12 position-absolute top-0 start-0">Available
+                        <img [src]=product.imageURL width="100%" alt="productImage">
+                        <button class="btn bg-light purple px-1 p-0 m-2 fs-12 position-absolute top-0 start-0"
+                            *ngIf="product.isOpenForHome">Available
                             for
                             Home</button>
                         <button
                             class="btn bg-light purple px-1 p-0 m-2 fs-6 position-absolute top-0 end-0 rounded-circle"><i
                                 class="fa fa-heart"></i></button>
                         <span class="badge bg-success text-white p-1 position-absolute bottom-0 end-0 mb-18 me-2"><i
-                                class="fa fa-star-o"></i> 3.7 (100)</span>
+                                class="fa fa-star-o"></i> {{product.rating.$numberDecimal}} ({{product.count}})</span>
                     </div>
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 px-2 pt-2">
-                                <span class="mt-2 ms-3">Pav Bhaji</span><br>
+                                <span class="mt-2 ms-3">{{product.name}}</span><br>
                             </div>
                             <div class="col-12 px-2">
-                                <span class="ms-3 fs-12 text-secondary">Desert, Gujarati</span><br>
-                                <span class="mt-2 ms-3 fs-13 fw-bold purple"><i class="fa fa-inr"></i>300 For
-                                    500gm</span>
+                                <span class="ms-3 fs-12 text-secondary">{{product.subCategoryId.name}},
+                                    {{product.categoryId.name}}</span><br>
+                                <span class="mt-2 ms-3 fs-13 fw-bold purple"><i class="fa fa-inr"></i>{{product.price}}
+                                    For
+                                    {{product.unitValue}} {{product.unitType}}</span>
                             </div>
                         </div>
                     </div>
@@ -74,26 +79,25 @@
 
 
     <div class="row mt-2" *ngIf="isChef">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let chef of [1, 2, 3, 4]">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let chef of searchedChefs">
             <div class="card">
                 <div class="row">
                     <div class="col-12">
-                        <img class="rounded-3 img-fluid chef-img"
-                            src="https://homion.herokuapp.com/chef/chefResources/image/defaultChef.jpg" width="100%"
-                            alt="chefImage" />
-                        <button class="btn bg-light purple px-1 p-0 m-2 fs-12 position-absolute top-0 start-0">Available
+                        <img class="rounded-3 img-fluid chef-img" [src]=chef.imageURL width="100%" alt="chefImage" />
+                        <button class="btn bg-light purple px-1 p-0 m-2 fs-12 position-absolute top-0 start-0"
+                            *ngIf="">Available
                             for
                             Home</button>
                         <button
                             class="btn bg-light purple px-1 p-0 m-2 fs-6 position-absolute top-0 end-0 rounded-circle"><i
                                 class="fa fa-heart"></i></button>
                         <span class="badge bg-success text-white p-1 position-absolute bottom-0 end-0 mb-5 me-2"><i
-                                class="fa fa-star-o"></i> 3.7 (100)</span>
+                                class="fa fa-star-o"></i> {{chef.rating.$numberDecimal}} ({{chef.count}})</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 p-2">
-                        <span class="mt-2 ms-3">Harduk Amareliya</span><br>
+                        <span class="mt-2 ms-3">{{chef.firstName}} {{chef.lastName}}</span><br>
                     </div>
                 </div>
             </div>

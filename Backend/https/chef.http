@@ -50,3 +50,8 @@ delete {{hostname}}/deleteProducts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjk1OTA4MTdlNzhjZThmNDE3MzM4MCIsImVtYWlsIjoiaG9taW9uYXBwQGdtYWlsLmNvbSIsInR5cGUiOiJDSEVGIiwiaWF0IjoxNjQ1MDI4NTE2LCJleHAiOjE2NDU2MzMzMTZ9.FsUELonDVXGmDADW03B8fAPpvUmvEPHXHb-R9j6nM_k
 Content-Type: application/json
 ###
+
+get {{hostname}}/getProducts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjk1OTA4MTdlNzhjZThmNDE3MzM4MCIsImVtYWlsIjoiaG9taW9uYXBwQGdtYWlsLmNvbSIsInR5cGUiOiJDSEVGIiwiaWF0IjoxNjQ1MDI4NTE2LCJleHAiOjE2NDU2MzMzMTZ9.FsUELonDVXGmDADW03B8fAPpvUmvEPHXHb-R9j6nM_k
+Content-Type: application/json
+###

@@ -10,9 +10,9 @@ import { UserService } from '../user.service';
 export class SearchComponent implements OnInit {
   isChef = false;
   showFilter = false;
-  searchQuery!: string;
+  searchQuery: string = '';
   searchChanged: Subject<string> = new Subject<string>();
-  searchResults!: string[];
+  searchResults: string[] = [];
   searchedProducts!: any[];
   searchedChefs!: any[];
 
@@ -28,7 +28,9 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {}
 
   changed(e: any) {
-    this.searchChanged.next(this.searchQuery);
+    if (this.searchQuery != '') {
+      this.searchChanged.next(this.searchQuery);
+    }
   }
 
   search() {
@@ -36,7 +38,24 @@ export class SearchComponent implements OnInit {
       if (res.status == 200) {
         this.searchedProducts = res.data.products;
         this.searchedChefs = res.data.chefs;
+        this.searchResults = [];
+        this.searchedProducts.forEach((product) =>
+          this.searchResults.push(product.name)
+        );
+        this.searchedChefs.forEach((chef) => {
+          this.searchResults.push(chef.firstName + ' ' + chef.lastName);
+        });
       }
     });
+  }
+
+  onSelectResult(result: string) {
+    this.searchedProducts = this.searchedProducts.filter(
+      (product) => product.name === result
+    );
+    this.searchedChefs = this.searchedChefs.filter(
+      (chef) => chef.firstName + ' ' + chef.lastName === result
+    );
+    this.searchResults = [];
   }
 }
