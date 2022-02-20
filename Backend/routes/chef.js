@@ -21,6 +21,8 @@ router.get("/getCategories", isAuth, chefController.getCategories);
 
 router.get("/getSubCategories", isAuth, chefController.getSubCategories);
 
+router.get("/getProfileDetails", isAuth, chefController.getProfileDetails);
+
 // ------------------------------------------------------------------------------------------
 
 router.post("/addCategory", chefController.addCategory);

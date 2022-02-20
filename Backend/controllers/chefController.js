@@ -127,13 +127,11 @@ exports.getMenuItems = async (req, res, next) => {
         price: 1,
         unitValue: 1,
         unitType: 1,
-        prepTime: 1,
         status: 1,
         isSpeciality: 1,
         categoryId: 1,
-        subCategoryId: 1,
       }
-    ).populate("categoryId subCategoryId");
+    ).populate("categoryId");
     res.json(new Response(200, "", products));
   } catch (err) {
     console.log(err);
@@ -147,6 +145,18 @@ exports.changeProductStatus = async (req, res, next) => {
     console.log(status);
     await Product.findByIdAndUpdate(productId, { $set: { status: status } });
     res.json(new Response(200, "Status changed successfully!!"));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.getProfileDetails = async (req, res, next) => {
+  try {
+    const chef = await Chef.findById(req.id, {
+      products: 0,
+      address: 0
+    });
+    return res.json(new Response(200, "", chef));
   } catch (err) {
     console.log(err);
   }

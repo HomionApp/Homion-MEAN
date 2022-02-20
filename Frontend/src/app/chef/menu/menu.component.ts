@@ -8,6 +8,8 @@ import { ChefService } from '../chef.service';
 })
 export class MenuComponent implements OnInit {
   items!: any[];
+  isLoading = true;
+
   constructor(private chefService: ChefService) {}
 
   ngOnInit(): void {
@@ -19,6 +21,7 @@ export class MenuComponent implements OnInit {
       if (res.status == 200) {
         this.items = res.data;
       }
+      this.isLoading = false;
     });
   }
 

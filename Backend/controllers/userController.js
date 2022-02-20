@@ -1,5 +1,7 @@
 const Address = require("../models/Address");
 const User = require("../models/User");
+const Chef = require("../models/Chef");
+const Product = require("../models/Product");
 const Response = require("../models/Response");
 
 var mongoose = require("mongoose");
@@ -66,4 +68,20 @@ exports.deleteAddress = async (req, res, next) => {
     await Address.findByIdAndDelete(addressId);
     res.json(new Response(202, "Address deleted successfully!!!"));
   } catch (err) {}
+};
+
+exports.search = async (req, res, next) => {
+  try {
+    const criteria = req.params.criteria;
+    const products = await Product.find({
+      name: { $regex: criteria, $options: "i" },
+    });
+    const chefs = await Chef.find({
+      name: { $regex: criteria, $options: "i" },
+    });
+    console.log(products);
+    res.json(new Response(200, "", { products: products, chefs: chefs }));
+  } catch (err) {
+    console.log(err);
+  }
 };

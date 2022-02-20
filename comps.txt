@@ -62,6 +62,12 @@ interceptor
   I am toast. Have me with tea.
 </ngb-toast>
 
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
 <app-confirm-modal [message]="'Are you sure???'" (cancelled)="false" (confirmed)="true"></app-confirm-modal>
 
 -----------------------------------------------------------------------------------------------------------------------

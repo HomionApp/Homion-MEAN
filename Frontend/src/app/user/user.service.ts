@@ -28,15 +28,17 @@ export class UserService {
     return this.http.get<Response>(`${host}/getAddress`);
   }
 
-  public getAddressById(addressId : string): Observable<Response> {
-    let options = { headers: {'addressId':addressId} };
+  public getAddressById(addressId: string): Observable<Response> {
+    let options = { headers: { addressId: addressId } };
     return this.http.get<Response>(`${host}/getAddressById`, options);
   }
 
   public deleteAddress(addressId: string): Observable<Response> {
-    let options = { headers: {'addressId':addressId} };
+    let options = { headers: { addressId: addressId } };
     return this.http.delete<Response>(`${host}/deleteAddress`, options);
   }
 
-  
+  public search(criteria: string): Observable<Response> {
+    return this.http.get<Response>(`${host}/search/${criteria}`);
+  }
 }

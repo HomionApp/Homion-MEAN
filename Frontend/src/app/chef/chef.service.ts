@@ -48,4 +48,8 @@ export class ChefService {
     let options = { headers: { productId: productId, status: status } };
     return this.http.get<Response>(`${host}/changeProductStatus`, options);
   }
+
+  public getProfileDetails(): Observable<Response> {
+    return this.http.get<Response>(`${host}/getProfileDetails`);
+  }
 }
