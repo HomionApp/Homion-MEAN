@@ -40,7 +40,7 @@ const routes: Routes = [
         component: MyOrdersComponent,
       },
       {
-        path: 'chef-details/:id',
+        path: 'chef-details/:chefId',
         component: ChefDeatilsComponenet,
       },
       {

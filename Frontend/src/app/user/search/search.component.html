@@ -4,10 +4,10 @@
             <div class="input-group">
                 <input type="text" class="form-control shadow-none border-0 py-3"
                     placeholder="Search your favourtie Dish or Chef ..." [(ngModel)]="searchQuery"
-                    (ngModelChange)="changed($event)">
-                <button class="btn bg-white" type="button"><i class="fa fa-search"></i></button>
+                    (ngModelChange)="changed()">
+                <button class="btn bg-white shadow-none" type="button"><i class="fa fa-search"></i></button>
             </div>
-            <ng-container *ngIf="searchResults">
+            <ng-container *ngIf="searchResults.length > 0">
                 <hr class="m-0">
                 <ul class="list-group mx-0">
                     <li class="list-group-item list-group-item-action border-0" *ngFor="let result of searchResults"
@@ -92,7 +92,7 @@
                             class="btn bg-light purple px-1 p-0 m-2 fs-6 position-absolute top-0 end-0 rounded-circle"><i
                                 class="fa fa-heart"></i></button>
                         <span class="badge bg-success text-white p-1 position-absolute bottom-0 end-0 mb-5 me-2"><i
-                                class="fa fa-star-o"></i> {{chef.rating.$numberDecimal}} ({{chef.count}})</span>
+                                class="fa fa-star-o"></i> {{chef.rating.$numberDecimal}} ({{chef.ratingCount}})</span>
                     </div>
                 </div>
                 <div class="row">

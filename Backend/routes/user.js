@@ -17,4 +17,6 @@ router.delete("/deleteAddress", isAuth, userController.deleteAddress);
 
 router.get("/search/:criteria", isAuth, userController.search);
 
+router.get("/getChefById", isAuth, userController.getChefById);
+
 module.exports = router;

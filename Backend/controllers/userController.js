@@ -14,6 +14,7 @@ exports.saveAddress = async (req, res, next) => {
     await User.findByIdAndUpdate(userId, { $push: { address: address._id } });
     res.json(new Response(201, "Address saved!!"));
   } catch (err) {
+    console.log(err);
     return next(err);
   }
 };
@@ -31,6 +32,7 @@ exports.getAddress = async (req, res, next) => {
     res.json(new Response(200, "", address.address));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -41,6 +43,7 @@ exports.getAddressById = async (req, res, next) => {
     res.json(new Response(200, "", address));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -55,6 +58,7 @@ exports.editAddress = async (req, res, next) => {
     res.json(new Response(201, "Address edited!!"));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -67,7 +71,10 @@ exports.deleteAddress = async (req, res, next) => {
     });
     await Address.findByIdAndDelete(addressId);
     res.json(new Response(202, "Address deleted successfully!!!"));
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+    return next(err);
+  }
 };
 
 exports.search = async (req, res, next) => {
@@ -85,5 +92,39 @@ exports.search = async (req, res, next) => {
     res.json(new Response(200, "", { products: products, chefs: chefs }));
   } catch (err) {
     console.log(err);
+    return next(err);
+  }
+};
+
+exports.getChefById = async (req, res, next) => {
+  try {
+    const chefId = req.get("chefId");
+    const chef = await Chef.findById(chefId).populate([
+      {
+        path: "products",
+        populate: [
+          {
+            path: "categoryId",
+            model: "Category",
+          },
+          {
+            path: "subCategoryId",
+            model: "SubCategory",
+          },
+        ],
+      },
+      {
+        path: "address",
+        populate: {
+          path: "areaId",
+          model: "Area",
+        },
+      },
+    ]);
+
+    res.json(new Response(200, "", chef));
+  } catch (err) {
+    console.log(err);
+    return next(err);
   }
 };

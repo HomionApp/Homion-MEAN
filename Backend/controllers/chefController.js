@@ -18,6 +18,9 @@ exports.addProduct = async (req, res, next) => {
         ...product,
       });
       product = await product.save();
+      await Chef.findByIdAndUpdate(chefId, {
+        $set: { $push: { products: product._id } },
+      });
     }
 
     if (req.file) {
@@ -50,6 +53,7 @@ exports.addProduct = async (req, res, next) => {
     }
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -61,6 +65,7 @@ exports.getProducts = async (req, res, next) => {
     res.json(new Response(200, "", products));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -85,6 +90,7 @@ exports.deleteProduct = async (req, res, next) => {
     return res.json(new Response(202, "Product deleted !!!"));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -95,7 +101,8 @@ exports.getProductById = async (req, res, next) => {
     console.log(product);
     res.json(new Response(201, "", product));
   } catch (error) {
-    console.log(error);
+    console.log(err);
+    return next(err);
   }
 };
 
@@ -105,6 +112,7 @@ exports.getCategories = async (req, res, next) => {
     res.json(new Response(200, "", categories));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -114,6 +122,7 @@ exports.getSubCategories = async (req, res, next) => {
     res.json(new Response(200, "", subCategories));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -135,6 +144,7 @@ exports.getMenuItems = async (req, res, next) => {
     res.json(new Response(200, "", products));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -147,6 +157,7 @@ exports.changeProductStatus = async (req, res, next) => {
     res.json(new Response(200, "Status changed successfully!!"));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -159,6 +170,7 @@ exports.getProfileDetails = async (req, res, next) => {
     return res.json(new Response(200, "", chef));
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -170,6 +182,7 @@ exports.addCategory = async (req, res, next) => {
     res.json("Category added!!");
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -179,6 +192,7 @@ exports.addSubCategory = async (req, res, next) => {
     res.json("SubCategory added!!");
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
 
@@ -193,6 +207,6 @@ exports.deleteProducts = async (req, res, next) => {
     res.json("Products deleted!!");
   } catch (err) {
     console.log(err);
+    return next(err);
   }
 };
-

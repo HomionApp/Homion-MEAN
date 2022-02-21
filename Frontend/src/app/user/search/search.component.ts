@@ -27,8 +27,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  changed(e: any) {
-    if (this.searchQuery != '') {
+  changed() {
+    if (this.searchQuery.length >= 2) {
       this.searchChanged.next(this.searchQuery);
     }
   }

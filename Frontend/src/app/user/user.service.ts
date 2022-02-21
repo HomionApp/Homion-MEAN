@@ -41,4 +41,9 @@ export class UserService {
   public search(criteria: string): Observable<Response> {
     return this.http.get<Response>(`${host}/search/${criteria}`);
   }
+
+  public getChefById(chefId: string): Observable<Response> {
+    let options = { headers: { chefId: chefId } };
+    return this.http.get<Response>(`${host}/getChefById`, options);
+  }
 }

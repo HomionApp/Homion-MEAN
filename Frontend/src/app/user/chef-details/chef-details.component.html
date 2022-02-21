@@ -1,8 +1,10 @@
-<app-preview></app-preview>
+<ng-container *ngIf="!isLoading">
 
-<app-products></app-products>
-
-<div class="container">
+  <app-preview [chef]="chef"></app-preview>
+  
+  <app-products [products]="products"></app-products>
+  
+  <div class="container">
   <div class="row d-flex justify-content-around mt-4">
     <div class="col-md-8 mb-2">
       <app-menu></app-menu>
@@ -15,3 +17,4 @@
 </div>
 
 <div class="pb-5 pt-5">.</div>
+</ng-container>

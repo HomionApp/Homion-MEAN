@@ -36,9 +36,9 @@ import { UserRoutingModule } from './user-routing.module';
     CommonModule,
     UserRoutingModule,
     ChefDetailsModule,
+    NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
   ],
   exports: [],
 })

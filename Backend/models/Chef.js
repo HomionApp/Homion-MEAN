@@ -42,10 +42,12 @@ const chefSchema = new Schema({
     required: true,
   },
   startTime: {
-    type: Date,
+    type: String,
+    default: "00:00",
   },
   endTime: {
-    type: Date,
+    type: String,
+    default: "00:00",
   },
   about: {
     type: String,
