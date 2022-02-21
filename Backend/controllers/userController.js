@@ -14,7 +14,6 @@ exports.saveAddress = async (req, res, next) => {
     await User.findByIdAndUpdate(userId, { $push: { address: address._id } });
     res.json(new Response(201, "Address saved!!"));
   } catch (err) {
-    console.log(err);
     return next(err);
   }
 };
@@ -31,7 +30,6 @@ exports.getAddress = async (req, res, next) => {
     });
     res.json(new Response(200, "", address.address));
   } catch (err) {
-    console.log(err);
     return next(err);
   }
 };
@@ -42,7 +40,6 @@ exports.getAddressById = async (req, res, next) => {
     const address = await Address.findById(addressId);
     res.json(new Response(200, "", address));
   } catch (err) {
-    console.log(err);
     return next(err);
   }
 };
@@ -57,7 +54,6 @@ exports.editAddress = async (req, res, next) => {
     console.log(updatedAddress);
     res.json(new Response(201, "Address edited!!"));
   } catch (err) {
-    console.log(err);
     return next(err);
   }
 };
@@ -72,7 +68,6 @@ exports.deleteAddress = async (req, res, next) => {
     await Address.findByIdAndDelete(addressId);
     res.json(new Response(202, "Address deleted successfully!!!"));
   } catch (err) {
-    console.log(err);
     return next(err);
   }
 };
@@ -91,7 +86,6 @@ exports.search = async (req, res, next) => {
     });
     res.json(new Response(200, "", { products: products, chefs: chefs }));
   } catch (err) {
-    console.log(err);
     return next(err);
   }
 };
@@ -124,7 +118,40 @@ exports.getChefById = async (req, res, next) => {
 
     res.json(new Response(200, "", chef));
   } catch (err) {
-    console.log(err);
+    return next(err);
+  }
+};
+
+exports.changeFavouriteChef = async (req, res, next) => {
+  try {
+    const chefId = req.body.chefId;
+    const userId = req.id;
+    if (req.body.isFavourite) {
+      await User.findByIdAndUpdate(userId, {
+        $push: { favouriteChef: chefId },
+      });
+    } else {
+      await User.findByIdAndUpdate(userId, {
+        $pull: { favouriteChef: chefId },
+      });
+    }
+    res.json(new Response(200, "Favourite updated"));
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.isFavouriteChef = async (req, res, next) => {
+  try {
+    const chefId = req.params.chefId;
+    const userId = req.id;
+    const user = await User.findOne({
+      _id: userId,
+      favouriteChef: { $in: [chefId] },
+    });
+
+    res.json(new Response(200, "Favourite updated", user ? true : false));
+  } catch (err) {
     return next(err);
   }
 };

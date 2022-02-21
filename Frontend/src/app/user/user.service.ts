@@ -46,4 +46,18 @@ export class UserService {
     let options = { headers: { chefId: chefId } };
     return this.http.get<Response>(`${host}/getChefById`, options);
   }
+
+  public changeFavouriteChef(
+    chefId: string,
+    isFavourite: boolean
+  ): Observable<Response> {
+    return this.http.put<Response>(`${host}/changeFavouriteChef`, {
+      chefId: chefId,
+      isFavourite: isFavourite,
+    });
+  }
+
+  public isFavouriteChef(chefId: string): Observable<Response> {
+    return this.http.get<Response>(`${host}/isFavouriteChef/${chefId}`);
+  }
 }

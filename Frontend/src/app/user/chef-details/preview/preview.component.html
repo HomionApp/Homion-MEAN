@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row pb-4">
       <div class="col-7 col-md-8 text-white">
-        <h2 class="pt-4">Harshil Dangi</h2>
+        <h2 class="pt-4">{{chef.firstName + ' ' + chef.lastName }} </h2>
         <p class="mt-2 fs-14">
           {{chef.address[0].homeNo}}, {{chef.address[0].society}}, {{chef.address[0].landmark}},
           {{chef.address[0].areaId.name}} - {{chef.address[0].pincode}}
@@ -14,8 +14,8 @@
               <span class="half" [style.width.%]="fill">&starf;</span>&starf;
             </span>
           </ng-template>
-          
-          <ngb-rating [(rate)]="currentRate" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+
+          <ngb-rating [(rate)]="chef.rating.$numberDecimal" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
           ({{chef.ratingCount}} Reviews)
         </span>
 
@@ -31,7 +31,7 @@
         </div>
 
         <div class="mt-4 mb-3">
-          <button class="btn bg-light purple fs-14 ps-4 pe-4" (click)="isFavourite = !isFavourite">
+          <button class="btn bg-light purple fs-14 ps-4 pe-4" (click)="changeFavouriteChef(!isFavourite)">
             <span *ngIf="!isFavourite" class="text-nowrap"><i class="fa fa-heart-o me-2"></i>Add to Favourite</span>
             <span *ngIf="isFavourite" class="text-nowrap"><i class="fa fa-heart me-2"></i>Remove from Favourite</span>
           </button>

@@ -31,7 +31,6 @@ export class ChefDeatilsComponenet implements OnInit {
         this.products = this.chef.products.slice();
         delete this.chef.products;
         console.log(this.chef);
-        console.log(this.products);
       }
       this.isLoading = false;
     });
