@@ -116,7 +116,9 @@ exports.getChefById = async (req, res, next) => {
       },
     ]);
 
-    res.json(new Response(200, "", chef));
+    userFavouriteProducts = (await User.findById(req.id).select("favouriteProduct")).favouriteProduct;
+
+    res.json(new Response(200, "", {chef: chef, userFavouriteProducts: userFavouriteProducts}));
   } catch (err) {
     return next(err);
   }
@@ -133,6 +135,25 @@ exports.changeFavouriteChef = async (req, res, next) => {
     } else {
       await User.findByIdAndUpdate(userId, {
         $pull: { favouriteChef: chefId },
+      });
+    }
+    res.json(new Response(200, "Favourite updated"));
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.changeFavouriteProduct = async (req, res, next) => {
+  try {
+    const productId = req.body.productId;
+    const userId = req.id;
+    if (req.body.isFavourite) {
+      await User.findByIdAndUpdate(userId, {
+        $push: { favouriteProduct: productId },
+      });
+    } else {
+      await User.findByIdAndUpdate(userId, {
+        $pull: { favouriteProduct: productId },
       });
     }
     res.json(new Response(200, "Favourite updated"));

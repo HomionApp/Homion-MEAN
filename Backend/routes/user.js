@@ -21,6 +21,8 @@ router.get("/getChefById", isAuth, userController.getChefById);
 
 router.put("/changeFavouriteChef", isAuth, userController.changeFavouriteChef);
 
+router.put("/changeFavouriteProduct", isAuth, userController.changeFavouriteProduct);
+
 router.get("/isFavouriteChef/:chefId", isAuth, userController.isFavouriteChef);
 
 module.exports = router;

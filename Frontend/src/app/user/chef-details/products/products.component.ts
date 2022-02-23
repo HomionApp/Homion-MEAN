@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FavouritesComponent } from '../../favourites/favourites.component';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-products',
@@ -7,10 +9,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
   @Input() products!: any[];
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     console.log(this.products);
-    
+  }
+
+  changeFavouriteProduct(product: any) {
+    this.userService
+      .changeFavouriteProduct(product._id, !product.isFavourite)
+      .subscribe((res) => {
+        if (res.status == 200) {
+          product.isFavourite = !product.isFavourite;
+        }
+      });
   }
 }

@@ -57,6 +57,16 @@ export class UserService {
     });
   }
 
+  public changeFavouriteProduct(
+    productId: string,
+    isFavourite: boolean
+  ): Observable<Response> {
+    return this.http.put<Response>(`${host}/changeFavouriteProduct`, {
+      productId: productId,
+      isFavourite: isFavourite,
+    });
+  }
+
   public isFavouriteChef(chefId: string): Observable<Response> {
     return this.http.get<Response>(`${host}/isFavouriteChef/${chefId}`);
   }

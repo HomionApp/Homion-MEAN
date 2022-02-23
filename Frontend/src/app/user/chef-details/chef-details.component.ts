@@ -27,8 +27,11 @@ export class ChefDeatilsComponenet implements OnInit {
   getChefById() {
     this.userService.getChefById(this.chefId).subscribe((res) => {
       if (res.status == 200) {
-        this.chef = res.data;
+        this.chef = res.data.chef;
         this.products = this.chef.products.slice();
+        this.products.forEach((product) => {
+          product.isFavourite = res.data.userFavouriteProducts.includes(product._id);
+        });
         delete this.chef.products;
         console.log(this.chef);
       }
