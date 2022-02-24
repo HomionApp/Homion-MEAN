@@ -25,11 +25,13 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  changeStatus(productId: string, status: string) {
-    this.chefService.changeProductStatus(productId, status).subscribe((res) => {
-      if (res.status == 200) {
-        this.getItems();
-      }
-    });
+  changeStatus(product: any, status: string) {
+    this.chefService
+      .changeProductStatus(product._id, status)
+      .subscribe((res) => {
+        if (res.status == 200) {
+          product.status = status;
+        }
+      });
   }
 }

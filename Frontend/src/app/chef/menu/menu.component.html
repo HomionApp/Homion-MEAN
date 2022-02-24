@@ -66,10 +66,10 @@
                                 <div class="w-100 btn-group btn-group-sm mt-2">
                                     <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder"
                                         [disabled]="item.status === 'AVAILABLE'"
-                                        (click)="changeStatus(item._id, 'AVAILABLE')">AVAILABLE</button>
+                                        (click)="changeStatus(item, 'AVAILABLE')">AVAILABLE</button>
                                     <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder"
                                         [disabled]="item.status === 'OUT_OF_STOCK'"
-                                        (click)="changeStatus(item._id, 'OUT_OF_STOCK')">OUT OF STOCK</button>
+                                        (click)="changeStatus(item, 'OUT_OF_STOCK')">OUT OF STOCK</button>
                                 </div>
                             </div>
                         </div>

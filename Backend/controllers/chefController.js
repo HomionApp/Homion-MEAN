@@ -98,7 +98,6 @@ exports.getProductById = async (req, res, next) => {
   try {
     const productId = req.get("productId");
     const product = await Product.findById(productId);
-    console.log(product);
     res.json(new Response(201, "", product));
   } catch (error) {
     console.log(err);
@@ -152,7 +151,6 @@ exports.changeProductStatus = async (req, res, next) => {
   try {
     const productId = req.get("productId");
     const status = req.get("status");
-    console.log(status);
     await Product.findByIdAndUpdate(productId, { $set: { status: status } });
     res.json(new Response(200, "Status changed successfully!!"));
   } catch (err) {
