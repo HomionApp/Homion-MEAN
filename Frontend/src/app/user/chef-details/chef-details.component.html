@@ -6,12 +6,12 @@
   
   <div class="container">
   <div class="row d-flex justify-content-around mt-4">
-    <div class="col-md-8 mb-2">
+    <div class="col-md-12 col-lg-8 mb-2">
       <app-menu [products]="products"></app-menu>
       <app-rating></app-rating>
     </div>
-    <div class="col-md-4 px-3">
-      <app-dynamic-cart></app-dynamic-cart>
+    <div class="col-md-12 col-lg-4 px-3">
+      <app-dynamic-cart [chef]="chef"></app-dynamic-cart>
     </div>
   </div>
 </div>

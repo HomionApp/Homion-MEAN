@@ -1,56 +1,39 @@
 <div class="card px-3 pb-3">
 
-  <span class="fw-bold pt-3">Harshil Dangi</span>
-  <span class="fs-12 text-secondary pt-1"><i class="fa fa-map-marker"></i> 10, Vibhusha Bunglows, Kabir Enclave, Bopal -
-    380058</span>
+  <span class="fw-bold pt-3">{{chef.firstName + ' ' + chef.lastName}}</span>
+  <span class="fs-12 text-secondary pt-1"><i class="fa fa-map-marker"></i> {{chef.address[0].homeNo}},
+    {{chef.address[0].society}}, {{chef.address[0].landmark}},
+    {{chef.address[0].areaId.name}} - {{chef.address[0].pincode}}</span>
   <hr>
 
-  <div class="cart-item mt-2">
-    <div class="float-end text-secondary ms-5"><i class="fa fa-inr"></i> 123 <i class="fa fa-trash text-danger ms-3"
-        role="button"></i></div>
-    <div class="float-end">
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2">&#8722;</button>
-        <button type="button" class="btn btn-secondary fs-14 py-0 px-2">3</button>
-        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2">&#43;</button>
-      </div>
-    </div>
-    <div>ABC</div>
+  <div class="text-center text-secondary h6" *ngIf="cartItems.length == 0">
+    <div class="pb-1">Your cart is empty.</div>
+    <div class="pt-1"> Add items in your cart.</div>
   </div>
 
-  <div class="cart-item mt-2">
-    <div class="float-end text-secondary ms-5"><i class="fa fa-inr"></i> 123 <i class="fa fa-trash text-danger ms-3"
-        role="button"></i></div>
+  <div class="cart-item mt-2" *ngFor="let item of cartItems">
+    <div class="float-end text-secondary ms-5"><i class="fa fa-inr"></i> {{item.product.price * item.quantity}} <i
+        class="fa fa-trash text-danger ms-3" role="button" (click)="deleteCartItem(item.product._id)"></i></div>
     <div class="float-end">
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2">&#8722;</button>
-        <button type="button" class="btn btn-secondary fs-14 py-0 px-2">3</button>
-        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2">&#43;</button>
+        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2"
+          (click)="item.quantity = item.quantity - 1; toPayAmount()" [disabled]="item.quantity == 1">&#8722;</button>
+        <button type="button" class="btn btn-secondary fs-14 py-0 px-2">{{item.quantity}}</button>
+        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2"
+          (click)="item.quantity = item.quantity + 1; toPayAmount()" [disabled]="item.quantity == 5">&#43;</button>
       </div>
     </div>
-    <div>ABC</div>
-  </div>
-
-  <div class="cart-item mt-2">
-    <div class="float-end text-secondary ms-5"><i class="fa fa-inr"></i> 123 <i class="fa fa-trash text-danger ms-3"
-        role="button"></i></div>
-    <div class="float-end">
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2">&#8722;</button>
-        <button type="button" class="btn btn-secondary fs-14 py-0 px-2">3</button>
-        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2">&#43;</button>
-      </div>
-    </div>
-    <div>ABC</div>
+    <div>{{item.product.name}}</div>
   </div>
 
   <hr class="mt-4">
 
   <div class="to-pay">
     <div class="h5 float-start">TO PAY</div>
-    <div class="h5 float-end"> <i class="fa fa-inr"></i> 1234</div>
+    <div class="h5 float-end"> <i class="fa fa-inr"></i> {{toPay}}</div>
   </div>
 
-  <button class="btn-lg bg-success border border-white mt-3 text-white fs-16 py-3">CHECKOUT</button>
+  <button type="button" class="btn-lg bg-success border border-white mt-3 text-white fs-16 py-3"
+    [disabled]="cartItems.length == 0">CHECKOUT</button>
 
 </div>

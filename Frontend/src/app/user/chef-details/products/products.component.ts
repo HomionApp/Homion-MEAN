@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FavouritesComponent } from '../../favourites/favourites.component';
 import { UserService } from '../../user.service';
 
 @Component({

@@ -3,82 +3,32 @@
   <ul class="list-group list-group-flush p-2">
     <li class="list-group-item fs-5">Menu</li>
   </ul>
-  <ng-container *ngFor="let sc of menu | keyvalue">
+  <ng-container *ngFor="let subCategory of menu | keyvalue">
     <div class="card-header fs-6 ps-4 py-3">
-      {{sc.key}}
+      {{subCategory.key}}
     </div>
     <ul class="list-group list-group-flush py-1 px-2">
-      <li class="list-group-item py-3" *ngFor="let item of sc.value">
+      <li class="list-group-item py-3" *ngFor="let product of subCategory.value">
         <div class="row">
           <div class="col-1 col-md-1 fs-2 text-success">
             <div class="mt-n2">&#8865;</div>
           </div>
           <div class="col-7 col-md-7">
-            <span>{{item.name}}</span><br>
-            <span class="fs-13 text-secondary"><i class="fa fa-inr"></i>{{item.price}} For {{item.unitValue}}{{item.unitType}}</span>
+            <span>{{product.name}}</span><br>
+            <span class="fs-13 text-secondary"><i class="fa fa-inr"></i>{{product.price}} For
+              {{product.unitValue}}{{product.unitType}}</span>
           </div>
-          <div class="col-2 col-md-2" *ngIf="item.status === 'OUT_OF_STOCK'">
-            <button class="btn btn-dark fs-11 px-1 py-1 mt-4 me-3 float-end position-absolute end-0 top-0">OUT OF
-              STOCK</button>
+          <div class="col-2 col-md-2" *ngIf="product.status === 'OUT_OF_STOCK'">
+            <span class="btn btn-dark fs-11 px-1 py-1 mt-4 me-3 float-end position-absolute end-0 top-0">OUT OF
+              STOCK</span>
           </div>
-          <div class="col-2 col-md-2" *ngIf="item.status === 'AVAILABLE'">
-            <button
-              class="btn btn-outline-secondary fs-13 py-1 px-2 mt-4 me-3 float-end position-absolute end-0 top-0">ADD</button>
+          <div class="col-2 col-md-2" *ngIf="product.status === 'AVAILABLE'">
+            <button class="btn btn-outline-secondary fs-13 py-1 px-2 mt-4 me-3 float-end position-absolute end-0 top-0"
+              (click)="addToCart(product)" *ngIf="!product.isAdded">ADD</button>
           </div>
         </div>
       </li>
     </ul>
   </ng-container>
-
-  <!-- <div class="card-header fs-6 ps-4 py-3">
-    Desert
-  </div>
-  <ul class="list-group list-group-flush py-1 px-2">
-    <li class="list-group-item py-3">
-      <div class="row">
-        <div class="col-1 col-md-1 fs-2 text-success">
-          <div class="mt-n2">&#8865;</div>
-        </div>
-        <div class="col-7 col-md-7">
-          <span>ABC</span><br>
-          <span class="fs-13 text-secondary"><i class="fa fa-inr"></i>300 For 500gm</span>
-        </div>
-        <div class="col-2 col-md-2">
-          <button
-            class="btn btn-outline-secondary fs-13 py-1 px-2 mt-4 me-3 float-end position-absolute end-0 top-0">ADD</button>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item py-3">
-      <div class="row">
-        <div class="col-1 col-md-1 fs-2 text-success">
-          <div class="mt-n2">&#8865;</div>
-        </div>
-        <div class="col-7 col-md-7">
-          <span>ABC</span><br>
-          <span class="fs-13 text-secondary"><i class="fa fa-inr"></i>300 For 500gm</span>
-        </div>
-        <div class="col-2 col-md-2">
-          <button class="btn btn-dark fs-11 px-1 py-1 mt-4 me-3 float-end position-absolute end-0 top-0">OUT OF
-            STOCK</button>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item py-3">
-      <div class="row">
-        <div class="col-1 col-md-1 fs-2 text-success">
-          <div class="mt-n2">&#8865;</div>
-        </div>
-        <div class="col-7 col-md-7">
-          <span>ABC</span><br>
-          <span class="fs-13 text-secondary"><i class="fa fa-inr"></i>300 For 500gm</span>
-        </div>
-        <div class="col-2 col-md-2">
-          <button
-            class="btn btn-outline-secondary fs-13 py-1 px-2 mt-4 me-3 float-end position-absolute end-0 top-0">ADD</button>
-        </div>
-      </div>
-    </li>
-  </ul> -->
 
 </div>
