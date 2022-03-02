@@ -7,13 +7,13 @@ import { UserService } from '../../user.service';
   styleUrls: ['./dynamic-cart.component.css'],
 })
 export class DynamicCartComponent implements OnInit {
-  @Input() chef: any;
+  @Input() user: any;
   cartItems: any[] = [];
   toPay = 0;
 
   constructor(private userService: UserService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.userService.cartItems.subscribe((cartItems) => {
       this.cartItems = cartItems;
       this.toPayAmount();

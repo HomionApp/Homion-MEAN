@@ -14,6 +14,10 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
+  public getUser(): Observable<Response> {
+    return this.http.get<Response>(`${host}/getUser`);
+  }
+
   public saveAddress(address: any): Observable<Response> {
     return this.http.post<Response>(`${host}/saveAddress`, {
       address: address,

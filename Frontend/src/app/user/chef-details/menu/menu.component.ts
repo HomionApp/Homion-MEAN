@@ -28,7 +28,6 @@ export class MenuComponent implements OnInit {
 
   setSubCategoryWiseProducts() {
     this.products.forEach((product: any) => {
-      product.isAdded = false;
       var name = product.subCategoryId.name;
       if (!this.menu.has(product.subCategoryId.name)) {
         this.menu.set(name, [product]);

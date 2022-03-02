@@ -1,9 +1,9 @@
 <div class="card px-3 pb-3">
 
-  <span class="fw-bold pt-3">{{chef.firstName + ' ' + chef.lastName}}</span>
-  <span class="fs-12 text-secondary pt-1"><i class="fa fa-map-marker"></i> {{chef.address[0].homeNo}},
-    {{chef.address[0].society}}, {{chef.address[0].landmark}},
-    {{chef.address[0].areaId.name}} - {{chef.address[0].pincode}}</span>
+  <span class="fw-bold pt-3">{{user.firstName + ' ' + user.lastName}}</span>
+  <span class="fs-12 text-secondary pt-1"><i class="fa fa-map-marker"></i> {{user.address[0].homeNo}},
+    {{user.address[0].society}}, {{user.address[0].landmark}},
+    {{user.address[0].areaId.name}} - {{user.address[0].pincode}}</span>
   <hr>
 
   <div class="text-center text-secondary h6" *ngIf="cartItems.length == 0">

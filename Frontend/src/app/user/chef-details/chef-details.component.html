@@ -11,10 +11,18 @@
       <app-rating></app-rating>
     </div>
     <div class="col-md-12 col-lg-4 px-3">
-      <app-dynamic-cart [chef]="chef"></app-dynamic-cart>
+      <app-dynamic-cart [user]="user"></app-dynamic-cart>
     </div>
   </div>
 </div>
 
 <div class="pb-5 pt-5">.</div>
+
 </ng-container>
+
+<div class="position-absolute top-50 start-50" *ngIf="isLoading">
+  <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+

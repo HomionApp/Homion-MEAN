@@ -116,9 +116,32 @@ exports.getChefById = async (req, res, next) => {
       },
     ]);
 
-    userFavouriteProducts = (await User.findById(req.id).select("favouriteProduct")).favouriteProduct;
+    userFavouriteProducts = (
+      await User.findById(req.id).select("favouriteProduct")
+    ).favouriteProduct;
 
-    res.json(new Response(200, "", {chef: chef, userFavouriteProducts: userFavouriteProducts}));
+    res.json(
+      new Response(200, "", {
+        chef: chef,
+        userFavouriteProducts: userFavouriteProducts,
+      })
+    );
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.getUser = async (req, res, next) => {
+  try {
+    const userId = req.id;
+    const user = await User.findById(userId).populate({
+      path: "address",
+      populate: {
+        path: "areaId",
+        model: "Area",
+      },
+    });
+    res.json(new Response(200, "", user));
   } catch (err) {
     return next(err);
   }
