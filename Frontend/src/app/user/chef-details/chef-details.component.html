@@ -7,11 +7,11 @@
   <div class="container">
   <div class="row d-flex justify-content-around mt-4">
     <div class="col-md-12 col-lg-8 mb-2">
-      <app-menu [products]="products"></app-menu>
+      <app-menu [products]="products" [chef]="chef"></app-menu>
       <app-rating></app-rating>
     </div>
     <div class="col-md-12 col-lg-4 px-3">
-      <app-dynamic-cart [user]="user"></app-dynamic-cart>
+      <app-dynamic-cart [user]="user" [chef]="chef"></app-dynamic-cart>
     </div>
   </div>
 </div>

@@ -3,6 +3,7 @@ const User = require("../models/User");
 const Chef = require("../models/Chef");
 const Product = require("../models/Product");
 const Response = require("../models/Response");
+const Order = require("../models/Order");
 
 var mongoose = require("mongoose");
 
@@ -195,6 +196,44 @@ exports.isFavouriteChef = async (req, res, next) => {
     });
 
     res.json(new Response(200, "Favourite updated", user ? true : false));
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.addToCart = async (req, res, next) => {
+  try {
+    const cart = req.body.cart;
+    await new Order({ ...cart }).save();
+    res.json(new Response(200, "Items added to cart"));
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.getCartItems = async (req, res, next) => {
+  try {
+    const cart = await Order.findOne({
+      status: "INCART",
+      user: req.id,
+    }).populate({
+      path: "items",
+      populate: {
+        path: "product",
+        model: "Product",
+      },
+    });
+    console.log(cart);
+    res.json(new Response(200, "", cart));
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.deleteCart = async (req, res, next) => {
+  try {
+    await Order.deleteOne({ user: req.id, status: "INCART" });
+    res.json(new Response(202, "Cart deleted"));
   } catch (err) {
     return next(err);
   }

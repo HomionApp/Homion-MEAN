@@ -7,6 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { RatingComponent } from './rating/rating.component';
 import { DynamicCartComponent } from './dynamic-cart/dynamic-cart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserRoutingModule } from '../user-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductsComponent,
     MenuComponent,
     RatingComponent,
-    DynamicCartComponent
+    DynamicCartComponent,
   ],
-  imports: [
-    CommonModule,
-    NgbModule
-  ],
-  exports: [DynamicCartComponent]
+  imports: [CommonModule, NgbModule, UserRoutingModule],
+  exports: [DynamicCartComponent],
 })
-export class ChefDetailsModule { }
+export class ChefDetailsModule {}

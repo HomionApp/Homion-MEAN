@@ -4,16 +4,16 @@ const Schema = mongoose.Schema;
 const orderSchema = new Schema(
   {
     amount: {
-      type: Decimal128,
+      type: Number,
       required: true,
     },
     paymentMode: {
-      type: Decimal128,
-      required: true,
+      type: String,
+      required: false,
     },
     status: {
-      type: String, //DELIVERED-PREPARED-ONGOING
-      required: true,
+      type: String, //DELIVERED-PREPARED-ONGOING-ORDERED-INCART
+      default: "INCART",
     },
     user: {
       type: Schema.Types.ObjectId,
@@ -28,12 +28,12 @@ const orderSchema = new Schema(
     address: {
       type: Schema.Types.ObjectId,
       ref: "Address",
-      required: true,
+      required: false,
     },
     feedback: {
       type: Schema.Types.ObjectId,
       ref: "Feedback",
-      required: true,
+      required: false,
     },
     items: [
       {
@@ -42,7 +42,7 @@ const orderSchema = new Schema(
           ref: "Product",
           required: true,
         },
-        qauntity: { type: Number, required: true },
+        quantity: { type: Number, required: true },
       },
     ],
   },

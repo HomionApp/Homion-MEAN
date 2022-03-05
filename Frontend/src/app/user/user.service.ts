@@ -11,6 +11,7 @@ const host = environment.url + 'user';
 })
 export class UserService {
   cartItems = new EventEmitter<any[]>();
+  cartChefId!: string; //chefDetails page na chef ni id
 
   constructor(private http: HttpClient) {}
 
@@ -76,4 +77,17 @@ export class UserService {
   public isFavouriteChef(chefId: string): Observable<Response> {
     return this.http.get<Response>(`${host}/isFavouriteChef/${chefId}`);
   }
+
+  public addToCart(cart: any): Observable<Response> {
+    return this.http.post<Response>(`${host}/addToCart`, { cart: cart });
+  }
+
+  public getCartItems(): Observable<Response> {
+    return this.http.get<Response>(`${host}/getCartItems`);
+  }
+
+  public deleteCart(): Observable<Response> {
+    return this.http.get<Response>(`${host}/deleteCart`);
+  }
+
 }

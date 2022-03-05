@@ -31,4 +31,10 @@ router.put(
 
 router.get("/isFavouriteChef/:chefId", isAuth, userController.isFavouriteChef);
 
+router.post("/addToCart", isAuth, userController.addToCart);
+
+router.get("/getCartItems", isAuth, userController.getCartItems);
+
+router.get("/deleteCart", isAuth, userController.deleteCart);
+
 module.exports = router;

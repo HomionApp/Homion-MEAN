@@ -40,9 +40,9 @@ export class ChefDeatilsComponenet implements OnInit {
           product.isAdded = false;
         });
         delete this.chef.products;
-        console.log(this.chef);
       }
       this.isLoading = false;
     });
   }
+
 }

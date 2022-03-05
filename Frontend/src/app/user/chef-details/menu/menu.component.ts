@@ -8,6 +8,7 @@ import { UserService } from '../../user.service';
 })
 export class MenuComponent implements OnInit {
   @Input() products!: any;
+  @Input() chef!: any;
   subCategories: any[] = [];
   menu = new Map();
   cartItems: any[] = [];
@@ -40,8 +41,22 @@ export class MenuComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    product.isAdded = true;
-    this.cartItems.push({ product: product, quantity: 1 });
-    this.userService.cartItems.emit(this.cartItems);
+    if (this.userService.cartChefId && this.userService.cartChefId !== this.chef._id) {
+      if (
+        window.confirm('There are items added in the cart from other chef. Do you want discard them?')
+      ) {
+        this.userService.deleteCart().subscribe((res) => {
+          if (res.status == 201) {
+            product.isAdded = true;
+            this.cartItems.push({ product: product, quantity: 1 });
+            this.userService.cartItems.emit(this.cartItems);
+          }
+        });
+      }
+    } else {
+      product.isAdded = true;
+      this.cartItems.push({ product: product, quantity: 1 });
+      this.userService.cartItems.emit(this.cartItems);
+    }
   }
 }
