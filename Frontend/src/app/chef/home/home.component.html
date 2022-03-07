@@ -5,33 +5,40 @@
                 <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-larger"
                     (click)="orderType = 'NEW'" [ngClass]="{'bg-purple text-white': orderType === 'NEW'}">New</button>
                 <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-larger"
-                    (click)="orderType = 'ONGOING'" [ngClass]="{'bg-purple text-white': orderType === 'ONGOING'}">Ongoing</button>
+                    (click)="orderType = 'ONGOING'"
+                    [ngClass]="{'bg-purple text-white': orderType === 'ONGOING'}">Ongoing</button>
                 <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-larger"
-                    (click)="orderType = 'PREPARED'" [ngClass]="{'bg-purple text-white': orderType === 'PREPARED'}">Prepared</button>
+                    (click)="orderType = 'PREPARED'"
+                    [ngClass]="{'bg-purple text-white': orderType === 'PREPARED'}">Prepared</button>
                 <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-larger"
-                    (click)="orderType = 'CANCELLED'" [ngClass]="{'bg-purple text-white': orderType === 'CANCELLED'}">Cancelled</button>
+                    (click)="orderType = 'CANCELLED'"
+                    [ngClass]="{'bg-purple text-white': orderType === 'CANCELLED'}">Cancelled</button>
             </div>
         </div>
     </div>
-    
+
     <div class="row mt-3">
         <div *ngIf="orderType === 'NEW'">
-            <div class="col-md-8 offset-md-2">
-                <!-- <h6 class="mx-auto">No new orders. Please wait for an order to be placed!!</h6> -->
+            <div *ngIf="new.length == 0">
+                <img class="d-block mx-auto" src="../../../assets/image/no-result.png">
+            </div>
+            <div class="col-md-8 offset-md-2" *ngFor="let order of new">
                 <div class="m-2 card shadow rounded">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-10 col-md-10 col-sm-10">
-                                <span class="fs-3 purple fw-bolder text-large">Harshil
-                                    Dangi</span>&nbsp;&nbsp;
-                                <h6 class="text-muted my-1">109, Vibhusha Bungalows, Kabir Enclave,Bopal -
-                                    380058
+                                <span class="fs-3 purple fw-bolder text-large">{{order.user.firstName + " " +
+                                    order.user.lastName}}</span>&nbsp;&nbsp;
+                                <h6 class="text-muted my-1">{{order.address.homeNo + ', ' +
+                                    order.address.society +
+                                    ', ' + order.address.landmark + ', ' + order.address.areaId.name + ' - ' +
+                                    order.address.areaId.pincode }}
                                 </h6>
-                                <h6 class=" text-muted my-2">03/01/2022 05:21 PM</h6>
+                                <h6 class=" text-muted my-2">{{order.createdAt | date:'fullDate'}} 05:21 PM</h6>
                             </div>
                             <div class="col-2 col-md-2 col-sm-2 mt-2 fs-5">
                                 <span class="badge badge-pill bg-purple badge-large float-end"><i
-                                        class="fa fa-inr menu-icon">&nbsp;</i>234</span>
+                                        class="fa fa-inr menu-icon">&nbsp;</i>{{order.amount}}</span>
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -42,7 +49,8 @@
                                     <button type="button"
                                         class="btn btn-outline-primary purple border-2 fw-bolder">REJECT</button>
                                     <button class="btn btn-outline-primary purple border-2 fw-bolder"
-                                        (click)="showDetails = !showDetails">DETAILS</button>
+                                        (click)="showDetails = !showDetails"
+                                        (click)="setOrderDetails(order)">DETAILS</button>
                                 </div>
                             </div>
                         </div>
@@ -52,31 +60,37 @@
         </div>
 
         <div *ngIf="orderType === 'ONGOING'">
-            <div class="col-md-8 offset-md-2">
-                <!-- <h6 class="mx-auto">No new ongoing orders. Please wait for an order to be placed!!</h6> -->
+            <div *ngIf="ongoing.length == 0">
+                <img class="d-block mx-auto" src="../../../assets/image/no-result.png">
+            </div>
+            <div class="col-md-8 offset-md-2" *ngFor="let order of ongoing">
                 <div class="m-2 card shadow rounded">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-10 col-md-10 col-sm-10">
-                                <span class="fs-3 purple fw-bolder text-large">Harshil
-                                    Dangi</span>&nbsp;&nbsp;
-                                <h6 class="text-muted my-1">109, Vibhusha Bungalows, Kabir Enclave,Bopal -
-                                    380058
+                                <span class="fs-3 purple fw-bolder text-large">{{order.user.firstName + " " +
+                                    order.user.lastName}}</span>&nbsp;&nbsp;
+                                <h6 class="text-muted my-1">{{order.address.homeNo + ', ' +
+                                    order.address.society +
+                                    ', ' + order.address.landmark + ', ' + order.address.areaId.name + ' - ' +
+                                    order.address.areaId.pincode }}
                                 </h6>
                                 <h6 class=" text-muted my-2">03/01/2022 05:21 PM</h6>
                             </div>
                             <div class="col-2 col-md-2 col-sm-2 mt-2 fs-5">
                                 <span class="badge badge-pill bg-purple badge-large float-end"><i
-                                        class="fa fa-inr menu-icon">&nbsp;</i>234</span>
+                                        class="fa fa-inr menu-icon">&nbsp;</i>{{order.amount}}</span>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-12 col-md-12">
                                 <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder text-wrap">MARK
+                                    <button type="button"
+                                        class="btn btn-outline-primary purple border-2 fw-bolder text-wrap">MARK
                                         READY</button>
                                     <button class="btn btn-outline-primary purple border-2 fw-bolder"
-                                        (click)="showDetails = !showDetails">DETAILS</button>
+                                        (click)="showDetails = !showDetails"
+                                        (click)="setOrderDetails(order)">DETAILS</button>
                                 </div>
                             </div>
                         </div>
@@ -86,31 +100,37 @@
         </div>
 
         <div *ngIf="orderType === 'PREPARED'">
-            <div class="col-md-8 offset-md-2">
-                <!-- <h6 class="mx-auto">No new prepared orders. Please wait for an order to be placed!!</h6> -->
+            <div *ngIf="prepared.length == 0">
+                <img class="d-block mx-auto" src="../../../assets/image/no-result.png">
+            </div>
+            <div class="col-md-8 offset-md-2" *ngFor="let order of prepared">
                 <div class="m-2 card shadow rounded">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-10 col-md-10 col-sm-10">
-                                <span class="fs-3 purple fw-bolder text-large">Harshil
-                                    Dangi</span>&nbsp;&nbsp;
-                                <h6 class="text-muted my-1">109, Vibhusha Bungalows, Kabir Enclave,Bopal -
-                                    380058
+                                <span class="fs-3 purple fw-bolder text-large">{{order.user.firstName + " " +
+                                    order.user.lastName}}</span>&nbsp;&nbsp;
+                                <h6 class="text-muted my-1">{{order.address.homeNo + ', ' +
+                                    order.address.society +
+                                    ', ' + order.address.landmark + ', ' + order.address.areaId.name + ' - ' +
+                                    order.address.areaId.pincode }}
                                 </h6>
                                 <h6 class="text-muted my-2">03/01/2022 05:21 PM</h6>
                             </div>
                             <div class="col-2 col-md-2 col-sm-2 mt-2 fs-5">
                                 <span class="badge badge-pill bg-purple badge-large float-end"><i
-                                        class="fa fa-inr menu-icon">&nbsp;</i>234</span>
+                                        class="fa fa-inr menu-icon">&nbsp;</i>{{order.amount}}</span>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-12 col-md-12">
                                 <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-outline-primary purple border-2 fw-bolder text-wrap">MARK
+                                    <button type="button"
+                                        class="btn btn-outline-primary purple border-2 fw-bolder text-wrap">MARK
                                         DELIVERED</button>
                                     <button class="btn btn-outline-primary purple border-2 fw-bolder"
-                                        (click)="showDetails = !showDetails">DETAILS</button>
+                                        (click)="showDetails = !showDetails"
+                                        (click)="setOrderDetails(order)">DETAILS</button>
                                 </div>
                             </div>
                         </div>
@@ -120,16 +140,20 @@
         </div>
 
         <div *ngIf="orderType === 'CANCELLED'">
-            <div class="col-md-8 offset-md-2">
-                <!-- <h6 class="mx-auto">No new cancelled orders. Please wait for an order to be placed!!</h6> -->
+            <div *ngIf="cancelled.length == 0">
+                <img class="d-block mx-auto" src="../../../assets/image/no-result.png">
+            </div>
+            <div class="col-md-8 offset-md-2" *ngFor="let order of cancelled">
                 <div class="m-2 card shadow rounded">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-10 col-md-10 col-sm-10">
-                                <span class="fs-3 purple fw-bolder text-large">Harshil
-                                    Dangi</span>&nbsp;&nbsp;
-                                <h6 class="text-muted my-1">109, Vibhusha Bungalows, Kabir Enclave,Bopal -
-                                    380058
+                                <span class="fs-3 purple fw-bolder text-large">{{order.user.firstName + " " +
+                                    order.user.lastName}}</span>&nbsp;&nbsp;
+                                <h6 class="text-muted my-1">{{order.address.homeNo + ', ' +
+                                    order.address.society +
+                                    ', ' + order.address.landmark + ', ' + order.address.areaId.name + ' - ' +
+                                    order.address.areaId.pincode }}
                                 </h6>
                                 <h6 class="text-muted my-2">03/01/2022 05:21 PM</h6>
                             </div>
@@ -141,7 +165,8 @@
                             <div class="col-12 col-md-12">
                                 <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
                                     <button class="btn btn-outline-primary purple border-2 fw-bolder"
-                                        (click)="showDetails = !showDetails">DETAILS</button>
+                                        (click)="showDetails = !showDetails"
+                                        (click)="setOrderDetails(order)">DETAILS</button>
                                 </div>
                             </div>
                         </div>
@@ -153,4 +178,5 @@
     </div>
 </div>
 
-<app-order-details-modal *ngIf="showDetails" (closeModal)="showDetails = false"></app-order-details-modal>
+<app-order-details-modal *ngIf="showDetails" (closeModal)="showDetails = false" [order]="order">
+</app-order-details-modal>

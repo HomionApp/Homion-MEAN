@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
+const cloudinary = require("cloudinary").v2;
 
 const Product = require("../models/Product");
 const Response = require("../models/Response");
 const Category = require("../models/Category");
 const Chef = require("../models/Chef");
 const SubCategory = require("../models/SubCategory");
-const cloudinary = require("cloudinary").v2;
+const Order = require("../models/Order");
 
 exports.addProduct = async (req, res, next) => {
   try {
@@ -172,6 +173,37 @@ exports.getProfileDetails = async (req, res, next) => {
   }
 };
 
+exports.getOrders = async (req, res, next) => {
+  try {
+    var dateObj = new Date();
+    var month = dateObj.getMonth() + 1; //months from 1-12
+    var day = dateObj.getDate();
+    var year = dateObj.getFullYear();
+    const orders = await Order.find({
+      chef: req.id,
+      createdAt: {
+        $gte: year + "-" + month + "-" + day,
+      },
+    }).populate([
+      {
+        path: "items",
+        populate: {
+          path: "product",
+          model: "Product",
+        },
+      },
+      {
+        path: "user",
+        model: "User",
+      },
+    ]);
+    console.log({ orders });
+    return res.json(new Response(200, "", orders));
+  } catch (err) {
+    console.log(err);
+    return next(err);
+  }
+};
 // ----------------------------------------------------------------------------------------
 
 exports.addCategory = async (req, res, next) => {

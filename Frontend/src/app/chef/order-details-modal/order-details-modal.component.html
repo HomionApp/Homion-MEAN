@@ -1,6 +1,6 @@
 <ng-template #orderDetailsModal>
     <div class="modal-header">
-        <h5 class="modal-title">Order Id : #1641439040550</h5>
+        <h5 class="modal-title">Order Id : #{{order?._id}}</h5>
         <button type="button" class="btn shadow-none" (click)="onClose()">
             <span class="h3">&times;</span></button>
     </div>
@@ -8,13 +8,13 @@
         <div class="row">
             <div class="col-md-4">
                 <i class="fa fa-user purple menu-icon">&nbsp;&nbsp;</i><span class="fs-bolder" id="userName">
-                    <!-- User Name through JS -->Harshil Dangi
+                    <!-- User Name through JS -->{{order?.user.firstName +" "+ order?.user.lastName}}
                 </span>
             </div>
             <div class="col-md-4">
                 <i class="fa fa-phone purple menu-icon">&nbsp;&nbsp;</i> <span class="font-weight-bold"
                     id="userMobileNo">
-                    <!-- User Mobile no through JS -->912345678
+                    <!-- User Mobile no through JS -->{{order?.user.mobile}}
                 </span>
             </div>
         </div>
@@ -22,7 +22,10 @@
             <div class="col-md-12">
                 <i class="fa fa-map-marker menu-icon purple">&nbsp;</i>
                 <span id="userAddress">
-                    12, Madhav city, Landmark, Bopal - 380058
+                    {{order?.address.homeNo + ', ' +
+                    order?.address.society +
+                    ', ' + order?.address.landmark + ', ' + order?.address.areaId.name + ' - ' +
+                    order?.address.areaId.pincode }}
                 </span>
             </div>
         </div>
@@ -37,16 +40,16 @@
                 </tr>
             </thead>
             <tbody id="modalItems">
-                <tr>
-                    <td>Product Name</td>
-                    <td>3</td>
-                    <td><i class="fa fa-inr menu-icon">&nbsp;</i>30</td>
+                <tr *ngFor="let item of order?.items">
+                    <td>{{item.product.name}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td><i class="fa fa-inr menu-icon">&nbsp;</i>{{item.product.price * item.quantity}}</td>
                 </tr>
             </tbody>
             <tr class="font-weight-bold">
                 <td>&nbsp;Total</td>
                 <td></td>
-                <td><i class="fa fa-inr menu-icon"></i>30</td>
+                <td><i class="fa fa-inr menu-icon"></i>{{order?.amount}}</td>
             </tr>
         </table>
     </div>

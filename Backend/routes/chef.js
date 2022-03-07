@@ -23,6 +23,8 @@ router.get("/getSubCategories", isAuth, chefController.getSubCategories);
 
 router.get("/getProfileDetails", isAuth, chefController.getProfileDetails);
 
+router.get("/getOrders", isAuth, chefController.getOrders);
+
 // ------------------------------------------------------------------------------------------
 
 router.post("/addCategory", chefController.addCategory);

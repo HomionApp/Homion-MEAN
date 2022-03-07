@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -39,5 +39,6 @@ import { EditAddressComponent } from './address/edit-address/edit-address.compon
     NgbModule,
   ],
   exports: [],
+  providers: [DatePipe],
 })
 export class ChefModule {}

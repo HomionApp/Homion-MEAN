@@ -52,4 +52,9 @@ export class ChefService {
   public getProfileDetails(): Observable<Response> {
     return this.http.get<Response>(`${host}/getProfileDetails`);
   }
+
+  public getOrders(): Observable<Response> {
+    return this.http.get<Response>(`${host}/getOrders`);
+  }
+  
 }

@@ -227,7 +227,6 @@ exports.getCartItems = async (req, res, next) => {
         model: "Product",
       },
     });
-    console.log(cart);
     res.json(new Response(200, "", cart));
   } catch (err) {
     return next(err);

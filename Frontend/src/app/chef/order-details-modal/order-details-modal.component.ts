@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   ViewChild,
@@ -16,6 +17,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class OrderDetailsModalComponent implements OnInit {
   @ViewChild('orderDetailsModal', { static: true }) modalRef!: ElementRef;
   @Output() closeModal = new EventEmitter<void>();
+  @Input() order: any;
 
   constructor(private modalService: NgbModal) {}
 
