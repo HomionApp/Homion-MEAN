@@ -37,4 +37,6 @@ router.get("/getCartItems", isAuth, userController.getCartItems);
 
 router.get("/deleteCart", isAuth, userController.deleteCart);
 
+router.post("/placeOrder", isAuth, userController.placeOrder);
+
 module.exports = router;

@@ -204,7 +204,11 @@ exports.isFavouriteChef = async (req, res, next) => {
 exports.addToCart = async (req, res, next) => {
   try {
     const cart = req.body.cart;
-    await new Order({ ...cart }).save();
+    if (cart.orderId) {
+      await Order.findByIdAndUpdate(cart.orderId, cart);
+    } else {
+      await new Order({ ...cart }).save();
+    }
     res.json(new Response(200, "Items added to cart"));
   } catch (err) {
     return next(err);
@@ -234,6 +238,16 @@ exports.deleteCart = async (req, res, next) => {
   try {
     await Order.deleteOne({ user: req.id, status: "INCART" });
     res.json(new Response(202, "Cart deleted"));
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.placeOrder = async (req, res, next) => {
+  try {
+    const order = req.body;
+    await Order.findByIdAndUpdate(order._id, order);
+    res.json(new Response(202, "Order placed"));
   } catch (err) {
     return next(err);
   }

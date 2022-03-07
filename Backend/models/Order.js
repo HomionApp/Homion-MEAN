@@ -26,8 +26,7 @@ const orderSchema = new Schema(
       required: true,
     },
     address: {
-      type: Schema.Types.ObjectId,
-      ref: "Address",
+      type: Object,
       required: false,
     },
     feedback: {

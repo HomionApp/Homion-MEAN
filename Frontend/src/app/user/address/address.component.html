@@ -16,7 +16,7 @@
         <ng-container *ngIf="address.length > 0 && !isLoading">
           <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" *ngFor="let addr of address">
             <label class="w-100">
-              <input class="card-input-element" type="radio" name="product" value="a1" checked />
+              <input class="card-input-element" type="radio" name="product" [value]="addr._id" [(ngModel)]="selectedAddressId" (ngModelChange)="changeAddress()" />
               <div class="card card-input pb-0 mx-0 h-100">
                 <div class="card-body">
                   <h5>{{addr.addressType}}</h5>

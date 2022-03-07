@@ -12,6 +12,7 @@ const host = environment.url + 'user';
 export class UserService {
   cartItems = new EventEmitter<any[]>();
   cartChefId!: string; //chefDetails page na chef ni id
+  selectedAddress = new EventEmitter<any>();
 
   constructor(private http: HttpClient) {}
 
@@ -90,4 +91,7 @@ export class UserService {
     return this.http.get<Response>(`${host}/deleteCart`);
   }
 
+  public placeOrder(order: any): Observable<Response> {
+    return this.http.post<Response>(`${host}/placeOrder`, order);
+  }
 }

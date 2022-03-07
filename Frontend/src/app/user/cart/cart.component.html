@@ -1,45 +1,41 @@
 <div class="card px-3 pb-3">
 
   <span class="fw-bold pt-3">Harshil Dangi</span>
-  <span class="fs-12 text-secondary pt-1"><i class="fa fa-map-marker"></i> 10, Vibhusha Bunglows, Kabir Enclave, Bopal -
-    380058</span>
+  <span class="text-danger" *ngIf="!address">Please add an address</span>
+  <span class="fs-12 text-secondary pt-1" *ngIf="address"><i class="fa fa-map-marker"></i> {{address.homeNo + ', ' +
+    address.society +
+    ', ' + address.landmark + ', ' + address.areaId.name + ' - ' +
+    address.areaId.pincode }}</span>
   <hr>
 
-  <div class="cart-item mt-2">
-    <div class="float-end ms-5 mt-1"><i class="fa fa-inr"></i> 123</div>
-    <div>
-      <span class="fs-5 text-success pe-2">&#8865;</span>
-      ABC
-      <span class="fs-13 text-secondary">X</span>
-      5
-    </div>
+  <div class="text-center text-secondary h6" *ngIf="cart?.items.length == 0">
+    <div class="pb-1">Your cart is empty.</div>
+    <div class="pt-1"> Add items in your cart.</div>
   </div>
-  <div class="cart-item mt-2">
-    <div class="float-end ms-5 mt-1"><i class="fa fa-inr"></i> 123</div>
-    <div>
-      <span class="fs-5 text-success pe-2">&#8865;</span>
-      ABC
-      <span class="fs-13 text-secondary">X</span>
-      5
+
+  <div class="cart-item mt-2" *ngFor="let item of cart?.items">
+    <div class="float-end text-secondary ms-5"><i class="fa fa-inr"></i> {{item.product.price * item.quantity}} <i
+        class="fa fa-trash text-danger ms-3" role="button" (click)="deleteCartItem(item.product._id)"></i></div>
+    <div class="float-end">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2"
+          (click)="item.quantity = item.quantity - 1; toPayAmount()" [disabled]="item.quantity == 1">&#8722;</button>
+        <button type="button" class="btn btn-secondary fs-14 py-0 px-2">{{item.quantity}}</button>
+        <button type="button" class="btn btn-outline-secondary fs-14 py-0 px-2"
+          (click)="item.quantity = item.quantity + 1; toPayAmount()" [disabled]="item.quantity == 5">&#43;</button>
+      </div>
     </div>
-  </div>
-  <div class="cart-item mt-2">
-    <div class="float-end ms-5 mt-1"><i class="fa fa-inr"></i> 123</div>
-    <div>
-      <span class="fs-5 text-success pe-2">&#8865;</span>
-      ABC
-      <span class="fs-13 text-secondary">X</span>
-      5
-    </div>
+    <div>{{item.product.name}}</div>
   </div>
 
   <hr class="mt-4">
 
   <div class="to-pay">
     <div class="h5 float-start">TO PAY</div>
-    <div class="h5 float-end"> <i class="fa fa-inr"></i> 1234</div>
+    <div class="h5 float-end"> <i class="fa fa-inr"></i> {{cart?.amount}}</div>
   </div>
 
-  <button class="btn-lg bg-success border border-white mt-3 text-white fs-16 py-3">PLACE ORDER</button>
+  <button class="btn btn-lg bg-success border border-white mt-3 text-white fs-16 py-3" (click)="placeOrder()"
+    [disabled]="cart?.items.length == 0">PLACE ORDER</button>
 
 </div>

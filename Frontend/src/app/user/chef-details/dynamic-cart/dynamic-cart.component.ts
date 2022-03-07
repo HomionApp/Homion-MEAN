@@ -12,6 +12,7 @@ export class DynamicCartComponent implements OnInit, OnDestroy {
   cartItems: any[] = [];
   cart: any = {};
   toPay = 0;
+  orderId!: number;
 
   constructor(private userService: UserService) {}
 
@@ -19,7 +20,7 @@ export class DynamicCartComponent implements OnInit, OnDestroy {
     this.userService.cartItems.subscribe((cartItems) => {
       this.cartItems = cartItems;
       console.log(this.cartItems);
-      
+
       this.toPayAmount();
     });
     this.getCartItems();
@@ -28,6 +29,7 @@ export class DynamicCartComponent implements OnInit, OnDestroy {
   getCartItems() {
     this.userService.getCartItems().subscribe((res) => {
       if (res.status == 200 && res.data) {
+        this.orderId = res.data._id;
         this.userService.cartChefId = res.data.chef;
         this.cartItems = res.data.items.map((item: any) => {
           item.product.isAdded = true;
@@ -54,6 +56,9 @@ export class DynamicCartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (this.orderId) {
+      this.cart.orderId = this.orderId;
+    }
     this.cart.user = this.user._id;
     this.cart.chef = this.chef._id;
     this.cart.items = this.cartItems.map((item) => {

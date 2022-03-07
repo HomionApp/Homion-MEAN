@@ -13,6 +13,7 @@ export class AddressComponent implements OnInit {
   isSaved = false;
   isLoading = false;
   addressId: string = '';
+  selectedAddressId!: string;
 
   constructor(private userService: UserService) {}
 
@@ -25,9 +26,18 @@ export class AddressComponent implements OnInit {
     this.userService.getAddress().subscribe((res) => {
       if (res.status == 200) {
         this.address = res.data;
+        this.userService.selectedAddress.emit(this.address[0]);
+        this.selectedAddressId = this.address[0]._id;
         this.isLoading = false;
       }
     });
+  }
+
+  changeAddress() {
+    let selectedAddress = this.address.filter(
+      (address) => address._id === this.selectedAddressId
+    )[0];
+    this.userService.selectedAddress.emit(selectedAddress);
   }
 
   addNewAddress() {
