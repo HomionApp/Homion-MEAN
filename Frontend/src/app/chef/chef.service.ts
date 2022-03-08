@@ -44,7 +44,10 @@ export class ChefService {
     return this.http.get<Response>(`${host}/getMenuItems`);
   }
 
-  public changeProductStatus(productId: string, status: string): Observable<Response> {
+  public changeProductStatus(
+    productId: string,
+    status: string
+  ): Observable<Response> {
     let options = { headers: { productId: productId, status: status } };
     return this.http.get<Response>(`${host}/changeProductStatus`, options);
   }
@@ -56,5 +59,14 @@ export class ChefService {
   public getOrders(): Observable<Response> {
     return this.http.get<Response>(`${host}/getOrders`);
   }
-  
+
+  public changeOrderStatus(
+    orderId: string,
+    status: string
+  ): Observable<Response> {
+    return this.http.put<Response>(`${host}/changeOrderStatus`, {
+      orderId: orderId,
+      status: status,
+    });
+  }
 }

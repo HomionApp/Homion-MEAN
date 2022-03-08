@@ -11,8 +11,8 @@
                     (click)="orderType = 'PREPARED'"
                     [ngClass]="{'bg-purple text-white': orderType === 'PREPARED'}">Prepared</button>
                 <button type="button" class="btn btn-outline-primary purple border-0 fw-bolder fs-larger"
-                    (click)="orderType = 'CANCELLED'"
-                    [ngClass]="{'bg-purple text-white': orderType === 'CANCELLED'}">Cancelled</button>
+                    (click)="orderType = 'REJECTED'"
+                    [ngClass]="{'bg-purple text-white': orderType === 'REJECTED'}">Rejected</button>
             </div>
         </div>
     </div>
@@ -45,9 +45,9 @@
                             <div class="col-12 col-md-12">
                                 <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
                                     <button type="button"
-                                        class="btn btn-outline-primary purple border-2 fw-bolder">ACCEPT</button>
+                                        class="btn btn-outline-primary purple border-2 fw-bolder" (click)="changeOrderStatus(order._id, 'ONGOING')">ACCEPT</button>
                                     <button type="button"
-                                        class="btn btn-outline-primary purple border-2 fw-bolder">REJECT</button>
+                                        class="btn btn-outline-primary purple border-2 fw-bolder" (click)="changeOrderStatus(order._id, 'REJECTED')">REJECT</button>
                                     <button class="btn btn-outline-primary purple border-2 fw-bolder"
                                         (click)="showDetails = !showDetails"
                                         (click)="setOrderDetails(order)">DETAILS</button>
@@ -86,7 +86,7 @@
                             <div class="col-12 col-md-12">
                                 <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
                                     <button type="button"
-                                        class="btn btn-outline-primary purple border-2 fw-bolder text-wrap">MARK
+                                        class="btn btn-outline-primary purple border-2 fw-bolder text-wrap" (click)="changeOrderStatus(order._id, 'PREPARED')">MARK
                                         READY</button>
                                     <button class="btn btn-outline-primary purple border-2 fw-bolder"
                                         (click)="showDetails = !showDetails"
@@ -126,7 +126,7 @@
                             <div class="col-12 col-md-12">
                                 <div class="btn-group w-100 d-flex" role="group" aria-label="Basic example">
                                     <button type="button"
-                                        class="btn btn-outline-primary purple border-2 fw-bolder text-wrap">MARK
+                                        class="btn btn-outline-primary purple border-2 fw-bolder text-wrap" (click)="changeOrderStatus(order._id, 'DELIVERED')">MARK
                                         DELIVERED</button>
                                     <button class="btn btn-outline-primary purple border-2 fw-bolder"
                                         (click)="showDetails = !showDetails"
@@ -139,11 +139,11 @@
             </div>
         </div>
 
-        <div *ngIf="orderType === 'CANCELLED'">
-            <div *ngIf="cancelled.length == 0">
+        <div *ngIf="orderType === 'REJECTED'">
+            <div *ngIf="rejected.length == 0">
                 <img class="d-block mx-auto" src="../../../assets/image/no-result.png">
             </div>
-            <div class="col-md-8 offset-md-2" *ngFor="let order of cancelled">
+            <div class="col-md-8 offset-md-2" *ngFor="let order of rejected">
                 <div class="m-2 card shadow rounded">
                     <div class="card-body">
                         <div class="row">

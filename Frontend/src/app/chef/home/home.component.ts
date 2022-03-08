@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   new: any[] = [];
   ongoing: any[] = [];
   prepared: any[] = [];
-  cancelled: any[] = [];
+  rejected: any[] = [];
   order: any;
   constructor(private chefService: ChefService) {}
 
@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit {
             case 'PREPARED':
               this.prepared.push(order);
               break;
-            case 'CANCELLED':
-              this.cancelled.push(order);
+            case 'REJECTED':
+              this.rejected.push(order);
               break;
           }
         });
@@ -44,6 +44,12 @@ export class HomeComponent implements OnInit {
   }
 
   setOrderDetails(order: any) {
-    this.order = order
+    this.order = order;
+  }
+
+  changeOrderStatus(orderId: string, status: string) {
+    this.chefService.changeOrderStatus(orderId, status).subscribe((res) => {
+      console.log(res);
+    });
   }
 }

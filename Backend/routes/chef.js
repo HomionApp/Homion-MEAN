@@ -25,6 +25,8 @@ router.get("/getProfileDetails", isAuth, chefController.getProfileDetails);
 
 router.get("/getOrders", isAuth, chefController.getOrders);
 
+router.put("/changeOrderStatus", isAuth, chefController.changeOrderStatus);
+
 // ------------------------------------------------------------------------------------------
 
 router.post("/addCategory", chefController.addCategory);

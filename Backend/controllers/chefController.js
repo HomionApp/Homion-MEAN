@@ -204,6 +204,18 @@ exports.getOrders = async (req, res, next) => {
     return next(err);
   }
 };
+
+exports.changeOrderStatus = async (req, res, next) => {
+  try {
+    const orderId = req.body.orderId;
+    const status = req.body.status;
+    await Order.findByIdAndUpdate(orderId, { $set: { status: status } });
+    res.json(new Response(200, "Order status : " + status));
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
 // ----------------------------------------------------------------------------------------
 
 exports.addCategory = async (req, res, next) => {
