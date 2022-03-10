@@ -94,4 +94,8 @@ export class UserService {
   public placeOrder(order: any): Observable<Response> {
     return this.http.post<Response>(`${host}/placeOrder`, order);
   }
+
+  public getOrders(): Observable<Response> {
+    return this.http.get<Response>(`${host}/getOrders`);
+  }
 }

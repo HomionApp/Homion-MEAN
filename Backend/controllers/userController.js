@@ -26,7 +26,6 @@ exports.getAddress = async (req, res, next) => {
       path: "address",
       populate: {
         path: "areaId",
-        model: "Area",
       },
     });
     res.json(new Response(200, "", address.address));
@@ -100,11 +99,9 @@ exports.getChefById = async (req, res, next) => {
         populate: [
           {
             path: "categoryId",
-            model: "Category",
           },
           {
             path: "subCategoryId",
-            model: "SubCategory",
           },
         ],
       },
@@ -112,7 +109,6 @@ exports.getChefById = async (req, res, next) => {
         path: "address",
         populate: {
           path: "areaId",
-          model: "Area",
         },
       },
     ]);
@@ -139,7 +135,6 @@ exports.getUser = async (req, res, next) => {
       path: "address",
       populate: {
         path: "areaId",
-        model: "Area",
       },
     });
     res.json(new Response(200, "", user));
@@ -224,7 +219,6 @@ exports.getCartItems = async (req, res, next) => {
       path: "items",
       populate: {
         path: "product",
-        model: "Product",
       },
     });
     res.json(new Response(200, "", cart));
@@ -247,6 +241,32 @@ exports.placeOrder = async (req, res, next) => {
     const order = req.body;
     await Order.findByIdAndUpdate(order._id, order);
     res.json(new Response(202, "Order placed"));
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.getOrders = async (req, res, next) => {
+  try {
+    const orders = await Order.find({
+      user: req.id,
+      status: { $nin: ["INCART", "REJECTED", "ORDERED"] },
+    }).populate([
+      {
+        path: "chef",
+        populate: {
+          path: "address",
+          populate: { path: "areaId" },
+        },
+      },
+      {
+        path: "items",
+        populate: {
+          path: "product",
+        },
+      },
+    ]);
+    res.json(new Response(200, "Order retrived", orders));
   } catch (err) {
     return next(err);
   }

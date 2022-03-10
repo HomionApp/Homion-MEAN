@@ -12,7 +12,7 @@ const orderSchema = new Schema(
       required: false,
     },
     status: {
-      type: String, //CANCELLED-DELIVERED-PREPARED-ONGOING-ORDERED/REJECTED-INCART
+      type: String, //CANCELLED-DELIVERED-PREPARED-ONGOING/REJECTED-ORDERED-INCART
       default: "INCART",
     },
     user: {

@@ -39,4 +39,6 @@ router.get("/deleteCart", isAuth, userController.deleteCart);
 
 router.post("/placeOrder", isAuth, userController.placeOrder);
 
+router.get("/getOrders", isAuth, userController.getOrders);
+
 module.exports = router;

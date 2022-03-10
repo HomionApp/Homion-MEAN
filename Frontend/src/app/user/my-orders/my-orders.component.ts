@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-my-orders',
@@ -10,7 +11,32 @@ export class MyOrdersComponent implements OnInit {
   showOrderDetails = false;
   showOrderReview = false;
 
-  constructor() {}
+  completed: any[] = [];
+  inProgress: any[] = [];
+  cancelled: any[] = [];
 
-  ngOnInit(): void {}
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.getOrders();
+  }
+
+  getOrders() {
+    this.userService.getOrders().subscribe((res) => {
+      if (res.status == 200) {
+        res.data.forEach((order: any) => {
+          if (order.status === 'DELIVERED') {
+            this.completed.push(order);
+          } else if (
+            order.status === 'ONGOING' ||
+            order.status === 'PREPARED'
+          ) {
+            this.inProgress.push(order);
+          } else if (order.status === 'CANCELLED') {
+            this.cancelled.push(order);
+          }
+        });
+      }
+    });
+  }
 }

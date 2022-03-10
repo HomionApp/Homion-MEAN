@@ -34,7 +34,7 @@
                                     ', ' + order.address.landmark + ', ' + order.address.areaId.name + ' - ' +
                                     order.address.areaId.pincode }}
                                 </h6>
-                                <h6 class=" text-muted my-2">{{order.createdAt | date:'fullDate'}} 05:21 PM</h6>
+                                <h6 class=" text-muted my-2">{{order.createdAt | date:'EEEE, MMMM d, y, h:mm a'}} </h6>
                             </div>
                             <div class="col-2 col-md-2 col-sm-2 mt-2 fs-5">
                                 <span class="badge badge-pill bg-purple badge-large float-end"><i
@@ -75,7 +75,7 @@
                                     ', ' + order.address.landmark + ', ' + order.address.areaId.name + ' - ' +
                                     order.address.areaId.pincode }}
                                 </h6>
-                                <h6 class=" text-muted my-2">03/01/2022 05:21 PM</h6>
+                                <h6 class=" text-muted my-2">{{order.updatedAt | date:'EEEE, MMMM d, y, h:mm a'}}</h6>
                             </div>
                             <div class="col-2 col-md-2 col-sm-2 mt-2 fs-5">
                                 <span class="badge badge-pill bg-purple badge-large float-end"><i
@@ -115,7 +115,7 @@
                                     ', ' + order.address.landmark + ', ' + order.address.areaId.name + ' - ' +
                                     order.address.areaId.pincode }}
                                 </h6>
-                                <h6 class="text-muted my-2">03/01/2022 05:21 PM</h6>
+                                <h6 class="text-muted my-2">{{order.updatedAt | date:'EEEE, MMMM d, y, h:mm a'}}</h6>
                             </div>
                             <div class="col-2 col-md-2 col-sm-2 mt-2 fs-5">
                                 <span class="badge badge-pill bg-purple badge-large float-end"><i
@@ -155,7 +155,7 @@
                                     ', ' + order.address.landmark + ', ' + order.address.areaId.name + ' - ' +
                                     order.address.areaId.pincode }}
                                 </h6>
-                                <h6 class="text-muted my-2">03/01/2022 05:21 PM</h6>
+                                <h6 class="text-muted my-2">{{order.updatedAt | date:'EEEE, MMMM d, y, h:mm a'}}</h6>
                             </div>
                             <div class="col-2 col-md-2 col-sm-2 mt-2 fs-5">
                                 <span class="badge badge-pill bg-danger badge-large float-end">Rejected</span>
